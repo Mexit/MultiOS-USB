@@ -16,7 +16,7 @@ Supported update configuration files.
 ## Installation:
 
 ```sh
-$ sudo installer.sh [options] device [data_size]
+$ sudo ./installer.sh [options] device [data_size]
 
  	device				Device to install (e.g. /dev/sdb)
  	data_size			Data partition size (e.g. 5G)
@@ -26,7 +26,7 @@ $ sudo installer.sh [options] device [data_size]
 ```
 For example:
 ```sh
-$ sudo installer.sh /dev/sdX
+$ sudo ./installer.sh /dev/sdX
 ```
 Replace X with your drive.
 
