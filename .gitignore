@@ -1,0 +1,2 @@
+config_priv/*
+!config_priv/.gitkeep
