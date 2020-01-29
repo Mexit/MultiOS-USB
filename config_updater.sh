@@ -1,6 +1,6 @@
 #!/bin/bash
 
-update_url="https://gitlab.com/MexxIT/multios-usb/-/archive/master/multios-usb-master.tar.bz2?path=config"
+update_url="https://gitlab.com/MexxIT/MultiOS-USB/-/archive/master/MultiOS-USB-master.tar.bz2?path=config"
 config_archive="multios-usb-master-config.tar.bz2"
 cur_dir=$(dirname $(readlink -f $0))
 man_mount=false
