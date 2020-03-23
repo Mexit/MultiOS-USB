@@ -1,0 +1,170 @@
+This directory holds icons used by rEFInd. This file describes their
+sources, both in overview and in file-by-file detail, and provides pointers
+to the relevant licenses under which the icons are distributed.
+
+Icon Sources (Overview)
+-----------------------
+
+- The AwOken 2.5 icon set
+  - Source: http://alecive.deviantart.com/art/AwOken-163570862
+  - Copyright (c) 2013 by Alessandro Roncone (aka alecive on DeviantArt)
+  - License: Creative Commons Attribution-Share Alike 3.0 (CC-SA 3.0)
+
+- Original work for rEFInd
+  - Source: https://sourceforge.net/p/refind (this archive)
+  - Copyright (c) 2015-2017 by Roderick W. Smith
+  - License: LGPLv3+ or CC-SA 3.0
+
+- Debian OS icon
+  - Source: https://commons.wikimedia.org/wiki/File:Debian-OpenLogo.svg
+  - Copyright (c) 1999 Debian Project
+  - License: LGPLv3+ or CC-SA 3.0
+
+- Devuan OS icon
+  - Source: https://devuan.org/ui/img/devuan-emblem.svg
+  - Copyright (c) 2017 Dyne.org foundation
+  - License: CC-BY-SA 4.0
+
+- Elementary OS icon
+  - Source: https://commons.wikimedia.org/wiki/File:Elementary_logo.svg
+  - Copyright (c) 2008 Dan Rabbit
+  - License: GPLv2+
+
+- Ubuntu "animal" icons (through os_xenial.png)
+  - Source: https://wiki.ubuntu.com/Artwork/Official
+  - Copyright (c) 2014-2017 Canonical Ltd.
+  - License: CC-BY-SA 3.0
+
+- Ubuntu "animal" icons (os_artful.png and os_bionic.png)
+  - Source: frank.heimes.canonical.com
+  - Copyright (c) 2017-2018 Canonical Ltd.
+  - License: CC-BY-SA-3.0
+
+- Void Linux icon
+  - Source: https://commons.wikimedia.org/wiki/File:Void_Linux_logo.svg
+  - Copyright: Public Domain
+
+Some icons have been altered from their original forms -- normally
+conversion from SVG to PNG format, resizing, changes in coloration, or
+addition of "drop shadow" effects. Details follow....
+
+The "svg" subdirectory holds SVG versions of some icons (notably absent are
+those based on the AwOken icon set).
+
+Icon Sources (Detail)
+---------------------
+
+Icons unchanged from AwOken 2.5:
+
+os_centos.png -- AwOken/clear/128x128/start-here/start-here-centos.png
+os_chakra.png -- AwOken/clear/128x128/start-here/start-here-chakra.png
+os_chrome.png -- AwOken/clear/128x128/apps/google-chrome1.png
+os_crunchbang.png -- AwOken/clear/128x128/start-here/start-here-crunchbang3.png
+os_fedora.png -- AwOken/clear/128x128/start-here/start-here-fedora5.png
+os_frugalware.png -- AwOken/clear/128x128/start-here/start-here-frugalware1.png
+os_kubuntu.png -- AwOken/clear/128x128/start-here/start-here-kubuntu.png
+os_lubuntu.png -- AwOken/clear/128x128/start-here/start-here-lubuntu.png
+os_mageia.png -- AwOken/clear/128x128/start-here/start-here-mageia.png
+os_mandriva.png -- AwOken/clear/128x128/start-here/start-here-mandriva5.png
+os_network.png -- AwOken/clear/128x128/places/network-workgroup1.png
+os_ubuntu.png -- AwOken/clear/128x128/start-here/start-here-ubuntu.png
+os_unknown.png -- AwOken/clear/128x128/actions/color-line1.png
+os_win8.png -- AwOken/clear/128x128/apps/live1.png
+
+
+Icons modified from AwOken 2.5:
+
+arrow_left.png -- AwOken/clear/128x128/actions/go-previous.png
+arrow_right.png -- AwOken/clear/128x128/actions/go-next.png
+boot_linux.png -- AwOken/clear/128x128/apps/supertux.png
+func_about.png -- AwOkenWhite/clear/128x128/actions/info2.png
+func_install.png -- AwOken/AwOkenWhite/clear/24x24/actions/document-import.png
+func_bootorder.png -- AwOkenWhite/clear/128x128/actions/format-list-ordered.png
+func_exit.png -- AwOkenWhite/clear/128x128/actions/application-exit2.png
+func_firmware.png -- AwOkenWhite/clear/128x128/status/indicator-cpufreq.png
+func_reset.png -- AwOkenWhite/clear/128x128/apps/gnome-session-reboot2.png
+func_shutdown.png -- AwOkenWhite/clear/128x128/apps/gnome-session-halt2.png
+os_arch.png -- AwOkenWhite/clear/128x128/start-here/start-here-arch3.png
+os_clover.png -- AwOkenWhite/clear/128x128/actions/tools-wizard.png
+os_gentoo.png -- AwOken/clear/128x128/start-here/start-here-gentoo.png
+os_hwtest.png -- AwOkenWhite/clear/128x128/apps/hw.png
+os_linux.png -- AwOkenWhite/clear/128x128/apps/supertux.png
+os_linuxmint.png -- AwOkenWhite/clear/128x128/start-here/start-here-mint3.png
+os_opensuse.png -- AwOkenWhite/clear/128x128/start-here/start-here-suse3.png
+os_slackware.png -- AwOkenWhite/clear/128x128/start-here/start-here-slackware1.png
+os_suse.png -- AwOkenWhite/clear/128x128/start-here/start-here-suse3.png
+os_xubuntu.png -- AwOkenWhite/clear/128x128/start-here/start-here-xubuntu1.png
+tool_mok_tool.png -- AwOkenWhite/clear/128x128/apps/gnome-keyring-manager.png
+tool_netboot.png -- AwOken/clear/128x128/places/network-workgroup1.png
+tool_shell.png -- AwOken/clear/128x128/apps/terminal3.png
+vol_external.png -- AwOkenWhite/clear/128x128/devices/drive-removable-media-usb2.png
+vol_internal.png -- AwOken/clear/128/128/drive-harddisk/Internal.png
+vol_net.png -- AwOken/clear/128/128/drive-harddisk/Server.png
+vol_optical.png - AwOken/clear/128x128/devices/media-optical-cd1.png
+
+
+Modified Elementary OS icon:
+
+os_elementary.png (GPLv2+)
+
+
+Modified Debian OS icon:
+
+os_debian.png (LGPLv3+ or CC-BY-SA 3.0)
+
+
+Modified Void Linux icon:
+
+os_void.png (public domain)
+
+
+Modified Ubuntu "animal" icons:
+
+os_trusty.png
+os_xenial.png
+os_zesty.png
+
+
+Icons created by me (Roderick W. Smith):
+
+boot_win.png
+func_csr_rotate.png
+mouse.png
+os_clover.png
+os_freebsd.png
+os_gummiboot.png
+os_haiku.png
+os_legacy.png
+os_mac.png
+os_netbsd.png
+os_redhat.png
+os_refind.png
+os_refit.png
+os_win.png
+tool_apple_rescue.png
+tool_fwupdate.png
+tool_memtest.png
+tool_rescue.png
+transparent.png
+
+
+In addition, some icons are combinations of two other icons from different
+sources:
+
+tool_part.png -- vol_internal.png with AwOken's gparted2.png
+tool_windows_rescue.png: os_win8.png with AwOken's gnome_network_preferences.png
+
+
+Licneses
+--------
+
+The "licenses" subdirectory contains the text of the relevant licenses:
+
+CC-SA 3.0: Creative Commons Legal Code.html
+           (See also https://creativecommons.org/licenses/by-sa/3.0/us/)
+
+GPLv2: gpl-2.0.txt
+       (see also https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html)
+
+LGPLv3: lgpl-3.0.txt
+        (see also http://www.gnu.org/licenses/lgpl-3.0.en.html)

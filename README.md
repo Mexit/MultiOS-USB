@@ -45,7 +45,7 @@ Press OK
 ![Select: Enroll key from disk](https://gitlab.com/MexxIT/multios-usb/raw/master/docs/Enroll_key.png)
 Select: Enroll key from disk
 
-Search for `MultiOS-USB.cer` in EFI directory and confirm key enrolling.
+Search for `MultiOS-USB.cer` in EFI directory (EFI/BOOT/cert/) and confirm key enrolling.
 
 ## Features:
 
