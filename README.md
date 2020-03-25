@@ -1,8 +1,9 @@
 
 # MultiOS-USB
 
-USB disk with multiple ISO files. Easy to use: install and copy ISO files.
+USB disk with multiple ISO files. Easy to use: install, copy ISO files and boot from USB.
 Supported update configuration files.
+Currently supported operating systems: [display list](https://github.com/Mexit/MultiOS-USB/tree/master/config)
 
 ## Requirements:
 
@@ -34,18 +35,20 @@ If you want to display list your all USB devices run installer without arguments
 ```sh
 $ ./installer.sh
 ```
-Copy ISO files to "ISOs" directory and boot your computer from USB.
+After installation copy your ISO files to "ISOs" directory and boot your computer from USB.
+You can also add your own configuration files to the `config_priv` directory. They will not be deleted during MultiOS-USB update.
 
-## Usage
+## First usage
 
 First boot with enabled Secure Boot on each new computer requires to install a certificate.
-![Press OK](https://gitlab.com/MexxIT/multios-usb/raw/master/docs/Security_Volation.png)
+![Press OK](https://github.com/Mexit/MultiOS-USB/raw/master/docs/Security_Volation.png)
 Press OK
 
-![Select: Enroll key from disk](https://gitlab.com/MexxIT/multios-usb/raw/master/docs/Enroll_key.png)
+![Select: Enroll key from disk](https://github.com/Mexit/MultiOS-USB/raw/master/docs/Enroll_key.png)
 Select: Enroll key from disk
 
 Search for `MultiOS-USB.cer` in EFI directory (EFI/BOOT/cert/) and confirm key enrolling.
+You can also immediately add certificates of popular distributions from [rEFInd](https://sourceforge.net/projects/refind/). They are located in `/boot_MultiOS/tools/refind-*/keys/` (standard location).
 
 ## Features:
 
@@ -55,9 +58,9 @@ Search for `MultiOS-USB.cer` in EFI directory (EFI/BOOT/cert/) and confirm key e
 - Launch .efi executable files and other bootloaders
 - Boot from .iso files
 
-## Update:
+## Update MultiOS-USB:
 
-Add support for new operating systems. There is no need to reinstall!
+You can add support for new operating systems. There is no need to reinstall!
 All you need to do is download new configuration files by typing:
 ```sh
 $ ./config_updater.sh
