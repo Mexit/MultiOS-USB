@@ -36,12 +36,19 @@ if [ "$(id -u)" -ne 0 ]; then
 	exec sudo -k -- /bin/sh "$0" "$@"
 fi
 
-if command -v grub2-install >/dev/null 2>&1; then
-	grub=grub2
-elif command -v grub-install >/dev/null 2>&1; then
-	grub=grub
+not_installed="0"
+command -v sgdisk >/dev/null 2>&1 || { echo >&2 "sgdisk (gdisk) is required but not installed." ; not_installed="1" ; }
+command -v wipefs >/dev/null 2>&1 || { echo >&2 "wipefs is required but not installed." ; not_installed="1" ; }
+command -v mkfs.fat >/dev/null 2>&1 || { echo >&2 "mkfs.fat is required but not installed." ; not_installed="1" ; }
+
+if command -v grub2-install >/dev/null 2>&1; then grub=grub2
+elif command -v grub-install >/dev/null 2>&1; then grub=grub
 else
-	echo -e "\ngrub-install or grub2-install not detected. Installation not possible. Exiting...\n"
+	echo "grub or grub2 is required but not installed." ; not_installed="1"
+fi
+
+if [ "$not_installed" -ne 0 ]; then
+	echo -e "\nNot all required programs are installed. Exiting...\n"
 	exit 1
 fi
 
