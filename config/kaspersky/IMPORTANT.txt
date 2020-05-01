@@ -1,0 +1,11 @@
+Kaspersky Rescue Disk
+url="https://rescuedisk.s.kaspersky-labs.com/updatable/2018/krd.iso"
+
+Kaspersky requires a non-standard directory with an ISO image. 
+
+There are two ways to boot Kaspersky Rescue Disk:
+
+1) save "krd.iso" image to "/data" directory on your MultiOS-USB; or
+2) unpack "krd.iso" image to "/os_files/krd" directory on your MultiOS-USB
+
+

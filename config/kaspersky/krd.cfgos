@@ -1,0 +1,37 @@
+# For Kaspersky Rescue Disk
+# url="https://rescuedisk.s.kaspersky-labs.com/updatable/2018/krd.iso"
+# Please unpack "krd.iso" image to "/os_files/krd" on your MultiOS-USB
+
+os_pattern="krd"
+
+for os in $os_dir/$os_pattern ; do
+	if [ -e "$os" ]; then
+
+		submenu "Kaspersky Rescue Disk ->" "$os" {
+			os="$2"
+			oscfg="subdir=${os}/data"
+			bootoptions="net.ifnames=0 lang=en"
+			linux_path="${os}/boot/grub/k-x86_64"
+			initrd_path="${os}/boot/grub/initrd.xz"
+
+			menuentry "Kaspersky Rescue Disk. Graphic mode" {
+				echo Loading kernel...
+				linux $linux_path $bootoptions $oscfg dostartx
+				echo Loading initrd...
+				initrd $initrd_path
+			}
+			menuentry "Kaspersky Rescue Disk. Limited graphic mode" {
+				echo Loading kernel...
+				linux $linux_path $bootoptions $oscfg nomodeset xforcevesa dostartx
+				echo Loading initrd...
+				initrd $initrd_path
+			}
+			menuentry "Hardware Info" {
+				echo Loading kernel...
+				linux $linux_path $bootoptions $oscfg docache loadsrm=000-core.srm,003-kl.srm nox hwinfo docheck
+				echo Loading initrd...
+				initrd $initrd_path
+			}
+		}
+	fi
+done
