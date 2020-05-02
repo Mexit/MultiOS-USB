@@ -17,7 +17,7 @@ showUsage() {
 
  	device				Device to install (e.g. /dev/sdb)
  	data_size			Data partition size (e.g. 5G)
- 	-fs, --fs_type			Filesystem type for the data partition [ext3|ext4|fat32|ntfs] (default: "$fs_type")
+ 	-fs, --fs_type			Filesystem type for the data partition [ext3|ext4|fat32|exfat|ntfs] (default: "$fs_type")
  	-h,  --help			Display this message
  	-d,  --MultiOS_dir <NAME>	Specify a data subdirectory (default: "$MultiOS_dir")
 	EOF
@@ -98,7 +98,7 @@ case "$fs_type" in
 		part_code="8300"
 		part_name="Linux filesystem"
 		;;
-	fat32|exFAT|ntfs)
+	fat32|exfat|ntfs)
 		part_code="0700"
 		part_name="Microsoft basic data"
 		;;
@@ -134,7 +134,6 @@ sgdisk --zap-all "$usb_dev"
 sgdisk --new 1::+1M --typecode 1:ef02 --change-name 1:"BIOS boot partition" "$usb_dev"
 sgdisk --new 2::+50M --typecode 2:ef00 --change-name 2:"EFI System" "$usb_dev"
 sgdisk --new 3::"${data_size}": --typecode 3:"$part_code" --change-name 3:"$part_name" "$usb_dev"
-sgdisk --attributes 3:set:2 "$usb_dev"
 
 wipefs -af "${usb_dev}1"
 wipefs -af "${usb_dev}2"
@@ -149,7 +148,7 @@ case "$fs_type" in
 	fat32)
 		mkfs.fat -F 32 -n "$data_label" "${usb_dev}3"
 		;;
-	exFAT)
+	exfat)
 		mkfs.exfat -n "$data_label" "${usb_dev}3"
 		;;
 	ntfs)
@@ -177,7 +176,7 @@ echo Copying files...
 cp part_efi/${grub}/grub.cfg binaries/grubx64.efi part_efi/EFI/BOOT
 cp -r config config_priv LICENSE README.md MultiOS-USB.version part_data/${MultiOS_dir}
 cp -r themes part_efi/${grub}
-cp -r binaries/syslinux-* binaries/MemTest86-* binaries/efitools-* binaries/refind-* part_data/${MultiOS_dir}/tools
+cp -r binaries/syslinux-* binaries/MemTest86-* binaries/efitools-* binaries/refind-* binaries/wimboot-* part_data/${MultiOS_dir}/tools
 
 # Enable support for Secure Boot
 cp -r binaries/SecureBoot/* part_efi/EFI/BOOT
