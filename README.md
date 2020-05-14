@@ -17,6 +17,8 @@ Currently supported operating systems: [display list](config)
 
 ## Installation:
 
+### Linux console
+
 ```sh
 $ sudo ./installer.sh [options] device [data_size]
 
@@ -36,6 +38,10 @@ If you want to display list your all USB devices run installer without arguments
 ```sh
 $ ./installer.sh
 ```
+### Image based installation (experimental)
+
+Recommended installation method for Windows. Go to Releases and download the appropriate file.<br/><br/>
+
 After installation, copy your ISO files to `/ISOs` directory and boot your computer from USB.  
 You can also add your own configuration files to the `/boot_MultiOS/config_priv` directory. They will not be deleted during automatic MultiOS-USB update.
 
