@@ -1,0 +1,35 @@
+# For openSUSE Tumbleweed network installer
+
+submenu "openSUSE Tumbleweed netboot -->" {
+
+	server=download.opensuse.org
+	os_url=tumbleweed/repo/oss
+	bootoptions="netsetup=dhcp install=https://${server}/${os_url} splash=silent"
+	linux_path="/${os_url}/boot/x86_64/loader/linux"
+	initrd_path="/${os_url}/boot/x86_64/loader/initrd"
+
+	menuentry "Installation" {
+		echo Downloading kernel...
+		linux (http,${server})${linux_path} ${bootoptions}
+		echo Downloading initrd...
+		initrd (http,${server})${initrd_path}
+	}
+	menuentry "Upgrade" {
+		echo Downloading kernel...
+		linux (http,${server})${linux_path} ${bootoptions} upgrade=1
+		echo Downloading initrd...
+		initrd (http,${server})${initrd_path}
+	}
+	menuentry "Rescue System" {
+		echo Downloading kernel...
+		linux (http,${server})${linux_path} ${bootoptions} rescue=1
+		echo Downloading initrd...
+		initrd (http,${server})${initrd_path}
+	}
+	menuentry "Boot Linux System" {
+		echo Downloading kernel...
+		linux (http,${server})${linux_path} ${bootoptions} systemboot=1
+		echo Downloading initrd...
+		initrd (http,${server})${initrd_path}
+	}
+}

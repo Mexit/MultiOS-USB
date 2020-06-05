@@ -1,0 +1,40 @@
+# For Ubuntu 18.04 network installer
+
+submenu "Ubuntu 18.04 (Bionic) netboot -->" {
+
+	server=pl.archive.ubuntu.com
+	bootoptions=""
+	linux_path="/ubuntu/dists/bionic-updates/main/installer-amd64/current/images/netboot/ubuntu-installer/amd64/linux"
+	initrd_path="/ubuntu/dists/bionic-updates/main/installer-amd64/current/images/netboot/ubuntu-installer/amd64/initrd.gz"
+
+	menuentry "Install" {
+		echo Downloading kernel...
+		linux (http,${server})${linux_path} ${bootoptions} --- quiet
+		echo Downloading initrd...
+		initrd (http,${server})${initrd_path}
+	}
+	menuentry "Command-line install" {
+		echo Downloading kernel...
+		linux (http,${server})${linux_path} ${bootoptions} tasks=standard pkgsel/language-pack-patterns= pkgsel/install-language-support=false --- quiet
+		echo Downloading initrd...
+		initrd (http,${server})${initrd_path}
+	}
+	menuentry "Expert install" {
+		echo Downloading kernel...
+		linux (http,${server})${linux_path} ${bootoptions} priority=low ---
+		echo Downloading initrd...
+		initrd (http,${server})${initrd_path}
+	}
+	menuentry "Command-line expert install" {
+		echo Downloading kernel...
+		linux (http,${server})${linux_path} ${bootoptions} tasks=standard pkgsel/language-pack-patterns= pkgsel/install-language-support=false priority=low ---
+		echo Downloading initrd...
+		initrd (http,${server})${initrd_path}
+	}
+	menuentry "Rescue mode" {
+		echo Downloading kernel...
+		linux (http,${server})${linux_path} ${bootoptions} rescue/enable=true --- quiet
+		echo Downloading initrd...
+		initrd (http,${server})${initrd_path}
+	}
+}

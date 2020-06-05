@@ -1,0 +1,18 @@
+# For Arch Linux network installer
+# https://www.archlinux.org
+
+submenu "Arch Linux (latest) netboot -->" {
+
+	server=mirror.rackspace.com
+	os_url=archlinux/iso/latest
+	bootoptions="archiso_http_srv=https://${server}/${os_url}/ archisobasedir=arch verify=y ip=dhcp net.ifnames=0"
+	linux_path="/${os_url}/arch/boot/x86_64/vmlinuz"
+	initrd_path="/${os_url}/arch/boot/x86_64/archiso.img"
+
+#	menuentry "Installation" {
+		echo Downloading kernel...
+		linux (http,${server})${linux_path} ${bootoptions}
+		echo Downloading initrd...
+		initrd (http,${server})${initrd_path}
+#	}
+}

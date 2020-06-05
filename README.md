@@ -65,7 +65,8 @@ You can also immediately add certificates of popular distributions from [rEFInd]
 - Load UEFI drivers
 - Launch .efi executable files and other bootloaders
 - Boot from .iso files
-- Boot Windows 10 installer and Windows PE [manual](config/win10_winPE/windows_support.md)
+- Boot Windows 10 installer and Windows PE [more info](config/win10_winPE/windows_support.md)
+- Boot Linux installer from network (experimental)
 
 ## Update MultiOS-USB:
 
