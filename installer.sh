@@ -11,13 +11,13 @@ data_label="MultiOS-USB"
 showUsage() {
 	cat <<- EOF
 
-	Multiboot USB installer
+	MultiOS-USB installer
 
 	Usage: sudo $scriptname [options] device [data_size]
 
  	device				Device to install (e.g. /dev/sdb)
  	data_size			Data partition size (e.g. 5G)
- 	-fs, --fs_type			Filesystem type for the data partition [ext3|ext4|fat32|exfat|ntfs] (default: "$fs_type")
+ 	-fs, --fs_type			Filesystem type for the data partition [ext2|ext3|ext4|fat32|exfat|ntfs] (default: "$fs_type")
  	-h,  --help			Display this message
  	-d,  --MultiOS_dir <NAME>	Specify a data subdirectory (default: "$MultiOS_dir")
 	EOF
@@ -33,23 +33,7 @@ echo ---------------------------------------------
 # Check for root
 if [ "$(id -u)" -ne 0 ]; then
 	printf 'This script must be run as root. Using sudo...\n' "$scriptname" >&2
-	exec sudo -k -- /bin/sh "$0" "$@"
-fi
-
-not_installed="0"
-command -v sgdisk >/dev/null 2>&1 || { echo >&2 "sgdisk (gdisk) is required but not installed." ; not_installed="1" ; }
-command -v wipefs >/dev/null 2>&1 || { echo >&2 "wipefs is required but not installed." ; not_installed="1" ; }
-command -v mkfs.fat >/dev/null 2>&1 || { echo >&2 "mkfs.fat is required but not installed." ; not_installed="1" ; }
-
-if command -v grub2-install >/dev/null 2>&1; then grub=grub2
-elif command -v grub-install >/dev/null 2>&1; then grub=grub
-else
-	echo "grub or grub2 is required but not installed." ; not_installed="1"
-fi
-
-if [ "$not_installed" -ne 0 ]; then
-	echo -e "\nNot all required programs are installed. Exiting...\n"
-	exit 1
+	exec sudo -k -- /bin/bash "$0" "$@"
 fi
 
 while [ "$#" -gt 0 ]; do
@@ -108,6 +92,24 @@ case "$fs_type" in
 		;;
 esac
 
+# Check for required software
+not_installed="0"
+command -v sgdisk >/dev/null 2>&1 || { echo >&2 "sgdisk (gdisk) is required but not installed." ; not_installed="1" ; }
+command -v wipefs >/dev/null 2>&1 || { echo >&2 "wipefs is required but not installed." ; not_installed="1" ; }
+if [ "$fs_type" = "fat32" ]; then fs_prog="mkfs.fat"; else fs_prog="mkfs.$fs_type"; fi
+command -v $fs_prog >/dev/null 2>&1 || { echo >&2 "$fs_prog is required but not installed." ; not_installed="1" ; }
+
+if command -v grub2-install >/dev/null 2>&1; then grub=grub2
+elif command -v grub-install >/dev/null 2>&1; then grub=grub
+else
+	echo "grub or grub2 is required but not installed." ; not_installed="1"
+fi
+
+if [ "$not_installed" -ne 0 ]; then
+	echo -e "\nNot all required programs are installed. Exiting...\n"
+	exit 1
+fi
+
 printf '\n'
 printf '+++++++++++++++++++++++++++++++++++++++++++++++++\n'
 printf '++   Are you sure you want to use %s ?   ++\n' "$usb_dev"
@@ -143,7 +145,7 @@ mkfs.fat -F 32 "${usb_dev}2"
 
 case "$fs_type" in
 	ext2|ext3|ext4)
-		mkfs -t "$fs_type" -L "$data_label" "${usb_dev}3"
+		mkfs.$fs_type -L "$data_label" "${usb_dev}3"
 		;;
 	fat32)
 		mkfs.fat -F 32 -n "$data_label" "${usb_dev}3"
@@ -152,7 +154,7 @@ case "$fs_type" in
 		mkfs.exfat -n "$data_label" "${usb_dev}3"
 		;;
 	ntfs)
-		mkfs -t "$fs_type" --fast -L "$data_label" "${usb_dev}3"
+		mkfs.ntfs --fast -L "$data_label" "${usb_dev}3"
 		;;
 	*)
 		printf '%s: %s is an invalid filesystem type.\n' "$scriptname" "$fs_type" >&2
