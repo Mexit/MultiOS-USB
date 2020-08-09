@@ -75,7 +75,7 @@ You can add support for new operating systems. There is no need to reinstall!
 ##### Automatic update
 All you need to do is download new configuration files by typing:
 ```sh
-$ ./config_updater.sh
+$ ./updater.sh
 ```
 
 ##### Manual update
