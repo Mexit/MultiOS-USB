@@ -1,4 +1,5 @@
 #!/bin/bash
+set -euo pipefail
 
 # Defaults
 scriptname=$(basename "$0")
@@ -187,3 +188,4 @@ cp cert/* part_efi/EFI/BOOT/cert
 umount -f part_efi
 umount -f part_data
 rmdir part_efi part_data
+echo MultiOS-USB has been successfully installed.

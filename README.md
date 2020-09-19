@@ -19,12 +19,14 @@ Currently supported operating systems: [display list](config)
 
 ### Linux console
 
+[Download](https://github.com/Mexit/MultiOS-USB/archive/master.zip) or clone this repository, then run in the console:
+
 ```sh
 $ sudo ./installer.sh [options] device [data_size]
 
  	device				Device to install (e.g. /dev/sdb)
  	data_size			Data partition size (e.g. 5G)
- 	-fs, --fs_type			Filesystem type for the data partition [ext3|ext4|FAT32|ntfs] (default: "FAT32")
+ 	-fs, --fs_type			Filesystem type for the data partition [ext2|ext3|ext4|fat32|exfat|ntfs] (default: "FAT32")
  	-h,  --help			Display this message
  	-g,  --grub_inst_dir <NAME>	Specify a data subdirectory (default: "boot_MultiOS")
 ```
