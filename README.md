@@ -3,7 +3,7 @@
 
 USB disk with multiple ISO files. Easy to use: install, copy ISO files and boot from USB.  
 Supported update configuration files.  
-Currently supported operating systems: [display list](config)
+[Display](config) a list of currently supported operating systems.
 
 ## Requirements:
 

@@ -1,0 +1,18 @@
+Installation instructions for Windows (experimental)
+----------------------------------------------------
+
+In order to install MultiOS-USB on a disk, additional image writing software is required, for example:
+ - Rufus	https://rufus.ie/
+ - etcher	https://www.balena.io/etcher/
+
+Installation steps
+1) Write 'image.img' to disk using software mentioned above
+2) Use Windows+R to open Run, type diskmgmt.msc and press Enter
+3) Right click on the unallocated space on your USB and select New Simple Volume
+	- select size: as you wish, maximum?
+	- Filesystem: fat32
+	- Volume label: MultiOS-USB
+4) Unpack 'files.zip' to the newly created disk
+5) Copy your ISO files, and boot compter from USB
+
+Have fun!
