@@ -5,8 +5,11 @@ USB disk with multiple ISO files. Easy to use: install, copy ISO files and boot 
 Supported update configuration files.  
 [Display](config) a list of currently supported operating systems.
 
-## Requirements:
+## Installation:
 
+### Linux console
+
+Check and install the required packages (in most cases they should be installed):
 - curl or wget
 - tar
 - bzip2
@@ -14,10 +17,6 @@ Supported update configuration files.
 - wipefs
 - mkfs.fat
 - grub or grub2
-
-## Installation:
-
-### Linux console
 
 [Download](https://github.com/Mexit/MultiOS-USB/archive/master.zip) or clone this repository, then run in the console:
 
