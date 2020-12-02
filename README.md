@@ -2,8 +2,19 @@
 # MultiOS-USB
 
 USB disk with multiple ISO files. Easy to use: install, copy ISO files and boot from USB.  
-Supported update configuration files.  
 [Display](config) a list of currently supported operating systems.
+
+## Features:
+
+- BIOS and UEFI support
+- 64-bit (x86_64) UEFI (+ Secure Boot [from Fedora](https://apps.fedoraproject.org/packages/shim-x64)) support
+- Load UEFI drivers
+- Launch .efi executable files and other bootloaders
+- Boot from .iso files
+- Boot Windows 10 installer and Windows PE [more info](config/win10_winPE/windows_support.md)
+- Boot Linux installer from network (experimental)
+- Automatic update configuration files
+- Without background services
 
 ## Installation:
 
@@ -59,16 +70,6 @@ Select: Enroll key from disk
 Search for `MultiOS-USB.cer` in EFI directory (`EFI/BOOT/cert/`) and confirm key enrolling.  
 You can also immediately add certificates of popular distributions from [rEFInd](https://sourceforge.net/projects/refind/). They are located in `/boot_MultiOS/tools/refind-*/keys/`.
 
-## Features:
-
-- BIOS and UEFI support
-- 64-bit (x86_64) UEFI (+ Secure Boot [from Fedora](https://apps.fedoraproject.org/packages/shim-x64)) support
-- Load UEFI drivers
-- Launch .efi executable files and other bootloaders
-- Boot from .iso files
-- Boot Windows 10 installer and Windows PE [more info](config/win10_winPE/windows_support.md)
-- Boot Linux installer from network (experimental)
-
 ## Update MultiOS-USB:
 
 You can add support for new operating systems. There is no need to reinstall!
@@ -83,4 +84,3 @@ $ ./updater.sh
 - Download and unpack this repository
 - Remove all files and directories on your USB in `/boot_MultiOS/config/`
 - Copy downloaded files and directories from `config` to above directory. 
-
