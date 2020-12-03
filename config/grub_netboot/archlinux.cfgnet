@@ -1,18 +1,27 @@
 # For Arch Linux network installer
 # https://www.archlinux.org
+# https://wiki.archlinux.org/index.php/archboot
 
-submenu "Arch Linux (latest) netboot -->" {
+submenu "Arch Linux (latest) netboot" {
 
 	server=mirror.rackspace.com
 	os_url=archlinux/iso/latest
 	bootoptions="archiso_http_srv=https://${server}/${os_url}/ archisobasedir=arch verify=y ip=dhcp net.ifnames=0"
-	linux_path="/${os_url}/arch/boot/x86_64/vmlinuz"
-	initrd_path="/${os_url}/arch/boot/x86_64/archiso.img"
 
-#	menuentry "Installation" {
-		echo Downloading kernel...
-		linux (http,${server})${linux_path} ${bootoptions}
-		echo Downloading initrd...
-		initrd (http,${server})${initrd_path}
-#	}
+	echo Downloading kernel...
+	linux (http,${server})/${os_url}/arch/boot/x86_64/vmlinuz-linux ${bootoptions}
+	echo Downloading initrd...
+	initrd (http,${server})/${os_url}/arch/boot/x86_64/initramfs-linux.img (http,${server})/${os_url}/arch/boot/amd-ucode.img (http,${server})/${os_url}/arch/boot/intel-ucode.img
+}
+
+submenu "Arch Linux Archboot (latest) netboot" {
+
+	server=mirror.rackspace.com
+	os_url=archlinux/iso/archboot/latest
+	bootoptions="cgroup_disable=memory add_efi_memmap _X64_UEFI=1 rootfstype=ramfs"
+
+	echo Downloading kernel...
+	linux (http,${server})/${os_url}/boot/vmlinuz_x86_64 ${bootoptions}
+	echo Downloading initrd...
+	initrd (http,${server})/${os_url}/boot/initramfs_x86_64.img (http,${server})/${os_url}/boot/intel-ucode.img
 }
