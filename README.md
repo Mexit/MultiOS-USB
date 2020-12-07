@@ -4,6 +4,8 @@
 USB disk with multiple ISO files. Easy to use: install, copy ISO files and boot from USB.  
 [Display](config) a list of currently supported operating systems.
 
+![Main menu](docs/main_menu.png)
+
 ## Features:
 
 - BIOS and UEFI support
@@ -84,3 +86,4 @@ $ ./updater.sh
 - Download and unpack this repository
 - Remove all files and directories on your USB in `/boot_MultiOS/config/`
 - Copy downloaded files and directories from `config` to above directory. 
+
