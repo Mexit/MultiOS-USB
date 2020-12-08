@@ -1,0 +1,75 @@
+# Debian network installer
+# https://debian.org
+
+server=deb.debian.org
+export server
+
+function select_ui {
+
+	submenu "Text-based user interface: ncurses -->" {
+		
+		linux_path="/${os_url}/netboot"
+		export linux_path
+		debian_menus
+	
+	}	
+	submenu "Graphical user interface: gtk -->" {
+	
+		linux_path="/${os_url}/netboot/gtk"
+		export linux_path
+		debian_menus
+	}
+}
+
+function debian_menus {
+
+	menuentry "Install" {
+
+		echo Downloading kernel...
+		linux (http,${server})${linux_path}/debian-installer/amd64/linux vga=788 --- quiet
+		echo Downloading initrd...
+		initrd (http,${server})${linux_path}/debian-installer/amd64/initrd.gz
+	}
+	menuentry "Expert install" {
+
+		echo Downloading kernel...
+		linux (http,${server})${linux_path}/debian-installer/amd64/linux priority=low vga=788 ---
+		echo Downloading initrd...
+		initrd (http,${server})${linux_path}/debian-installer/amd64/initrd.gz
+	}
+	menuentry "Rescue mode" {
+
+		echo Downloading kernel...
+		linux (http,${server})${linux_path}/debian-installer/amd64/linux vga=788 rescue/enable=true --- quiet
+		echo Downloading initrd...
+		initrd (http,${server})${linux_path}/debian-installer/amd64/initrd.gz
+	}
+	menuentry "Install with speech synthesis" {
+
+		echo Downloading kernel...
+		linux (http,${server})${linux_path}/debian-installer/amd64/linux vga=788 speakup.synth=soft --- quiet
+		echo Downloading initrd...
+		initrd (http,${server})${linux_path}/debian-installer/amd64/initrd.gz
+	}
+}
+
+submenu "Debian 10.x (Buster) - Net Install -->" {
+	
+	os_url=debian/dists/buster/main/installer-amd64/current/images
+	export os_url
+	select_ui
+}
+
+submenu "Debian testing - Net Install -->" {
+
+	os_url=debian/dists/testing/main/installer-amd64/current/images
+	export os_url
+	select_ui
+}
+
+submenu "Debian unstable (sid) - Net Install -->" {
+
+	os_url=debian/dists/unstable/main/installer-amd64/current/images
+	export os_url
+	select_ui
+}

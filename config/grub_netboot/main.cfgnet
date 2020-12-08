@@ -3,6 +3,11 @@ submenu "Arch Linux -->" {
 	source /${MultiOS_dir}/config/grub_netboot/archlinux.cfgnet
 }
 
+submenu "Debian -->" {
+
+	source /${MultiOS_dir}/config/grub_netboot/debian.cfgnet
+}
+
 submenu "openSUSE -->" {
 
 	source /${MultiOS_dir}/config/grub_netboot/openSUSE_Tumbleweed.cfgnet
