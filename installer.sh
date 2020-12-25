@@ -136,7 +136,7 @@ umount -f "$usb_dev"* 2>/dev/null || true
 sgdisk --zap-all "$usb_dev"
 sgdisk --new 1::+1M --typecode 1:ef02 --change-name 1:"BIOS boot partition" "$usb_dev"
 sgdisk --new 2::+50M --typecode 2:ef00 --change-name 2:"EFI System" "$usb_dev"
-sgdisk --new 3::"${data_size}": --typecode 3:"$part_code" --change-name 3:"$part_name" "$usb_dev"
+sgdisk --new 3::"${data_size}" --typecode 3:"$part_code" --change-name 3:"$part_name" "$usb_dev"
 
 wipefs -af "${usb_dev}1"
 wipefs -af "${usb_dev}2"
