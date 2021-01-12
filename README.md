@@ -17,6 +17,7 @@ USB disk with multiple ISO files. Easy to use: install, copy ISO files and boot 
 - Boot Linux installer from network (experimental)
 - Automatic update configuration files
 - Without background services
+- exFAT filesystem [support](docs/exfat_loopback_support.md)
 
 ## Installation:
 
