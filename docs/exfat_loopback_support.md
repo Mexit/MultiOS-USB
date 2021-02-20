@@ -13,6 +13,8 @@
 | | | | |
 | KDE neon | neon-user-20210204-0944.iso | :x: | :x: |
 | | | | |
+| Mabox Linux | mabox-linux-21.02-Foltest-210215-linux510.iso | :heavy_check_mark: | :heavy_check_mark: |
+| | | | |
 | Manjaro Linux | manjaro-gnome-20.2-201203-linux59.iso | :heavy_check_mark: | :heavy_check_mark: |
 | | manjaro-kde-20.2-201203-linux59.iso | :heavy_check_mark: | :heavy_check_mark: |
 | | manjaro-xfce-20.2-201203-linux59.iso | :heavy_check_mark: | :heavy_check_mark: |
