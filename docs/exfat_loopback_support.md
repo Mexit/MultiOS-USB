@@ -19,6 +19,8 @@
 | | manjaro-kde-20.2-201203-linux59.iso | :heavy_check_mark: | :heavy_check_mark: |
 | | manjaro-xfce-20.2-201203-linux59.iso | :heavy_check_mark: | :heavy_check_mark: |
 | | | | |
+| Netrunner | netrunner-desktop-2101-64bit.iso | :x: | :heavy_check_mark: |
+| | | | |
 | PCLinuxOS | pclinuxos64-kde5-2021.02.iso | :x: | :x: |
 | | pclinuxos64-MATE-2021.02.iso | :x: | :x: |
 | | pclinuxos64-xfce-2021.02.iso | :x: | :x: |
