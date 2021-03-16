@@ -18,6 +18,7 @@ USB disk with multiple ISO files. Easy to use: install, copy ISO files and boot 
 - Automatic update configuration files
 - Without background services
 - exFAT filesystem [support](docs/exfat_loopback_support.md)
+- Auto detect new compatible ISO images [(loopback function)](docs/exfat_loopback_support.md)
 
 ## Installation:
 
