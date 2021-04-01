@@ -13,6 +13,8 @@
 | | | | |
 | KDE neon | neon-user-20210204-0944.iso | :x: | :x: |
 | | | | |
+| Linux Lite | linux-lite-5.4-64bit.iso | :x: | :heavy_check_mark: |
+| | | | |
 | Linux Mint | linuxmint-20.1-cinnamon-64bit.iso | :x: | :heavy_check_mark: |
 | | | | |
 | Mabox Linux | mabox-linux-21.02-Foltest-210215-linux510.iso | :heavy_check_mark: | :heavy_check_mark: |
