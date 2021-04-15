@@ -183,7 +183,7 @@ cp -r binaries/syslinux-* binaries/MemTest86-* binaries/efitools-* binaries/refi
 
 # Enable support for Secure Boot
 cp -r binaries/SecureBoot/* part_efi/EFI/BOOT
-cp cert/* part_efi/EFI/BOOT/cert
+cp -r cert/* part_efi/EFI/BOOT/cert
 
 umount -f part_efi
 umount -f part_data
