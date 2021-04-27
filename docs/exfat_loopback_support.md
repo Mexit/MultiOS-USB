@@ -9,6 +9,9 @@
 | | | | |
 | EndeavourOS | endeavouros-2021.02.03-x86_64.iso | :heavy_check_mark: | :x: |
 | | | | |
+| Fedora | Fedora-Server-dvd-x86_64-34-1.2.iso | :heavy_check_mark: | :x: |
+| | Fedora-Workstation-Live-x86_64-34-1.2.iso | :heavy_check_mark: | :x: |
+| | | | |
 | KaOS | KaOS-2021.01-x86_64.iso | :heavy_check_mark: | :x: |
 | | | | |
 | KDE neon | neon-user-20210204-0944.iso | :x: | :x: |
