@@ -36,6 +36,9 @@
 | | pclinuxos64-MATE-2021.02.iso | :x: | :x: |
 | | pclinuxos64-xfce-2021.02.iso | :x: | :x: |
 | | | | |
+| Rocky Linux | Rocky-8.3-x86_64-boot.iso | :x: | :x: |
+| | Rocky-8.3-x86_64-minimal.iso | :x: | :x: |
+| | | | |
 | Solus | Solus-4.2-Budgie.iso | :heavy_check_mark: | :x: |
 | | | | |
 | SparkyLinux | sparkylinux-5.14-x86_64-lxqt.iso | :x: | :x: |
