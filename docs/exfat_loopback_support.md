@@ -5,6 +5,8 @@
 | | | | |
 | Arch Linux | archlinux-2020.12.01-x86_64.iso | :heavy_check_mark: | :x: |
 | | | | |
+| ArchLabs Linux | archlabs-2021.05.02-x86_64.iso | :heavy_check_mark: | :x: |
+| | | | |
 | Archman Linux | Archman-Xfce-2020.12.09-x86_64.iso | :heavy_check_mark: | :x: |
 | | | | |
 | Bluestar Linux | bluestar-linux-5.12.1-2021.05.07-x86_64.iso | :heavy_check_mark: | :x: |
