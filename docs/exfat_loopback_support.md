@@ -39,6 +39,9 @@
 | Rocky Linux | Rocky-8.3-x86_64-boot.iso | :x: | :x: |
 | | Rocky-8.3-x86_64-minimal.iso | :x: | :x: |
 | | | | |
+| Salient OS | salientos-kde-v21.05-x86_64.iso | :heavy_check_mark: | :x: |
+| | salientos-xfce-v2021.05-x86_64.iso | :heavy_check_mark: | :x: |
+| | | | |
 | Solus | Solus-4.2-Budgie.iso | :heavy_check_mark: | :x: |
 | | | | |
 | SparkyLinux | sparkylinux-5.14-x86_64-lxqt.iso | :x: | :x: |

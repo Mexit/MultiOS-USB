@@ -1,0 +1,7 @@
+# Salient OS
+# https://salientos.github.io
+
+
+# Tested images:					Boot from exFAT:	Full loopback support:		Secure boot support:
+salientos-kde-v21.05-x86_64.iso				yes			no				no
+salientos-xfce-v2021.05-x86_64.iso				yes			no				no
