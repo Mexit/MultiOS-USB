@@ -40,6 +40,8 @@
 | | pclinuxos64-MATE-2021.02.iso | :x: | :x: |
 | | pclinuxos64-xfce-2021.02.iso | :x: | :x: |
 | | | | |
+| RebornOS | RebornOS-2021.05.02-x86_64.iso | :heavy_check_mark: | :x: |
+| | | | |
 | Rocky Linux | Rocky-8.3-x86_64-boot.iso | :x: | :x: |
 | | Rocky-8.3-x86_64-minimal.iso | :x: | :x: |
 | | | | |
