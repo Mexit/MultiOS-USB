@@ -1,0 +1,6 @@
+# Bluestar Linux
+# https://sourceforge.net/projects/bluestarlinux
+
+
+# Tested images:					Boot from exFAT:	Full loopback support:		Secure boot support:
+bluestar-linux-5.12.1-2021.05.07-x86_64.iso			yes			no				no

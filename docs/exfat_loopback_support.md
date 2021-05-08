@@ -7,6 +7,8 @@
 | | | | |
 | Archman Linux | Archman-Xfce-2020.12.09-x86_64.iso | :heavy_check_mark: | :x: |
 | | | | |
+| Bluestar Linux | bluestar-linux-5.12.1-2021.05.07-x86_64.iso | :heavy_check_mark: | :x: |
+| | | | |
 | EndeavourOS | endeavouros-2021.02.03-x86_64.iso | :heavy_check_mark: | :x: |
 | | | | |
 | Fedora | Fedora-Server-dvd-x86_64-34-1.2.iso | :heavy_check_mark: | :x: |
