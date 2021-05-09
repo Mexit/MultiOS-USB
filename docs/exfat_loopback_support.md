@@ -40,6 +40,9 @@
 | | pclinuxos64-MATE-2021.02.iso | :x: | :x: |
 | | pclinuxos64-xfce-2021.02.iso | :x: | :x: |
 | | | | |
+| Plop Linux | ploplinux-21.2-S-x86_64.iso | :heavy_check_mark: | :x: |
+| | ploplinux-21.2-x86_64.iso | :heavy_check_mark: | :x: |
+| | | | |
 | RebornOS | RebornOS-2021.05.02-x86_64.iso | :heavy_check_mark: | :x: |
 | | | | |
 | Rocky Linux | Rocky-8.3-x86_64-boot.iso | :x: | :x: |
