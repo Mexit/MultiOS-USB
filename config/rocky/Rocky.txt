@@ -3,5 +3,5 @@
 
 
 # Tested images:					Boot from exFAT:	Full loopback support:		Secure boot support:
-Rocky-8.3-x86_64-boot.iso					no			no				yes (rocky_test)
-Rocky-8.3-x86_64-minimal.iso					no			no				yes (rocky_test)
+Rocky-8.3-x86_64-boot.iso					no			no				yes (redhat_test)
+Rocky-8.3-x86_64-minimal.iso					no			no				yes (redhat_test)
