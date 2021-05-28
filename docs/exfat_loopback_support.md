@@ -13,6 +13,9 @@
 | | | | |
 | EndeavourOS | endeavouros-2021.02.03-x86_64.iso | :heavy_check_mark: | :x: |
 | | | | |
+| EuroLinux | EL-8.3-x86_64-20210526-minimal.iso | :x: | :x: |
+| | EL-8.3-x86_64-20210526-appstream.iso | :x: | :x: |
+| | | | |
 | Fedora | Fedora-Server-dvd-x86_64-34-1.2.iso | :heavy_check_mark: | :x: |
 | | Fedora-Workstation-Live-x86_64-34-1.2.iso | :heavy_check_mark: | :x: |
 | | | | |
