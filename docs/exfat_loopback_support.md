@@ -39,6 +39,9 @@
 | | | | |
 | NixOS | nixos-minimal-20.09.3492.36e15cd6e7d-x86_64-linux.iso | :x: | :heavy_check_mark: |
 | | | | |
+| Oracle Linux | OracleLinux-R8-U4-x86_64-boot.iso | :x: | :x: |
+| | OracleLinux-R8-U4-x86_64-boot-uek.iso | :x: | :x: |
+| | | | |
 | PCLinuxOS | pclinuxos64-kde5-2021.02.iso | :x: | :x: |
 | | pclinuxos64-MATE-2021.02.iso | :x: | :x: |
 | | pclinuxos64-xfce-2021.02.iso | :x: | :x: |

@@ -1,0 +1,8 @@
+# Oracle Linux
+# https://www.oracle.com/linux
+
+
+# Tested images:					Boot from exFAT:	Full loopback support:		Secure boot support:
+OracleLinux-R8-U4-x86_64-boot.iso				no			no				yes (oracle-linux-uefi-ca)
+OracleLinux-R8-U4-x86_64-boot-uek.iso				no			no				yes (oracle-linux-uefi-ca)
+OracleLinux-R8-U4-x86_64-dvd.iso				no			no				yes (oracle-linux-uefi-ca)
