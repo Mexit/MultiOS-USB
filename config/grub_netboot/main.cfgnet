@@ -1,3 +1,8 @@
+submenu "Alpine Linux -->" {
+
+	source /${MultiOS_dir}/config/grub_netboot/alpinelinux.cfgnet
+}
+
 submenu "Arch Linux -->" {
 
 	source /${MultiOS_dir}/config/grub_netboot/archlinux.cfgnet

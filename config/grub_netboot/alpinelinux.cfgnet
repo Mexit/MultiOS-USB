@@ -1,0 +1,15 @@
+# Alpine Linux
+# https://alpinelinux.org
+
+menuentry "Alpine Linux (latest) netboot" {
+
+	server=dl-cdn.alpinelinux.org
+	os_url=alpine/latest-stable/releases/x86_64
+	bootoptions="modules=loop,squashfs,sd-mod,usb-storage quiet"
+	netoptions="alpine_repo=http://${server}/alpine/latest-stable/main modloop=http://${server}/${os_url}/netboot/modloop-lts"
+
+	echo Downloading kernel...
+	linux (http,${server})/${os_url}/netboot/vmlinuz-lts ${bootoptions} ${netoptions}
+	echo Downloading initrd...
+	initrd (http,${server})/${os_url}/netboot/initramfs-lts
+}
