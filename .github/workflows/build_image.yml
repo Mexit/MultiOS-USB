@@ -32,7 +32,11 @@ jobs:
           mv docs/README_image README
           sudo zip MultiOS-USB_image.zip $image_name files.zip README
 
-      - uses: actions/upload-artifact@v2
+      - uses: "marvinpinto/action-automatic-releases@latest"
         with:
-          name: image
-          path: MultiOS-USB_image.zip
+          repo_token: "${{ secrets.GITHUB_TOKEN }}"
+          automatic_release_tag: "latest"
+          prerelease: true
+          title: "Development Build"
+          files: |
+            MultiOS-USB_image.zip
