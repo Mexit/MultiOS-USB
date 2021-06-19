@@ -11,6 +11,7 @@ submenu "Debian -->" {
 submenu "openSUSE -->" {
 
 	source /${MultiOS_dir}/config/grub_netboot/openSUSE_Tumbleweed.cfgnet
+	source /${MultiOS_dir}/config/grub_netboot/openSUSE_Leap_15.3.cfgnet
 	source /${MultiOS_dir}/config/grub_netboot/openSUSE_Leap_15.2.cfgnet
 	source /${MultiOS_dir}/config/grub_netboot/openSUSE_Leap_15.1.cfgnet
 }
