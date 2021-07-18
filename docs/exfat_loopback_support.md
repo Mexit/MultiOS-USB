@@ -19,6 +19,8 @@
 | Fedora | Fedora-Server-dvd-x86_64-34-1.2.iso | :heavy_check_mark: | :x: |
 | | Fedora-Workstation-Live-x86_64-34-1.2.iso | :heavy_check_mark: | :x: |
 | | | | |
+| Grml | grml64-full_2021.07-rc1.iso | :x: | :heavy_check_mark: |
+| | | | |
 | KaOS | KaOS-2021.01-x86_64.iso | :heavy_check_mark: | :x: |
 | | | | |
 | KDE neon | neon-user-20210204-0944.iso | :x: | :x: |
