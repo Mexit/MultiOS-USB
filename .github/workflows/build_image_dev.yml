@@ -1,10 +1,8 @@
-name: build image
+name: dev image
 
 on:
   push:
-    branches: [ master ]
   pull_request:
-    branches: [ master ]
 
 jobs:
   build_image:
@@ -28,7 +26,7 @@ jobs:
           printf 'YeS\n' | sudo ./installer.sh $dev
           sudo losetup -d $dev
           sudo rm ${dev}1 ${dev}2
-          cd part_data && sudo zip -r files.zip * && sudo mv files.zip .. && cd ..
+          (cd part_data && sudo zip -r ../files.zip *)
           mv docs/README_image README
           sudo zip MultiOS-USB_image.zip $image_name files.zip README
 
@@ -36,7 +34,7 @@ jobs:
         with:
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
           automatic_release_tag: "latest"
-          prerelease: true
+          prerelease: false
           title: "Development Build"
           files: |
             MultiOS-USB_image.zip
