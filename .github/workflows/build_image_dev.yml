@@ -6,6 +6,8 @@ on:
       - master
     tags-ignore:
       - 'v*'
+    paths-ignore:
+      - '.github/**'
   pull_request:
 
 jobs:
