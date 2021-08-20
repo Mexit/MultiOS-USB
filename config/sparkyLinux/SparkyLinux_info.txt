@@ -1,0 +1,8 @@
+# SparkyLinux
+# https://sparkylinux.org
+
+
+# Tested images:					Boot from exFAT:	Full loopback support:		Secure boot support:
+sparkylinux-6.0-x86_64-xfce.iso				no			yes				yes (debian)
+sparkylinux-2021.06-x86_64-xfce.iso				no			yes				yes (debian)
+sparkylinux-2021.03-x86_64-rescue.iso				no			yes				yes (debian)

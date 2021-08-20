@@ -61,7 +61,10 @@
 | | | | |
 | Solus | Solus-4.2-Budgie.iso | :heavy_check_mark: | :x: |
 | | | | |
-| SparkyLinux | sparkylinux-5.14-x86_64-lxqt.iso | :x: | :x: |
+| SparkyLinux | sparkylinux-6.0-x86_64-xfce.iso | :x: | :heavy_check_mark:  |
+| | sparkylinux-2021.06-x86_64-xfce.iso | :x: | :heavy_check_mark:  |
+| | sparkylinux-2021.03-x86_64-rescue.iso | :x: | :heavy_check_mark:  |
+| | sparkylinux-5.14-x86_64-lxqt.iso | :x: | :x: |
 | | | | |
 | SystemRescue | systemrescue-8.01-amd64.iso | :heavy_check_mark: | :x: |
 | | | | |
