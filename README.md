@@ -9,7 +9,7 @@ USB disk with multiple ISO files. Easy to use: install, copy ISO files and boot 
 ## Features:
 
 - BIOS and UEFI support
-- 64-bit (x86_64) UEFI (+ Secure Boot [from Fedora](https://apps.fedoraproject.org/packages/shim-x64)) support
+- 64-bit (x86_64) UEFI (+ Secure Boot [from Fedora](https://src.fedoraproject.org/rpms/shim)) support
 - Load UEFI drivers
 - Launch .efi executable files and other bootloaders
 - Boot from .iso files
@@ -63,7 +63,7 @@ You can also add your own configuration files to the `/boot_MultiOS/config_priv`
 
 ## First usage
 
-First boot with enabled Secure Boot on each new computer requires to install a certificate.
+First boot with enabled Secure Boot on each new computer requires to install a MultiOS-USB certificate.
 
 ![Press OK](docs/Security_Volation.png)  
 Press OK
@@ -72,7 +72,9 @@ Press OK
 Select: Enroll key from disk
 
 Search for `MultiOS-USB.cer` in EFI directory (`EFI/BOOT/cert/`) and confirm key enrolling.  
-You can also immediately add certificates of popular distributions from [rEFInd](https://sourceforge.net/projects/refind/). They are located in `/boot_MultiOS/tools/refind-*/keys/`.
+You can also immediately add certificates (keys) of popular distributions.  
+If you would like to add a certificate later, you can do it by selecting in the Main Menu:  
+`EFI Tools -->` and then `Add UEFI key or hash`.
 
 ## Update MultiOS-USB:
 
