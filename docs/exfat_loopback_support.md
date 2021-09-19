@@ -41,6 +41,11 @@
 | | | | |
 | NixOS | nixos-minimal-20.09.3492.36e15cd6e7d-x86_64-linux.iso | :x: | :heavy_check_mark: |
 | | | | |
+| openSUSE | openSUSE-Tumbleweed-GNOME-Live-x86_64-Snapshot20210916-Media.iso | :heavy_check_mark: | :heavy_check_mark: |
+| | openSUSE-Tumbleweed-KDE-Live-x86_64-Snapshot20210916-Media.iso | :heavy_check_mark: | :heavy_check_mark: |
+| | openSUSE-Tumbleweed-Rescue-CD-x86_64-Snapshot20210916-Media.iso | :heavy_check_mark: | :heavy_check_mark: |
+| | openSUSE-Tumbleweed-XFCE-Live-x86_64-Snapshot20210916-Media.iso | :heavy_check_mark: | :heavy_check_mark: |
+| | | | |
 | Oracle Linux | OracleLinux-R8-U4-x86_64-boot.iso | :x: | :x: |
 | | OracleLinux-R8-U4-x86_64-boot-uek.iso | :x: | :x: |
 | | | | |
