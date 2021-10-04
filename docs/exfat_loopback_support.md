@@ -11,6 +11,10 @@
 | | | | |
 | Bluestar Linux | bluestar-linux-5.12.1-2021.05.07-x86_64.iso | :heavy_check_mark: | :x: |
 | | | | |
+| Debian | debian-live-11.0.0-amd64-xfce.iso | :x: | :heavy_check_mark: |
+| | debian-live-11.0.0-amd64-standard.iso | :x: | :heavy_check_mark: |
+| | debian-live-10.10.0-amd64-xfce.iso | :x: | :heavy_check_mark: |
+| | | | |
 | EndeavourOS | endeavouros-2021.02.03-x86_64.iso | :heavy_check_mark: | :x: |
 | | | | |
 | EuroLinux | EL-8.3-x86_64-20210526-minimal.iso | :x: | :x: |

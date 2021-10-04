@@ -1,0 +1,8 @@
+# Debian
+# https://www.debian.org
+
+
+# Tested images:					Boot from exFAT:	Full loopback support:		Secure boot support:
+debian-live-11.0.0-amd64-xfce.iso				no			yes				yes
+debian-live-11.0.0-amd64-standard.iso				no			yes				yes
+debian-live-10.10.0-amd64-xfce.iso				no			yes				yes
