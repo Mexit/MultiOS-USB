@@ -142,7 +142,7 @@ wipefs -af "${usb_dev}1"
 wipefs -af "${usb_dev}2"
 wipefs -af "${usb_dev}3"
 
-mkfs.fat -F 32 "${usb_dev}2"
+mkfs.fat -F 32 -n "MultiOS-EFI" "${usb_dev}2"
 
 case "$fs_type" in
 	ext2|ext3|ext4)

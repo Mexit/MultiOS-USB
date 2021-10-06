@@ -71,8 +71,9 @@ Press OK
 ![Select: Enroll key from disk](docs/Enroll_key.png)  
 Select: Enroll key from disk
 
-Search for `MultiOS-USB.cer` in EFI directory (`EFI/BOOT/cert/`) and confirm key enrolling.  
-You can also immediately add certificates (keys) of popular distributions.  
+Choose `MultiOS-EFI` as partition, then go to the `EFI/BOOT/cert` directory and select `MultiOS-USB.cer`.  
+Select `Continue` and confirm (`Yes`) key enrolling.  
+You can also immediately add certificates (keys) of popular distributions in the same way.  
 If you would like to add a certificate later, you can do it by selecting in the Main Menu:  
 `EFI Tools -->` and then `Add UEFI key or hash`.
 
