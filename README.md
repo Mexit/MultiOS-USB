@@ -9,7 +9,7 @@ USB disk with multiple ISO files. Easy to use: install, copy ISO files and boot 
 ## Features:
 
 - BIOS and UEFI support
-- 64-bit (x86_64) UEFI (+ Secure Boot [from Fedora](https://src.fedoraproject.org/rpms/shim)) support
+- Secure Boot support
 - Load UEFI drivers
 - Launch .efi executable files and other bootloaders
 - Boot from .iso files

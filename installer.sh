@@ -182,7 +182,7 @@ cp -r themes part_efi/${grub}
 cp -r binaries/syslinux-* binaries/MemTest86-* binaries/efitools-* binaries/refind-* binaries/wimboot-* part_data/${MultiOS_dir}/tools
 
 # Enable support for Secure Boot
-cp -r binaries/SecureBoot/* part_efi/EFI/BOOT
+cp -r binaries/shim-signed_*/* part_efi/EFI/BOOT
 cp -r cert/* part_efi/EFI/BOOT/cert
 
 umount -f part_efi
