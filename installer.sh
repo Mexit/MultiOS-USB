@@ -179,7 +179,7 @@ echo Copying files...
 cp part_efi/${grub}/grub.cfg binaries/grub-efi-*/grubx64.efi part_efi/EFI/BOOT
 cp -r config config_priv LICENSE README.md MultiOS-USB.version part_data/${MultiOS_dir}
 cp -r themes part_efi/${grub}
-cp -r binaries/syslinux-* binaries/MemTest86-* binaries/efitools-* binaries/refind-* binaries/wimboot-* part_data/${MultiOS_dir}/tools
+cp -r binaries/syslinux-* binaries/MemTest86-* binaries/efitools-* binaries/wimboot-* part_data/${MultiOS_dir}/tools
 
 # Enable support for Secure Boot
 cp -r binaries/shim-signed_*/* part_efi/EFI/BOOT
