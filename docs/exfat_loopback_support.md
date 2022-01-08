@@ -23,6 +23,10 @@
 | Fedora | Fedora-Server-dvd-x86_64-34-1.2.iso | :heavy_check_mark: | :x: |
 | | Fedora-Workstation-Live-x86_64-34-1.2.iso | :heavy_check_mark: | :x: |
 | | | | |
+| GeckoLinux | GeckoLinux_NEXT_Plasma.x86_64-153.220105.0.iso | :heavy_check_mark: | :heavy_check_mark: |
+| | GeckoLinux_ROLLING_XFCE.x86_64-999.220105.0.iso | :heavy_check_mark: | :heavy_check_mark: |
+| | GeckoLinux_STATIC_XFCE.x86_64-153.220104.0.iso | :heavy_check_mark: | :heavy_check_mark: |
+| | | | |
 | Grml | grml64-full_2021.07-rc1.iso | :x: | :heavy_check_mark: |
 | | | | |
 | KaOS | KaOS-2021.01-x86_64.iso | :heavy_check_mark: | :x: |
