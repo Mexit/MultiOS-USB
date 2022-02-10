@@ -15,6 +15,12 @@
 | | debian-live-11.0.0-amd64-standard.iso | :x: | :heavy_check_mark: |
 | | debian-live-10.10.0-amd64-xfce.iso | :x: | :heavy_check_mark: |
 | | | | |
+| Devuan | devuan_chimaera_4.0.0_amd64_desktop.iso | :x: | :x: |
+| | devuan_chimaera_4.0.0_amd64_desktop-live.iso | :x: | :x: |
+| | devuan_chimaera_4.0.0_amd64_minimal-live.iso | :x: | :x: |
+| | ddevuan_chimaera_4.0.0_amd64_netinstall.iso | :x: | :x: |
+| | devuan_chimaera_4.0.0_amd64_server.iso | :x: | :x: |
+| | | | |
 | EndeavourOS | endeavouros-2021.02.03-x86_64.iso | :heavy_check_mark: | :x: |
 | | | | |
 | EuroLinux | EL-8.3-x86_64-20210526-minimal.iso | :x: | :x: |

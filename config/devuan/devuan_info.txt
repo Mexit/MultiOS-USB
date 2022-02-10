@@ -1,0 +1,10 @@
+# Devuan
+# https://www.devuan.org
+
+
+# Tested images:										Boot from exFAT:	Full loopback:		Secure boot:	SB Certificate:
+devuan_chimaera_4.0.0_amd64_desktop.iso					no					no					no				no
+devuan_chimaera_4.0.0_amd64_desktop-live.iso			no					no					no				no
+devuan_chimaera_4.0.0_amd64_minimal-live.iso			no					no					no				no
+devuan_chimaera_4.0.0_amd64_netinstall.iso				no					no					no				no
+devuan_chimaera_4.0.0_amd64_server.iso					no					no					no				no
