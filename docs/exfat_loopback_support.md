@@ -78,6 +78,8 @@
 | Salient OS | salientos-kde-v21.05-x86_64.iso | :heavy_check_mark: | :x: |
 | | salientos-xfce-v2021.05-x86_64.iso | :heavy_check_mark: | :x: |
 | | | | |
+| Slax | slax-64bit-11.2.0-rc2.iso | :x: | :x: |
+| | | | |
 | Solus | Solus-4.2-Budgie.iso | :heavy_check_mark: | :x: |
 | | | | |
 | SparkyLinux | sparkylinux-6.0-x86_64-xfce.iso | :x: | :heavy_check_mark:  |

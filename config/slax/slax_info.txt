@@ -1,0 +1,6 @@
+# Slax
+# https://www.slax.org
+
+
+# Tested images:										Boot from exFAT:	Full loopback:		Secure boot:	SB Certificate:
+slax-64bit-11.2.0-rc2.iso								no					no					no				no
