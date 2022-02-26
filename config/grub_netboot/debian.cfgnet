@@ -53,8 +53,15 @@ function debian_menus {
 	}
 }
 
+submenu "Debian 11.x (Bullseye) - Net Install -->" {
+
+	os_url=debian/dists/bullseye/main/installer-amd64/current/images
+	export os_url
+	select_ui
+}
+
 submenu "Debian 10.x (Buster) - Net Install -->" {
-	
+
 	os_url=debian/dists/buster/main/installer-amd64/current/images
 	export os_url
 	select_ui
