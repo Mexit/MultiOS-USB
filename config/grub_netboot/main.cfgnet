@@ -21,6 +21,11 @@ submenu "openSUSE -->" {
 	source /${MultiOS_dir}/config/grub_netboot/openSUSE_Leap_15.1.cfgnet
 }
 
+submenu "Slax -->" {
+
+	source /${MultiOS_dir}/config/grub_netboot/slax11.2.0.cfgnet
+}
+
 submenu "Ubuntu -->" {
 
 	source /${MultiOS_dir}/config/grub_netboot/ubuntu_20.04.cfgnet

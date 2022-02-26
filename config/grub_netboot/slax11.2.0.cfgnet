@@ -1,0 +1,25 @@
+# Slax network boot
+# https://www.slax.org
+
+menuentry "Slax 11.2.0 network boot" {
+
+	server="ftp.linux.cz"
+	path="pub/linux/slax/Slax-11.x"
+	ver="11.2.0"
+
+	linux_path="/${path}/ipxe/${ver}/64bit/vmlinuz"
+	initrd_path="/${path}/ipxe/${ver}/64bit/initrfs.img"
+	bootoptions="vga=normal load_ramdisk=1 prompt_ramdisk=0 rw printk.time=0 from=http://${server}/${path}/slax-64bit-${ver}.iso"
+
+	echo Configuring network...
+	net_bootp
+
+	echo Downloading kernel...
+	linux (http,${server})${linux_path} ${bootoptions}
+
+	echo Downloading initrd...
+	initrd (http,${server})${initrd_path}
+
+	echo Booting...
+	boot
+}
