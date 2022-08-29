@@ -1,4 +1,4 @@
-name: release image
+name: Windows image
 
 on:
   push:
@@ -7,13 +7,18 @@ on:
 
 jobs:
   build_image:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     steps:
 
       - uses: actions/checkout@v2
 
+      - name: Refresh repositories and upgrade packages
+        run: |
+          sudo apt update
+          sudo apt upgrade -y
+
       - name: Install required software
-        run: sudo apt-get -y update && sudo apt-get -y install qemu-utils grub-pc
+        run: sudo apt install -y qemu-utils grub-pc
 
       - name: Build disk image
         run: |
