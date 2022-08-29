@@ -34,11 +34,11 @@ jobs:
           sudo rm ${dev}1 ${dev}2
           (cd part_data && sudo zip -r ../files.zip *)
           mv docs/README_image README
-          sudo zip MultiOS-USB_image_$(git describe --tags --exact-match).zip $image_name files.zip README
+          sudo zip MultiOS-USB_windows_image_$(git describe --tags --exact-match).zip $image_name files.zip README
 
       - uses: "marvinpinto/action-automatic-releases@latest"
         with:
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
           prerelease: false
           files: |
-            MultiOS-USB_image_*.zip
+            MultiOS-USB_windows_image_*.zip
