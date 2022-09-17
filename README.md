@@ -34,7 +34,7 @@ Check and install the required packages (in most cases they should be installed)
 - mkfs.fat
 - grub or grub2
 
-[Download](https://github.com/Mexit/MultiOS-USB/archive/master.zip) or clone this repository, then run in the console:
+Go to [Releases](https://github.com/Mexit/MultiOS-USB/releases) and download the appropriate file. Unpack the downloaded archive and run in the console:
 
 ```sh
 $ sudo ./installer.sh [options] device [data_size]

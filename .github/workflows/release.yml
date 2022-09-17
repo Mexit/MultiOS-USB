@@ -1,4 +1,4 @@
-name: Windows image
+name: Release
 
 on:
   push:
@@ -14,14 +14,19 @@ jobs:
 
       - name: Refresh repositories and upgrade packages
         run: |
-          sudo apt update
-          sudo apt upgrade -y
+          sudo apt update && sudo apt upgrade -y
 
       - name: Install required software
         run: sudo apt install -y qemu-utils grub-pc
 
-      - name: Build disk image
+      - name: Linux Release
         run: |
+          ver=$(git describe --tags --exact-match)
+          git archive --prefix=MultiOS-USB_$ver/ -o MultiOS-USB_linux_$ver.tar.gz $ver
+
+      - name: Windows Release
+        run: |
+          ver=$(git describe --tags --exact-match)
           image_name="image.img"
           image_size="54542848"
           qemu-img create -f raw $image_name $image_size
@@ -34,7 +39,7 @@ jobs:
           sudo rm ${dev}1 ${dev}2
           (cd part_data && sudo zip -r ../files.zip *)
           mv docs/README_image README
-          sudo zip MultiOS-USB_windows_image_$(git describe --tags --exact-match).zip $image_name files.zip README
+          sudo zip MultiOS-USB_windows_image_$ver.zip $image_name files.zip README
 
       - uses: "marvinpinto/action-automatic-releases@latest"
         with:
@@ -42,3 +47,4 @@ jobs:
           prerelease: false
           files: |
             MultiOS-USB_windows_image_*.zip
+            MultiOS-USB_linux_*.tar.gz
