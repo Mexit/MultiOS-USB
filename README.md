@@ -57,12 +57,13 @@ $ ./installer.sh
 ```
 ### Image based installation (experimental)
 
-Recommended installation method for Windows. Go to Releases and download the appropriate file.<br/><br/>
+Recommended installation method for Windows. Go to [Releases](https://github.com/Mexit/MultiOS-USB/releases) and download the appropriate file.
+You can find installation details in the downloaded archive.
+
+## First usage
 
 After installation, copy your ISO files to `/ISOs` directory and boot your computer from USB.  
 You can also add your own configuration files to the `/boot_MultiOS/config_priv` directory. They will not be deleted during automatic MultiOS-USB update.
-
-## First usage
 
 First boot with enabled Secure Boot on each new computer requires to install a MultiOS-USB certificate.
 
