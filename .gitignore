@@ -1,2 +1,2 @@
 config_priv/*
-!config_priv/.gitkeep
+!config_priv/README.md
