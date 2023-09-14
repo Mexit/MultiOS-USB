@@ -89,6 +89,8 @@
 | | | | |
 | SystemRescue | systemrescue-8.01-amd64.iso | :heavy_check_mark: | :x: |
 | | | | |
+| TUXEDO | TUXEDO-OS-2-202309111354.iso | :heavy_check_mark: | :heavy_check_mark: |
+| | | | |
 | Ubuntu | ubuntu-20.10-desktop-amd64.iso | :x: | :heavy_check_mark: |
 | | | | |
 | Zorin OS | Zorin-OS-15.3-Lite-64-bit.iso | :x: | :heavy_check_mark: |
