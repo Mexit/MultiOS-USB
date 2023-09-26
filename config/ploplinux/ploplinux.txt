@@ -3,5 +3,6 @@
 
 
 # Tested images:					Boot from exFAT:	Full loopback support:		Secure boot support:
-ploplinux-21.2-S-x86_64.iso					yes			no				no
-ploplinux-21.2-x86_64.iso					yes			no				no
+ploplinux-21.2-S-x86_64.iso			yes     			no				            no
+ploplinux-21.2-x86_64.iso			yes			        no	            			no
+ploplinux-23.4-x86_64.iso           yes                 no                          no

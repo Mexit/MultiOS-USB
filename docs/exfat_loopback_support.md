@@ -69,6 +69,7 @@
 | | | | |
 | Plop Linux | ploplinux-21.2-S-x86_64.iso | :heavy_check_mark: | :x: |
 | | ploplinux-21.2-x86_64.iso | :heavy_check_mark: | :x: |
+| | [ploplinux-23.4-x86_64.iso](https://download.plop.at/ploplinux/23.4/live/ploplinux-23.4-x86_64.iso) | :heavy_check_mark: | :x: |
 | | | | |
 | RebornOS | RebornOS-2021.05.02-x86_64.iso | :heavy_check_mark: | :x: |
 | | | | |
