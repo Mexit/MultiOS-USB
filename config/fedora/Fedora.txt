@@ -1,7 +1,7 @@
 # Fedora
-# https://getfedora.org
+# https://fedoraproject.org
 
 
-# Tested images:					Boot from exFAT:	Full loopback support:		Secure boot support:
-Fedora-Server-dvd-x86_64-34-1.2.iso				yes			no				yes (Fedora)
-Fedora-Workstation-Live-x86_64-34-1.2.iso			yes			no				yes (Fedora)
+# Tested images:					            Boot from exFAT:	Full loopback support:		Secure boot support:
+Fedora-Server-dvd-x86_64-34-1.2.iso				yes		        	no				            yes (Fedora)
+Fedora-Workstation-Live-x86_64-34-1.2.iso		yes		        	no				            yes (Fedora)
