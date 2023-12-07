@@ -3,7 +3,8 @@
 | Operating system | ISO File | Boot from exFAT | Full loopback support |
 | :-: | --- | :-: | :-: |
 | | | | |
-| Arch Linux | archlinux-2020.12.01-x86_64.iso | :heavy_check_mark: | :x: |
+| [Arch Linux](https://archlinux.org/) | archlinux-2020.12.01-x86_64.iso | :heavy_check_mark: | :x: |
+| | [archlinux-2023.12.01-x86_64.iso](https://geo.mirror.pkgbuild.com/iso/2023.12.01/archlinux-2023.12.01-x86_64.iso) | :heavy_check_mark: | :heavy_check_mark: |
 | | | | |
 | ArchLabs Linux | archlabs-2021.05.02-x86_64.iso | :heavy_check_mark: | :x: |
 | | | | |
