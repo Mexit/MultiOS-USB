@@ -1,9 +1,8 @@
-name: Release
+name: Build image
 
 on:
   push:
-    tags:
-      - 'v*'
+  pull_request:
 
 jobs:
   build_image:
@@ -18,7 +17,7 @@ jobs:
           sudo apt -y install qemu-utils grub-pc
 
       - name: Set version
-        run: echo "ver=$(git describe --tags --exact-match)" >> "$GITHUB_ENV"
+        run: echo "ver=$(git log -1 --pretty=format:"%h")" >> "$GITHUB_ENV"
 
       - name: Linux Release
         run: git archive --prefix=MultiOS-USB_$ver/ -o MultiOS-USB_linux_$ver.tar.gz $ver
@@ -36,10 +35,9 @@ jobs:
           mv docs/README_image README
           sudo zip MultiOS-USB_windows_image_$ver.zip $image_name files.zip README
 
-      - uses: "marvinpinto/action-automatic-releases@latest"
+      - uses: actions/upload-artifact@v4
         with:
-          repo_token: "${{ secrets.GITHUB_TOKEN }}"
-          prerelease: false
-          files: |
+          name: MultiOS-USB_images_${{ env.ver }}
+          path: |
             MultiOS-USB_windows_image_*.zip
             MultiOS-USB_linux_*.tar.gz
