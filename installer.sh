@@ -1,14 +1,22 @@
 #!/bin/bash
-set -euo pipefail
+#
+#  MultiOS-USB © 2020-2024 MexIT
+#  https://gitlab.com/MultiOS-USB
+#  https://github.com/Mexit/MultiOS-USB
+#  Read LICENSE file for details
+#
+
+set -eo pipefail
+
+log_file="install.log"
+echo -e "Arguments: $@\n" > $log_file
 
 # Defaults
 scriptname=$(basename "$0")
-MultiOS_dir="boot_MultiOS"
 fs_type="fat32"
 data_size=""
 data_label="MultiOS-USB"
 
-# Show usage
 showUsage() {
 	cat <<- EOF
 
@@ -16,26 +24,31 @@ showUsage() {
 
 	Usage: sudo $scriptname [options] device [data_size]
 
- 	device				Device to install (e.g. /dev/sdb)
- 	data_size			Data partition size (e.g. 5G)
- 	-fs, --fs_type			Filesystem type for the data partition [ext2|ext3|ext4|fat32|exfat|ntfs] (default: "$fs_type")
- 	-h,  --help			Display this message
- 	-d,  --MultiOS_dir <NAME>	Specify a data subdirectory (default: "$MultiOS_dir")
+	    -f, --fs_type       Filesystem type for the data partition [ext2|ext3|ext4|fat32|exfat|ntfs] (default: "$fs_type")
+	    -l, --devices       List available USB devices
+	    -h, --help          Display this message
+	    --allrwdevices      List all writable devices (For advanced users only!!!)
+	    device              Device to install (e.g. /dev/sdb)
+	    data_size           Data partition size (e.g. 5G, 2048M)
+
 	EOF
-echo
-echo Detected devices:
-echo ---------------------------------------------
-lsblk -p -S -o NAME,TRAN,SIZE,MODEL | grep usb
-echo ---------------------------------------------
+}
+
+listDevices() {
+	echo "Detected USB devices:"
+	echo -------------------------------------------------------------
+	lsblk -p -d -o NAME,MODEL,SIZE,TRAN | grep 'usb'  | sed 's/usb$//'
+	echo -------------------------------------------------------------
+}
+
+listAllRwDevices() {
+	echo "Detected writable devices:"
+	echo -------------------------------------------------------------
+	lsblk -p -d -o NAME,MODEL,SIZE,TRAN,RO | grep '0$' | sed 's/0$//'
+	echo -------------------------------------------------------------
 }
 
 [ $# -eq 0 ] && showUsage && exit 0
-
-# Check for root
-if [ "$(id -u)" -ne 0 ]; then
-	printf 'This script must be run as root. Using sudo...\n' "$scriptname" >&2
-	exec sudo -k -- /bin/bash "$0" "$@"
-fi
 
 while [ "$#" -gt 0 ]; do
 	case "$1" in
@@ -44,37 +57,54 @@ while [ "$#" -gt 0 ]; do
 			showUsage
 			exit 0
 			;;
-		-d|--MultiOS_dir)
-			shift && MultiOS_dir="$1"
+		-l|--devices)
+			listDevices
+			exit 0
+			;;
+		--allrwdevices)
+			listAllRwDevices
+			exit 0
 			;;
 		/dev/*)
-			if [ -b "$1" ]; then
-				usb_dev="$1"
+			if [[ -b "$1" ]]; then
+				dev="$1"
 			else
-				printf '%s: %s is not a valid device.\n' "$scriptname" "$1" >&2
-				exit 0
+				echo "Error! $1 is not a valid device."
+				exit 1
 			fi
 			;;
-		-fs|--fs_type)
+		-f|--fs_type)
 			shift && fs_type="$1"
+			[[ -n $fs_type ]] || { echo "Error! Please specify file system"; exit 1; }
 			;;
 		[0-9]*)
-			data_size="$1"
-			[ -z "$data_size" ] || data_size="+$data_size"
+			if [[ $1 =~ ^[0-9]+[MG]$ ]]; then
+				data_size="+$1"
+			else
+				echo "Error! Incorrect partition size. Example: 500M, 5G"
+			fi
 			;;
 		*)
-			printf '%s: %s is not a valid argument.\n' "$scriptname" "$1" >&2
-			exit 0
+			echo "Error! $1 is not a valid argument."
+			exit 1
 			;;
 	esac
 	shift
 done
 
-# Check for required arguments
-if [ ! "$usb_dev" ]; then
-	printf '%s: No device was provided.\n' "$scriptname" >&2
-	showUsage
-	exit 0
+# Check for required argument
+if [[ ! -b "$dev" ]]; then
+	echo "Error! No device was provided."
+	exit 1
+fi
+
+if [[ $dev == /dev/loop* || $dev == /dev/nbd* || $dev == /dev/mmcblk* || $dev == /dev/nvme* ]]; then
+	devp="${dev}p"
+elif [[ $dev == /dev/sd* || $dev == /dev/vd* ]]; then
+	devp="${dev}"
+else
+	echo "Unsupported device!"
+	exit 1
 fi
 
 # Set data partition information
@@ -88,104 +118,110 @@ case "$fs_type" in
 		part_name="Microsoft basic data"
 		;;
 	*)
-		printf '%s: %s is an invalid filesystem type.\n' "$scriptname" "$fs_type" >&2
-		exit 0
+		echo "$scriptname: $fs_type is an invalid filesystem type."
+		exit 1
 		;;
 esac
 
 # Check for required software
-not_installed="0"
-command -v sgdisk >/dev/null 2>&1 || { echo >&2 "sgdisk (gdisk) is required but not installed." ; not_installed="1" ; }
-command -v wipefs >/dev/null 2>&1 || { echo >&2 "wipefs is required but not installed." ; not_installed="1" ; }
+missing_soft="0"
+command -v dd &> /dev/null || { echo "dd is required but not installed."; missing_soft="1"; }
+command -v tar &> /dev/null || { echo "tar is required but not installed."; missing_soft="1"; }
+command -v xz &> /dev/null || { echo "xz is required but not installed."; missing_soft="1"; }
+command -v sgdisk &> /dev/null || { echo "sgdisk (gdisk) is required but not installed."; missing_soft="1"; }
+command -v wipefs &> /dev/null || { echo "wipefs is required but not installed."; missing_soft="1"; }
 if [ "$fs_type" = "fat32" ]; then fs_prog="mkfs.fat"; else fs_prog="mkfs.$fs_type"; fi
-command -v $fs_prog >/dev/null 2>&1 || { echo >&2 "$fs_prog is required but not installed." ; not_installed="1" ; }
+command -v $fs_prog &> /dev/null || { echo "$fs_prog is required but not installed."; missing_soft="1"; }
 
-if command -v grub2-install >/dev/null 2>&1; then grub=grub2
-elif command -v grub-install >/dev/null 2>&1; then grub=grub
-else
-	echo "grub or grub2 is required but not installed." ; not_installed="1"
-fi
-
-if [ "$not_installed" -ne 0 ]; then
-	echo -e "\nNot all required programs are installed. Exiting...\n"
+if [ "$missing_soft" -ne 0 ]; then
+	echo -e "\n\e[0;41mNot all required programs are installed. Exiting...\e[0m\n"
 	exit 1
 fi
 
-printf '\n'
-printf '+++++++++++++++++++++++++++++++++++++++++++++++++\n'
-printf '++   Are you sure you want to use %s ?   ++\n' "$usb_dev"
-printf '++   THIS WILL DELETE ALL DATA ON THE DEVICE   ++\n'
-printf '+++++++++++++++++++++++++++++++++++++++++++++++++\n'
-printf '\n'
-printf 'Are you sure? Type "YeS" to continue: '
+# Check for root
+if [ "$(id -u)" -ne 0 ]; then
+	echo "Please run the script with administrator privileges."
+	exit 1
+fi
+
+echo -e "\n\e[1;41m++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\e[0m"
+echo -e "\e[1;41m++   Are you absolutely sure you want to use the selected device?   ++\e[0m"
+echo -e "\e[1;41m++             THIS WILL DELETE ALL DATA ON THE DEVICE              ++\e[0m"
+echo -e "\e[1;41m++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\e[0m"
+echo -en "\nAre you sure? Type 'YeS' to install MultiOS-USB on \e[0;41m${dev}\e[0m: "
 read -r yN
-printf '\n'
+echo
 
 case $yN in
 	[Y][e][S])
 		true
 		;;
 	*)
-		printf 'Bad answer. Exiting...\n'
-		exit 0
+		echo 'Bad answer. Exiting...'
+		exit 1
 		;;
 esac
 
-umount -f "$usb_dev"* 2>/dev/null || true
+umount -f "${devp}"* &> /dev/null || true
 
-sgdisk --zap-all "$usb_dev"
-sgdisk --new 1::+1M --typecode 1:ef02 --change-name 1:"BIOS boot partition" "$usb_dev"
-sgdisk --new 2::+50M --typecode 2:ef00 --change-name 2:"EFI System" "$usb_dev"
-sgdisk --new 3::"${data_size}" --typecode 3:"$part_code" --change-name 3:"$part_name" "$usb_dev"
+echo "Creating partitions..."
+sgdisk --zap-all "$dev" >> $log_file
+sgdisk --new 1::+50M --typecode 1:ef00 --change-name 1:"EFI System" "$dev" >> $log_file
+sgdisk --new 2::"${data_size}" --typecode 2:"$part_code" --change-name 2:"$part_name" "$dev" >> $log_file
 
-wipefs -af "${usb_dev}1"
-wipefs -af "${usb_dev}2"
-wipefs -af "${usb_dev}3"
+wipefs -afq "${devp}1"
+wipefs -afq "${devp}2"
 
-mkfs.fat -F 32 -n "MultiOS-EFI" "${usb_dev}2"
+echo "Formating partitions..."
+mkfs.fat -F 32 -n "MultiOS-EFI" "${devp}1" &>> $log_file
 
 case "$fs_type" in
 	ext2|ext3|ext4)
-		mkfs.$fs_type -L "$data_label" "${usb_dev}3"
+		mkfs.${fs_type} -L "$data_label" "${devp}2" &>> $log_file
 		;;
 	fat32)
-		mkfs.fat -F 32 -n "$data_label" "${usb_dev}3"
+		mkfs.fat -F 32 -n "$data_label" "${devp}2" &>> $log_file
 		;;
 	exfat)
-		mkfs.exfat -n "$data_label" "${usb_dev}3"
+		mkfs.exfat -n "$data_label" "${devp}2" &>> $log_file
 		;;
 	ntfs)
-		mkfs.ntfs --fast -L "$data_label" "${usb_dev}3"
+		mkfs.ntfs --fast -L "$data_label" "${devp}2" &>> $log_file
 		;;
 	*)
-		printf '%s: %s is an invalid filesystem type.\n' "$scriptname" "$fs_type" >&2
-		exit 0
+		echo "Error! $fs_type is an invalid filesystem type."
+		exit 1
 		;;
 esac
 
+rm -rf part_efi part_data
 mkdir part_efi part_data
-mount ${usb_dev}2 part_efi
-mount ${usb_dev}3 part_data
+mount ${devp}1 part_efi
+mount ${devp}2 part_data
 
-# install grub (BIOS)
-${grub}-install --target=i386-pc --boot-directory=part_efi --recheck --force $usb_dev
+echo "Copying files..."
+mkdir -p part_data/{MultiOS-USB/tools,ISOs,os_files} part_efi/{EFI/BOOT,grub/fonts}
+cp -r config config_priv themes LICENSE README.md MultiOS-USB.version part_data/MultiOS-USB
+cp -r binaries/syslinux-* binaries/MemTest86-* binaries/efitools-* binaries/wimboot-* part_data/MultiOS-USB/tools
 
-mkdir -p "part_data/ISOs" "part_data/os_files" "part_data/${MultiOS_dir}/tools" "part_efi/EFI/BOOT/cert"
-echo "set MultiOS_dir="${MultiOS_dir}"" > part_efi/${grub}/grub.cfg
-echo "export MultiOS_dir" >> part_efi/${grub}/grub.cfg
-echo "search -f /\${MultiOS_dir}/config/grub.config --no-floppy --set=root" >> part_efi/${grub}/grub.cfg
-echo "configfile /\${MultiOS_dir}/config/grub.config" >> part_efi/${grub}/grub.cfg
-echo Copying files...
-cp part_efi/${grub}/grub.cfg binaries/grub-efi-*/grubx64.efi part_efi/EFI/BOOT
-cp -r config config_priv LICENSE README.md MultiOS-USB.version part_data/${MultiOS_dir}
-cp -r themes part_efi/${grub}
-cp -r binaries/syslinux-* binaries/MemTest86-* binaries/efitools-* binaries/wimboot-* part_data/${MultiOS_dir}/tools
+echo "Installing bootloader..."
+tar -xf binaries/grub_*/i386-pc.tar.xz -C part_efi/grub
 
-# Enable support for Secure Boot
-cp -r binaries/shim-signed_*/* part_efi/EFI/BOOT
-cp -r cert/* part_efi/EFI/BOOT/cert
+cat > part_efi/grub/grub.cfg << EOF
+search -f /MultiOS-USB/config/grub.config --no-floppy --set=root
+source /MultiOS-USB/config/grub.config
+EOF
 
+cp -r binaries/grub_*/unicode.pf2 part_efi/grub/fonts
+cp -r binaries/shim-signed_*/*.efi part_efi/EFI/BOOT
+cp binaries/grub_*/grubx64_signed.efi part_efi/EFI/BOOT/grubx64.efi
+cp -r cert/ part_efi/EFI/
+
+dd conv=fsync status=none if="part_efi/grub/i386-pc/boot.img" of="${dev}" bs=1 count=446
+dd conv=fsync status=none if="part_efi/grub/i386-pc/core.img" of="${dev}" bs=512 count=2014 seek=34
+
+sync
 umount -f part_efi
 umount -f part_data
 rmdir part_efi part_data
-echo MultiOS-USB has been successfully installed.
+echo -e "\n\e[0;42mMultiOS-USB has been successfully installed.\e[0m\n"

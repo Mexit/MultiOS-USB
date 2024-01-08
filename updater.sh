@@ -1,4 +1,10 @@
 #!/bin/bash
+#
+#  MultiOS-USB © 2020-2024 MexIT
+#  https://gitlab.com/MultiOS-USB
+#  https://github.com/Mexit/MultiOS-USB
+#  Read LICENSE file for details
+#
 
 update_url="https://gitlab.com/MultiOS-USB/MultiOS-USB/-/archive/master/MultiOS-USB-master.tar.bz2?path=config"
 ver_git_url="https://gitlab.com/MultiOS-USB/MultiOS-USB/-/raw/master/config/config.version"
@@ -51,7 +57,7 @@ fcn_update () {
 		rm -r -f config
 		tar -xjf $config_archive --no-same-owner --strip-components=1
 		rm $config_archive
-	else 
+	else
 		echo -e "\nError!!! File: $config_archive does not exist or is corrupted.\n"
 		fcn_umount
 		exit 1
