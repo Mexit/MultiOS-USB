@@ -12,7 +12,7 @@ else
 	if [ -e /boot/bootmgr ]; then
 		menuentry "Boot Windows 10 Installer / Windows PE (wimboot)" --class=windows {
 			echo Loading files, please wait...
-			linux16 /${MultiOS_dir}/tools/wimboot-*/wimboot gui
+			linux16 /MultiOS-USB/tools/wimboot-*/wimboot gui
 			initrd16 \
 				newc:bootmgr:/boot/bootmgr \
 				newc:bcd:/boot/bcd \

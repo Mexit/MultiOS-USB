@@ -1,34 +1,34 @@
 submenu "Alpine Linux -->" {
 
-	source /${MultiOS_dir}/config/grub_netboot/alpinelinux.cfgnet
+	source /MultiOS-USB/config/grub_netboot/alpinelinux.cfgnet
 }
 
 submenu "Arch Linux -->" {
 
-	source /${MultiOS_dir}/config/grub_netboot/archlinux.cfgnet
+	source /MultiOS-USB/config/grub_netboot/archlinux.cfgnet
 }
 
 submenu "Debian -->" {
 
-	source /${MultiOS_dir}/config/grub_netboot/debian.cfgnet
+	source /MultiOS-USB/config/grub_netboot/debian.cfgnet
 }
 
 submenu "openSUSE -->" {
 
-	source /${MultiOS_dir}/config/grub_netboot/openSUSE_Tumbleweed.cfgnet
-	source /${MultiOS_dir}/config/grub_netboot/openSUSE_Leap_15.3.cfgnet
-	source /${MultiOS_dir}/config/grub_netboot/openSUSE_Leap_15.2.cfgnet
-	source /${MultiOS_dir}/config/grub_netboot/openSUSE_Leap_15.1.cfgnet
+	source /MultiOS-USB/config/grub_netboot/openSUSE_Tumbleweed.cfgnet
+	source /MultiOS-USB/config/grub_netboot/openSUSE_Leap_15.3.cfgnet
+	source /MultiOS-USB/config/grub_netboot/openSUSE_Leap_15.2.cfgnet
+	source /MultiOS-USB/config/grub_netboot/openSUSE_Leap_15.1.cfgnet
 }
 
 submenu "Slax -->" {
 
-	source /${MultiOS_dir}/config/grub_netboot/slax11.2.0.cfgnet
+	source /MultiOS-USB/config/grub_netboot/slax11.2.0.cfgnet
 }
 
 submenu "Ubuntu -->" {
 
-	source /${MultiOS_dir}/config/grub_netboot/ubuntu_20.04.cfgnet
-	source /${MultiOS_dir}/config/grub_netboot/ubuntu_19.10.cfgnet
-	source /${MultiOS_dir}/config/grub_netboot/ubuntu_18.04.cfgnet
+	source /MultiOS-USB/config/grub_netboot/ubuntu_20.04.cfgnet
+	source /MultiOS-USB/config/grub_netboot/ubuntu_19.10.cfgnet
+	source /MultiOS-USB/config/grub_netboot/ubuntu_18.04.cfgnet
 }
