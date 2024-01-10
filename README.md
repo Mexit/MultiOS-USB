@@ -55,7 +55,7 @@ Installation details can be found [here](docs/README_image) and in the downloade
 
 After installation, copy your ISO files to the `/ISOs` directory and boot your computer from USB.  
 You can also add your own configuration files to the `/MultiOS-USB/config_priv` directory. They will not be deleted during the automatic MultiOS-USB update.  
-If you want to change the configuration for a given ISO - copy the one you have chosen from the [config](../config) folder, paste into [config_priv](../config_priv) and update it according to your needs.  
+If you want to change the configuration for a given ISO - copy the one you have chosen from the [config](config) folder, paste into [config_priv](config_priv) and update it according to your needs.  
 The updated configuration will be detected automatically.
 
 On the first boot with Secure Boot enabled on each new computer, a MultiOS USB certificate must be installed.
