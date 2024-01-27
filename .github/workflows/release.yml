@@ -37,6 +37,9 @@ jobs:
           mv docs/README_image README
           sudo zip MultiOS-USB_windows_image_$ver.zip $image_name files.zip README
 
+      - name: Generate SHA256SUM
+        run: sha256sum MultiOS-USB_windows_image_*.zip MultiOS-USB_linux_*.tar.gz > sha256sums.txt
+
       - uses: "marvinpinto/action-automatic-releases@latest"
         with:
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
@@ -44,3 +47,4 @@ jobs:
           files: |
             MultiOS-USB_windows_image_*.zip
             MultiOS-USB_linux_*.tar.gz
+            sha256sums.txt

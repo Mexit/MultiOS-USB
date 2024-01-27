@@ -36,9 +36,13 @@ jobs:
           mv docs/README_image README
           sudo zip MultiOS-USB_windows_image_$ver.zip $image_name files.zip README
 
+      - name: Generate SHA256SUM
+        run: sha256sum MultiOS-USB_windows_image_*.zip MultiOS-USB_linux_*.tar.gz > sha256sums.txt
+
       - uses: actions/upload-artifact@v4
         with:
           name: MultiOS-USB_images_${{ env.ver }}
           path: |
             MultiOS-USB_windows_image_*.zip
             MultiOS-USB_linux_*.tar.gz
+            sha256sums.txt
