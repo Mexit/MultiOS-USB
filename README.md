@@ -30,20 +30,19 @@ Go to [Releases](https://github.com/Mexit/MultiOS-USB/releases), download the la
 ### Linux console
 
 Check and install the required packages (in most cases they should be installed by default):
-- curl or wget
 - tar, bzip2, xz
 - sgdisk, wipefs
 - mkfs.fat, mkfs.exfat, ...
 
 Go to the directory where you extracted the files and run the following at the console
 ```sh
-$ ./installer.sh -l
+$ ./multios-usb.sh -l
 ```
 This command will show you the USB devices available on your system.  
 To install MultiOS-USB, type the following command, replacing `/dev/sdX` with your chosen device path.
 For example:
 ```sh
-$ sudo ./installer.sh /dev/sdX
+$ sudo ./multios-usb.sh /dev/sdX
 ```
 
 ### Image based installation (experimental)
@@ -73,15 +72,15 @@ If you want to add a certificate later, you can do it by selecting in the Main M
 
 ## Update MultiOS-USB:
 
-You can add support for new operating systems. No need to reinstall.
+You can add support for new operating systems. No need to reinstall.  
+[Download](https://github.com/Mexit/MultiOS-USB/archive/master.zip) and unpack MultiOS-USB repository
 
 ##### Automatic update
-To download new configuration files, simply type:
+To update configuration files, simply type the following command, replacing `/dev/sdX` with your chosen device path.
 ```sh
-$ ./updater.sh
+$ ./multios-usb.sh -u /dev/sdX
 ```
 
 ##### Manual update
-- [Download](https://github.com/Mexit/MultiOS-USB/archive/master.zip) and unpack this repository
 - Remove all files and directories on your USB in `/MultiOS-USB/config/`
 - Copy the downloaded files and directories from `config` to the above directory.

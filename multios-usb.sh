@@ -16,6 +16,7 @@ scriptname=$(basename "$0")
 fs_type="fat32"
 data_size=""
 data_label="MultiOS-USB"
+updateOnly="no"
 
 showUsage() {
 	cat <<- EOF
@@ -27,6 +28,7 @@ showUsage() {
 	    -f, --fs_type       Filesystem type for the data partition [ext2|ext3|ext4|fat32|exfat|ntfs] (default: "$fs_type")
 	    -l, --devices       List available USB devices
 	    -h, --help          Display this message
+	    -u, --update        Update existing installation
 	    --allrwdevices      List all writable devices (For advanced users only!!!)
 	    device              Device to install (e.g. /dev/sdb)
 	    data_size           Data partition size (e.g. 5G, 2048M)
@@ -64,6 +66,9 @@ while [ "$#" -gt 0 ]; do
 		--allrwdevices)
 			listAllRwDevices
 			exit 0
+			;;
+		-u|--update)
+			updateOnly=yes
 			;;
 		/dev/*)
 			if [[ -b "$1" ]]; then
@@ -105,6 +110,94 @@ elif [[ $dev == /dev/sd* || $dev == /dev/vd* ]]; then
 else
 	echo "Unsupported device!"
 	exit 1
+fi
+
+if [[ $updateOnly == yes ]]; then
+	manMounted=false
+
+	umount_partitions () {
+		if [ "$manMounted" = true ]; then
+			sudo umount "$part_data"
+			rm -rf ${tmpdir}
+		fi
+	}
+
+	update_config () {
+		echo -e "\n\e[1;41m++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\e[0m"
+		echo -e "\e[1;41m++                  Are you sure you want to update config files?                         ++\e[0m"
+		echo -e "\e[1;41m++             All modified files in "config" directory will be removed!                    ++\e[0m"
+		echo -e "\e[1;41m++   If you have modified any files, please copy them NOW to the "config_priv" directory.   ++\e[0m"
+		echo -e "\e[1;41m++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\e[0m"
+		echo -e "\nYour config files version: $currVer"
+		echo -e "New config files version: $newVer"
+		echo -en "\nType 'YeS' to continue: "
+		read -r yN
+
+		case $yN in
+			[Y][e][S])
+				true
+				;;
+			*)
+				echo -e '\nBad answer. Exiting...'
+				exit 1
+				;;
+		esac
+
+		echo "Updating..."
+		rm -rf ${part_data}/MultiOS-USB/config
+		cp -r config ${part_data}/MultiOS-USB
+	}
+
+	echo -e "\nMultiOS-USB updater"
+	part_data=$(findmnt -no TARGET ${devp}2) || true
+	if [ -z "$part_data" ]; then
+		manMounted=true
+		tmpdir=$(mktemp -d)
+		part_data="${tmpdir}/part_data"
+		mkdir -p "$part_data"
+		echo -e "\nMounting partition ${devp}2..."
+		sudo mount -o umask=0000 "${devp}2" "$part_data"
+	fi
+
+	if [ -f "${part_data}/MultiOS-USB/config/config.version" ]; then
+		currVer=$(cat "${part_data}/MultiOS-USB/config/config.version")
+	else
+		echo -e "\n\e[1;41mError: MultiOS-USB is not installed on this device!\e[0m\n"
+		umount_partitions
+		exit 1
+	fi
+
+	if [ -f "config/config.version" ]; then
+		newVer=$(cat "config/config.version")
+	else
+		echo -e "\nError: Unable to detect new version, file does not exist!"
+		umount_partitions
+		exit 1
+	fi
+
+	if [[ "${currVer}" == "${newVer}" ]]; then
+		echo -e "\nConfig files version: $newVer"
+	else
+		OLDIFS=$IFS
+		IFS=. v1=($newVer) v2=($currVer)
+		IFS=$OLDIFS
+
+		for pos in 0 1 2; do
+			if [[ ${v1[pos]} -gt ${v2[pos]} ]]; then
+				update_config
+				break
+			elif [[ ${v1[pos]} -lt ${v2[pos]} ]]; then
+				echo -e "\nError: installed version ($currVer) is newer than downloaded ($newVer)"
+				echo "Please download fresh version: https://github.com/Mexit/MultiOS-USB/archive/master.zip"
+				umount_partitions
+				exit 1
+			fi
+		done
+	fi
+
+	umount_partitions
+	echo -e "\n\e[0;42mConfiguration is up to date\e[0m\n"
+	exit 0
 fi
 
 # Set data partition information
@@ -150,7 +243,6 @@ echo -e "\e[1;41m++             THIS WILL DELETE ALL DATA ON THE DEVICE         
 echo -e "\e[1;41m++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\e[0m"
 echo -en "\nAre you sure? Type 'YeS' to install MultiOS-USB on \e[0;41m${dev}\e[0m: "
 read -r yN
-echo
 
 case $yN in
 	[Y][e][S])
@@ -194,34 +286,37 @@ case "$fs_type" in
 		;;
 esac
 
-rm -rf part_efi part_data
-mkdir part_efi part_data
-mount ${devp}1 part_efi
-mount ${devp}2 part_data
+tmpdir=$(mktemp -d)
+part_data="${tmpdir}/part_data"
+part_efi="${tmpdir}/part_efi"
+mkdir "$part_data" "$part_efi"
+
+mount ${devp}1 $part_efi
+mount ${devp}2 $part_data
 
 echo "Copying files..."
-mkdir -p part_data/{MultiOS-USB/tools,ISOs,os_files} part_efi/{EFI/BOOT,grub/fonts}
-cp -r config config_priv themes LICENSE README.md MultiOS-USB.version part_data/MultiOS-USB
-cp -r binaries/syslinux-* binaries/MemTest86-* binaries/efitools-* binaries/wimboot-* part_data/MultiOS-USB/tools
+mkdir -p $part_data/{MultiOS-USB/tools,ISOs,os_files} $part_efi/{EFI/BOOT,grub/fonts}
+cp -r config config_priv themes LICENSE README.md MultiOS-USB.version $part_data/MultiOS-USB
+cp -r binaries/syslinux-* binaries/MemTest86-* binaries/efitools-* binaries/wimboot-* $part_data/MultiOS-USB/tools
 
 echo "Installing bootloader..."
-tar -xf binaries/grub_*/i386-pc.tar.xz -C part_efi/grub
+tar -xf binaries/grub_*/i386-pc.tar.xz -C $part_efi/grub
 
-cat > part_efi/grub/grub.cfg << EOF
+cat > $part_efi/grub/grub.cfg << EOF
 search -f /MultiOS-USB/config/grub.config --no-floppy --set=root
 source /MultiOS-USB/config/grub.config
 EOF
 
-cp -r binaries/grub_*/unicode.pf2 part_efi/grub/fonts
-cp -r binaries/shim-signed_*/*.efi part_efi/EFI/BOOT
-cp binaries/grub_*/grubx64_signed.efi part_efi/EFI/BOOT/grubx64.efi
-cp -r cert/ part_efi/EFI/
+cp -r binaries/grub_*/unicode.pf2 $part_efi/grub/fonts
+cp -r binaries/shim-signed_*/*.efi $part_efi/EFI/BOOT
+cp binaries/grub_*/grubx64_signed.efi $part_efi/EFI/BOOT/grubx64.efi
+cp -r cert/ $part_efi/EFI/
 
-dd conv=fsync status=none if="part_efi/grub/i386-pc/boot.img" of="${dev}" bs=1 count=446
-dd conv=fsync status=none if="part_efi/grub/i386-pc/core.img" of="${dev}" bs=512 count=2014 seek=34
+dd conv=fsync status=none if="$part_efi/grub/i386-pc/boot.img" of="${dev}" bs=1 count=446
+dd conv=fsync status=none if="$part_efi/grub/i386-pc/core.img" of="${dev}" bs=512 count=2014 seek=34
 
 sync
-umount -f part_efi
-umount -f part_data
-rmdir part_efi part_data
+umount $part_efi
+umount $part_data
+rm -rf ${tmpdir}
 echo -e "\n\e[0;42mMultiOS-USB has been successfully installed.\e[0m\n"
