@@ -257,9 +257,9 @@ esac
 umount -f "${devp}"* &> /dev/null || true
 
 echo "Creating partitions..."
-sgdisk --zap-all "$dev" >> $log_file
-sgdisk --new 1::+50M --typecode 1:ef00 --change-name 1:"EFI System" "$dev" >> $log_file
-sgdisk --new 2::"${data_size}" --typecode 2:"$part_code" --change-name 2:"$part_name" "$dev" >> $log_file
+sgdisk -Z "$dev" >> $log_file
+sgdisk -n 1::+50M -t 1:0700 -c 1:"EFI System" -A 1:set:0 -A 1:set:62 -A 1:set:63 "$dev" >> $log_file
+sgdisk -n 2::"${data_size}" -t 2:"$part_code" -c 2:"$part_name" "$dev" >> $log_file
 
 wipefs -afq "${devp}1"
 wipefs -afq "${devp}2"
@@ -297,7 +297,7 @@ mount ${devp}2 $part_data
 echo "Copying files..."
 mkdir -p $part_data/{MultiOS-USB/tools,ISOs,os_files} $part_efi/{EFI/BOOT,grub/fonts}
 cp -r config config_priv themes LICENSE README.md MultiOS-USB.version $part_data/MultiOS-USB
-cp -r binaries/syslinux-* binaries/MemTest86-* binaries/efitools-* binaries/wimboot-* $part_data/MultiOS-USB/tools
+cp -r binaries/{syslinux-*,MemTest86-*,efitools-*,wimboot-*,mountiso} $part_data/MultiOS-USB/tools
 
 echo "Installing bootloader..."
 tar -xf binaries/grub_*/i386-pc.tar.xz -C $part_efi/grub
@@ -307,6 +307,7 @@ search -f /MultiOS-USB/config/grub.config --no-floppy --set=root
 source /MultiOS-USB/config/grub.config
 EOF
 
+cp binaries/grub_*/grubenv $part_efi/grub
 cp -r binaries/grub_*/unicode.pf2 $part_efi/grub/fonts
 cp -r binaries/shim-signed_*/*.efi $part_efi/EFI/BOOT
 cp binaries/grub_*/grubx64_signed.efi $part_efi/EFI/BOOT/grubx64.efi

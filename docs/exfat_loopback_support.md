@@ -95,6 +95,9 @@
 | | | | |
 | Ubuntu | ubuntu-20.10-desktop-amd64.iso | :x: | :heavy_check_mark: |
 | | | | |
+| [Windows](https://www.microsoft.com/software-download/) | Win10_22H2_English_x64v1.iso | :heavy_check_mark: | [:x:](config/windows) |
+| | Win11_23H2_English_x64v2.iso | :heavy_check_mark: | [:x:](config/windows) |
+| | | | |
 | Zorin OS | Zorin-OS-15.3-Lite-64-bit.iso | :x: | :heavy_check_mark: |
 
 Where:  

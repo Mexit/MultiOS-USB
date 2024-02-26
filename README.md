@@ -11,7 +11,7 @@ One device with multiple ISO files. Easy to use: install once, add ISO files and
 - Load UEFI drivers
 - Launch .efi executables and other boot loaders
 - Boot Linux from .iso files
-- Boot Windows 10 installer and Windows PE [more info](config/win10_winPE/windows_support.md)
+- Boot Windows 10/11 installer from ISO (currently, SB must be disabled during installation)
 - Boot Linux installer from network (experimental)
 - Boot locally installed systems
 - Automatically update configuration files
