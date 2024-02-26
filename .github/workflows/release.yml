@@ -30,7 +30,7 @@ jobs:
           qemu-img create -f raw $image_name $image_size
           dev=$(sudo losetup -f -P --show $image_name)
           sed -i 's|^part_data="${tmpdir}/part_data"|part_data="part_data"|g' multios-usb.sh
-          sed -i -e '262s/^/# /; 265s/^/# /; 275s/^/# /; 295s/^/# /; 320,321s/^/# /' multios-usb.sh
+          sed -i -e '262s/^/# /; 265s/^/# /; 275s/^/# /; 295s/^/# /; 321,322s/^/# /' multios-usb.sh
           echo "YeS" | sudo ./multios-usb.sh $dev
           sudo losetup -d $dev
           (cd part_data && sudo zip -r ../files.zip *)
