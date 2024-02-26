@@ -2,8 +2,8 @@ name: Build image
 
 on:
   push:
-    tags-ignore:
-      - v*
+    branches:
+      - '**'
   pull_request:
 
 jobs:
