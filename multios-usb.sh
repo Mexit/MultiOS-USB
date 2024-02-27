@@ -297,7 +297,7 @@ mount ${devp}2 $part_data
 echo "Copying files..."
 mkdir -p $part_data/{MultiOS-USB/tools,ISOs,os_files} $part_efi/{EFI/BOOT,grub/fonts}
 cp -r config config_priv themes LICENSE README.md MultiOS-USB.version $part_data/MultiOS-USB
-cp -r binaries/{syslinux-*,MemTest86-*,efitools-*,wimboot-*,mountiso} $part_data/MultiOS-USB/tools
+cp -r binaries/{syslinux-*,mt86plus_*,efitools-*,wimboot-*,mountiso} $part_data/MultiOS-USB/tools
 
 echo "Installing bootloader..."
 tar -xf binaries/grub_*/i386-pc.tar.xz -C $part_efi/grub
