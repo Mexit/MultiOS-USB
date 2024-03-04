@@ -10,6 +10,8 @@
 | | | | |
 | Archman Linux | Archman-Xfce-2020.12.09-x86_64.iso | :heavy_check_mark: | :x: |
 | | | | |
+| [ArcoLinux](https://www.arcolinux.info) | [arcolinuxl-v24.03.01-x86_64.iso](https://downloads.sourceforge.net/arcolinux/arcolinuxl-v24.03.01-x86_64.iso) | :heavy_check_mark: | :heavy_check_mark: |
+| | | | |
 | Bluestar Linux | bluestar-linux-5.12.1-2021.05.07-x86_64.iso | :heavy_check_mark: | :x: |
 | | | | |
 | Debian | debian-live-11.0.0-amd64-xfce.iso | :x: | :heavy_check_mark: |
