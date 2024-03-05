@@ -16,12 +16,16 @@ One device with multiple ISO files. Easy to use: install once, add ISO files and
 - Boot locally installed systems
 - Automatically update configuration files
 - Without background services
-- exFAT file system [support](docs/exfat_loopback_support.md)
-- Automatic detection of compatible ISO images [(loopback function)](docs/exfat_loopback_support.md)
-- Support for [systems](config) without loopback support
+- exFAT file system support
+- Automatic detection of compatible ISO images (GRUB loopback)
+- Support for systems without loopback support
 - Allows customisation of ISO boot menu (for example: custom kernel options)
 - Support for USB, SSD, nvme, mmcblk, loop, nbd and virtual disks
 - Support for x86, x86_64
+
+## Tested ISOs
+
+List of tested ISO images: [new](docs/Supported_OS.md), [(old)](docs/exfat_loopback_support.md)
 
 ## Installation:
 
