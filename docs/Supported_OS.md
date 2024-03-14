@@ -9,6 +9,7 @@
 |  | [grml64-small_2024.02.iso](https://download.grml.org/grml64-small_2024.02.iso) | no | yes | yes | Debian |
 | [KDE neon](https://neon.kde.org) | [neon-user-20240229-0716.iso](https://files.kde.org/neon/images/user/20240229-0716/neon-user-20240229-0716.iso) | no | [no](../config/KDE_neon) | yes | Canonical |
 | [Manjaro](https://manjaro.org) | [manjaro-xfce-23.1.3-240113-linux66.iso](https://download.manjaro.org/xfce/23.1.3/manjaro-xfce-23.1.3-240113-linux66.iso) | yes | yes | no | - |
+| [Tails](https://tails.net) | [tails-amd64-6.0.iso](https://download.tails.net/tails/stable/tails-amd64-6.0/tails-amd64-6.0.iso) | no | [no](../config/tails) | yes | Debian |
 | [TUXEDO OS](https://os.tuxedocomputers.com) | [TUXEDO-OS-2-202402220947.iso](https://os.tuxedocomputers.com/TUXEDO-OS-2-202402220947.iso) | yes | yes | yes | TUXEDO |
 | [Windows](https://www.microsoft.com/software-download) | Win10_22H2_English_x64v1.iso | yes | [no](../config/windows) | no | Microsoft |
 |  | Win11_23H2_English_x64v2.iso | yes | [no](../config/windows) | no | Microsoft |
