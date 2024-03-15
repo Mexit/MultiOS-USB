@@ -3,6 +3,7 @@
 |---|---|:---:|:---:|:---:|---|
 | [Arch Linux](https://archlinux.org) | [archlinux-2024.03.01-x86_64.iso](https://archlinux.mirrors.ovh.net/archlinux/iso/latest/archlinux-2024.03.01-x86_64.iso) | yes | yes | no | - |
 | [ArcoLinux](https://www.arcolinux.info) | [arcolinuxl-v24.03.01-x86_64.iso](https://downloads.sourceforge.net/arcolinux/arcolinuxl-v24.03.01-x86_64.iso) | yes | yes | no | - |
+| [Athena OS](https://athenaos.org) | [athena-rolling-x86_64.iso](https://sourceforge.net/projects/athena-iso/files/v23.11/athena-rolling-x86_64.iso) | yes | [no](../config/athenaos) | no | - |
 | [CachyOS](https://cachyos.org) | [cachyos-kde-linux-240313.iso](https://cdn.cachyos.org/ISO/kde/240313/cachyos-kde-linux-240313.iso) | yes | yes | no | - |
 | [Debian](https://www.debian.org) | [debian-live-12.5.0-amd64-standard.iso](https://cdimage.debian.org/debian-cd/current-live/amd64/iso-hybrid/debian-live-12.5.0-amd64-standard.iso) | no | yes | yes | Debian |
 | [GParted Live](https://gparted.org/livecd.php) | [gparted-live-1.6.0-1-amd64.iso](https://downloads.sourceforge.net/gparted/gparted-live-1.6.0-1-amd64.iso) | no | [no](../config/gparted) | yes | Debian |
