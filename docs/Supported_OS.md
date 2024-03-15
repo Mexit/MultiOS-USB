@@ -6,6 +6,7 @@
 | [Athena OS](https://athenaos.org) | [athena-rolling-x86_64.iso](https://sourceforge.net/projects/athena-iso/files/v23.11/athena-rolling-x86_64.iso) | yes | [no](../config/athenaos) | no | - |
 | [CachyOS](https://cachyos.org) | [cachyos-kde-linux-240313.iso](https://cdn.cachyos.org/ISO/kde/240313/cachyos-kde-linux-240313.iso) | yes | yes | no | - |
 | [Debian](https://www.debian.org) | [debian-live-12.5.0-amd64-standard.iso](https://cdimage.debian.org/debian-cd/current-live/amd64/iso-hybrid/debian-live-12.5.0-amd64-standard.iso) | no | yes | yes | Debian |
+| [Dr.Parted Live](https://dr-parted-live.sourceforge.io) | [Dr.Parted-Live24.03.1-amd64.iso](https://sourceforge.net/projects/dr-parted-live/files/Download/Dr.Parted-Live24.03.1-amd64.iso) | no | no | yes | Debian |
 | [GParted Live](https://gparted.org/livecd.php) | [gparted-live-1.6.0-1-amd64.iso](https://downloads.sourceforge.net/gparted/gparted-live-1.6.0-1-amd64.iso) | no | [no](../config/gparted) | yes | Debian |
 | [Grml](https://www.grml.org) | [grml64-full_2024.02.iso](https://download.grml.org/grml64-full_2024.02.iso) | no | yes | yes | Debian |
 |  | [grml64-small_2024.02.iso](https://download.grml.org/grml64-small_2024.02.iso) | no | yes | yes | Debian |
