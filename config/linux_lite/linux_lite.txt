@@ -1,9 +1,0 @@
-# Linux Lite
-# https://www.linuxliteos.com
-
-# The ISO image requires no additional configuration:
-# https://www.gnu.org/software/grub/manual/grub/html_node/Loopback-booting.html
-
-
-# Tested images:					Boot from exFAT:	Full loopback support:		Secure boot support:
-linux-lite-5.4-64bit.iso					no			yes				yes (Canonical Ltd.)
