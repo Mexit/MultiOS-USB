@@ -1,6 +1,0 @@
-# Grml
-# https://grml.org
-
-
-# Tested images:					Boot from exFAT:	Full loopback support:		Secure boot support:
-grml64-full_2021.07-rc1.iso					no			yes				no
