@@ -17,6 +17,8 @@
 | [SparkyLinux](https://sparkylinux.org) | [sparkylinux-7.3-x86_64-lxqt.iso](https://downloads.sourceforge.net/sparkylinux/sparkylinux-7.3-x86_64-lxqt.iso) | no | yes | yes | Debian |
 | [Tails](https://tails.net) | [tails-amd64-6.0.iso](https://download.tails.net/tails/stable/tails-amd64-6.0/tails-amd64-6.0.iso) | no | [no](../config/tails) | yes | Debian |
 | [TUXEDO OS](https://os.tuxedocomputers.com) | [TUXEDO-OS-2-202402220947.iso](https://os.tuxedocomputers.com/TUXEDO-OS-2-202402220947.iso) | yes | yes | yes | TUXEDO |
+| [Void Linux](https://voidlinux.org) | [void-live-x86_64-20240314-xfce.iso](https://repo-default.voidlinux.org/live/current/void-live-x86_64-20240314-xfce.iso) | yes | [no](../config/void-linux) | no | - |
+|  | [void-live-x86_64-20240314-base.iso](https://repo-default.voidlinux.org/live/current/void-live-x86_64-20240314-base.iso) | yes | [no](../config/void-linux) | no | - |
 | [VOYAGER](https://voyagerlive.org) | [Voyager-12.5-debian-amd64.iso](https://downloads.sourceforge.net/voyagerlive/Voyager-12.5-debian-amd64.iso) | no | yes | yes | Debian |
 | [Windows](https://www.microsoft.com/software-download) | Win10_22H2_English_x64v1.iso | yes | [no](../config/windows) | no | Microsoft |
 |  | Win11_23H2_English_x64v2.iso | yes | [no](../config/windows) | no | Microsoft |
