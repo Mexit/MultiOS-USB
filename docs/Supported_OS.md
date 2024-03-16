@@ -8,6 +8,7 @@
 | [Damn Small Linux](https://damnsmalllinux.org) | [dsl-2024.rc1.iso](https://damnsmalllinux.org/download/dsl-2024.rc1.iso) | yes | [no](../config/damnsmalllinux) | no | - |
 | [Debian](https://www.debian.org) | [debian-live-12.5.0-amd64-standard.iso](https://cdimage.debian.org/debian-cd/current-live/amd64/iso-hybrid/debian-live-12.5.0-amd64-standard.iso) | no | yes | yes | Debian |
 | [Dr.Parted Live](https://dr-parted-live.sourceforge.io) | [Dr.Parted-Live24.03.1-amd64.iso](https://sourceforge.net/projects/dr-parted-live/files/Download/Dr.Parted-Live24.03.1-amd64.iso) | no | no | yes | Debian |
+| [Finnix](https://www.finnix.org) | [finnix-125.iso](https://www.finnix.org/releases/125/finnix-125.iso) | no | yes | yes | Debian |
 | [GParted Live](https://gparted.org/livecd.php) | [gparted-live-1.6.0-1-amd64.iso](https://downloads.sourceforge.net/gparted/gparted-live-1.6.0-1-amd64.iso) | no | [no](../config/gparted) | yes | Debian |
 | [Grml](https://www.grml.org) | [grml64-full_2024.02.iso](https://download.grml.org/grml64-full_2024.02.iso) | no | yes | yes | Debian |
 |  | [grml64-small_2024.02.iso](https://download.grml.org/grml64-small_2024.02.iso) | no | yes | yes | Debian |
