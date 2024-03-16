@@ -16,6 +16,7 @@
 | [Linux Lite](https://www.linuxliteos.com) | [linux-lite-6.6-64bit.iso](https://mirror.alpix.eu/linuxliteos/isos/6.6/linux-lite-6.6-64bit.iso) | no | yes | yes | Canonical |
 | [Mabox Linux](https://maboxlinux.org) | [mabox-linux-24.03-Istredd-240313-linux66.iso](https://sourceforge.net/projects/mabox-linux/files/24.03/mabox-linux-24.03-Istredd-240313-linux66.iso) | yes | yes | no | - |
 | [Manjaro](https://manjaro.org) | [manjaro-xfce-23.1.3-240113-linux66.iso](https://download.manjaro.org/xfce/23.1.3/manjaro-xfce-23.1.3-240113-linux66.iso) | yes | yes | no | - |
+| [NixOS](https://nixos.org) | [nixos-gnome-23.11.5353.878ef7d9721b-x86_64-linux.iso](https://releases.nixos.org/nixos/23.11/nixos-23.11.5353.878ef7d9721b/nixos-gnome-23.11.5353.878ef7d9721b-x86_64-linux.iso) | no | yes | no | - |
 | [peppermintOS](https://peppermintos.com) | [PeppermintOS-Debian-64.iso](https://sourceforge.net/projects/peppermintos/files/isos/XFCE/PeppermintOS-Debian-64.iso) | no | yes | yes | Debian |
 | [SparkyLinux](https://sparkylinux.org) | [sparkylinux-7.3-x86_64-lxqt.iso](https://downloads.sourceforge.net/sparkylinux/sparkylinux-7.3-x86_64-lxqt.iso) | no | yes | yes | Debian |
 | [Tails](https://tails.net) | [tails-amd64-6.0.iso](https://download.tails.net/tails/stable/tails-amd64-6.0/tails-amd64-6.0.iso) | no | [no](../config/tails) | yes | Debian |
