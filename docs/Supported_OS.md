@@ -16,6 +16,7 @@
 | [Manjaro](https://manjaro.org) | [manjaro-xfce-23.1.3-240113-linux66.iso](https://download.manjaro.org/xfce/23.1.3/manjaro-xfce-23.1.3-240113-linux66.iso) | yes | yes | no | - |
 | [Tails](https://tails.net) | [tails-amd64-6.0.iso](https://download.tails.net/tails/stable/tails-amd64-6.0/tails-amd64-6.0.iso) | no | [no](../config/tails) | yes | Debian |
 | [TUXEDO OS](https://os.tuxedocomputers.com) | [TUXEDO-OS-2-202402220947.iso](https://os.tuxedocomputers.com/TUXEDO-OS-2-202402220947.iso) | yes | yes | yes | TUXEDO |
+| [VOYAGER](https://voyagerlive.org) | [Voyager-12.5-debian-amd64.iso](https://downloads.sourceforge.net/voyagerlive/Voyager-12.5-debian-amd64.iso) | no | yes | yes | Debian |
 | [Windows](https://www.microsoft.com/software-download) | Win10_22H2_English_x64v1.iso | yes | [no](../config/windows) | no | Microsoft |
 |  | Win11_23H2_English_x64v2.iso | yes | [no](../config/windows) | no | Microsoft |
 | [Zentyal](https://zentyal.com) | [zentyal-8.0-development-amd64.iso](http://download.zentyal.com/zentyal-8.0-development-amd64.iso) | no | yes | yes | Canonical |
