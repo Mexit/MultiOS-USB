@@ -9,6 +9,17 @@
 | [Debian](https://www.debian.org) | [debian-live-12.5.0-amd64-standard.iso](https://cdimage.debian.org/debian-cd/current-live/amd64/iso-hybrid/debian-live-12.5.0-amd64-standard.iso) | no | yes | yes | Debian |
 |  | [mini.iso](https://cdimage.debian.org/debian/dists/stable/main/installer-amd64/current/images/netboot/mini.iso) | no | [no](../config/debian) | yes | Debian |
 | [Dr.Parted Live](https://dr-parted-live.sourceforge.io) | [Dr.Parted-Live24.03.1-amd64.iso](https://sourceforge.net/projects/dr-parted-live/files/Download/Dr.Parted-Live24.03.1-amd64.iso) | no | no | yes | Debian |
+| [Fedora](https://fedoraproject.org) | [Fedora-Design_suite-Live-x86_64-39-1.5.iso](https://download.fedoraproject.org/pub/alt/releases/39/Labs/x86_64/iso/Fedora-Design_suite-Live-x86_64-39-1.5.iso) | yes | [no](../config/fedora) | yes | Fedora |
+|  | [Fedora-Workstation-Live-x86_64-39-1.5.iso](https://download.fedoraproject.org/pub/fedora/linux/releases/39/Workstation/x86_64/iso/Fedora-Workstation-Live-x86_64-39-1.5.iso) | yes | [no](../config/fedora) | yes | Fedora |
+|  | [Fedora-Xfce-Live-x86_64-39-1.5.iso](https://download.fedoraproject.org/pub/fedora/linux/releases/39/Spins/x86_64/iso/Fedora-Xfce-Live-x86_64-39-1.5.iso) | yes | [no](../config/fedora) | yes | Fedora |
+|  | [Fedora-Server-netinst-x86_64-39-1.5.iso](https://download.fedoraproject.org/pub/fedora/linux/releases/39/Server/x86_64/iso/Fedora-Server-netinst-x86_64-39-1.5.iso) | yes | [no](../config/fedora) | yes | Fedora |
+|  | [Fedora-Server-dvd-x86_64-39-1.5.iso](https://download.fedoraproject.org/pub/fedora/linux/releases/39/Server/x86_64/iso/Fedora-Server-dvd-x86_64-39-1.5.iso) | yes | [no](../config/fedora) | yes | Fedora |
+|  | [Fedora-Everything-netinst-x86_64-39-1.5.iso](https://download.fedoraproject.org/pub/fedora/linux/releases/39/Everything/x86_64/iso/Fedora-Everything-netinst-x86_64-39-1.5.iso) | yes | [no](../config/fedora) | yes | Fedora |
+|  | [Fedora-IoT-ostree-x86_64-39-20231103.1.iso](https://download.fedoraproject.org/pub/alt/iot/39/IoT/x86_64/iso/Fedora-IoT-ostree-x86_64-39-20231103.1.iso) | yes | [no](../config/fedora) | yes | Fedora |
+|  | [Fedora-Silverblue-ostree-x86_64-39-1.5.iso](https://download.fedoraproject.org/pub/fedora/linux/releases/39/Silverblue/x86_64/iso/Fedora-Silverblue-ostree-x86_64-39-1.5.iso) | yes | [no](../config/fedora) | yes | Fedora |
+|  | [Fedora-Kinoite-ostree-x86_64-39-1.5.iso](https://download.fedoraproject.org/pub/fedora/linux/releases/39/Kinoite/x86_64/iso/Fedora-Kinoite-ostree-x86_64-39-1.5.iso) | yes | [no](../config/fedora) | yes | Fedora |
+|  | [Fedora-Sericea-ostree-x86_64-39-1.5-respin2.iso](https://download.fedoraproject.org/pub/alt/releases/39/respins/Sericea/x86_64/Fedora-Sericea-ostree-x86_64-39-1.5-respin2.iso) | yes | [no](../config/fedora) | yes | Fedora |
+|  | [Fedora-Onyx-ostree-x86_64-39-1.5-respin.iso](https://download.fedoraproject.org/pub/alt/releases/39/respins/Onyx/x86_64/Fedora-Onyx-ostree-x86_64-39-1.5-respin.iso) | yes | [no](../config/fedora) | yes | Fedora |
 | [Finnix](https://www.finnix.org) | [finnix-125.iso](https://www.finnix.org/releases/125/finnix-125.iso) | no | yes | yes | Debian |
 | [GParted Live](https://gparted.org/livecd.php) | [gparted-live-1.6.0-1-amd64.iso](https://downloads.sourceforge.net/gparted/gparted-live-1.6.0-1-amd64.iso) | no | [no](../config/gparted) | yes | Debian |
 | [Grml](https://www.grml.org) | [grml64-full_2024.02.iso](https://download.grml.org/grml64-full_2024.02.iso) | no | yes | yes | Debian |
