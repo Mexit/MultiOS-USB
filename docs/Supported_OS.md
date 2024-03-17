@@ -27,6 +27,7 @@
 | [Windows](https://www.microsoft.com/software-download) | Win10_22H2_English_x64v1.iso | yes | [no](../config/windows) | no | Microsoft |
 |  | Win11_23H2_English_x64v2.iso | yes | [no](../config/windows) | no | Microsoft |
 | [Zentyal](https://zentyal.com) | [zentyal-8.0-development-amd64.iso](http://download.zentyal.com/zentyal-8.0-development-amd64.iso) | no | yes | yes | Canonical |
+| [Zorin OS](https://zorinos.com) | [Zorin-OS-17.1-Core-64-bit.iso](https://mirrors.edge.kernel.org/zorinos-isos/17/Zorin-OS-17.1-Core-64-bit.iso) | no | yes | yes | Canonical |
 
 Where:  
 **Boot from exFAT** - Tells whether the OS supports booting from exFAT  
