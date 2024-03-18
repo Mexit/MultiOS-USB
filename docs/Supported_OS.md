@@ -32,6 +32,8 @@
 | [NixOS](https://nixos.org) | [nixos-gnome-23.11.5353.878ef7d9721b-x86_64-linux.iso](https://releases.nixos.org/nixos/23.11/nixos-23.11.5353.878ef7d9721b/nixos-gnome-23.11.5353.878ef7d9721b-x86_64-linux.iso) | no | yes | no | - |
 | [peppermintOS](https://peppermintos.com) | [PeppermintOS-Debian-64.iso](https://sourceforge.net/projects/peppermintos/files/isos/XFCE/PeppermintOS-Debian-64.iso) | no | yes | yes | Debian |
 | [Plop Linux](https://www.plop.at/en/ploplinux/index.html) | [ploplinux-24.2-x86_64.iso](https://download.plop.at/ploplinux/24.2/live/ploplinux-24.2-x86_64.iso) | yes | [no](../config/ploplinux) | no | - |
+| [Rocky Linux](https://rockylinux.org) | [Rocky-9.3-x86_64-boot.iso](https://download.rockylinux.org/pub/rocky/9/isos/x86_64/Rocky-9.3-x86_64-boot.iso) | yes | [no](../config/rocky) | yes | Rocky |
+|  | [Rocky-9.3-x86_64-minimal.iso](https://download.rockylinux.org/pub/rocky/9/isos/x86_64/Rocky-9.3-x86_64-minimal.iso) | yes | [no](../config/rocky) | yes | Rocky |
 | [Slax](https://www.slax.org) | [slax-64bit-debian-12.2.0.iso](https://ftp.sh.cvut.cz/slax/Slax-12.x/slax-64bit-debian-12.2.0.iso) | no | [no](../config/slax) | no |  |
 |  | [slax-64bit-slackware-15.0.4.iso](https://ftp.sh.cvut.cz/slax/Slax-15.x/slax-64bit-slackware-15.0.4.iso) | no | [no](../config/slax) | no |  |
 | [SparkyLinux](https://sparkylinux.org) | [sparkylinux-7.3-x86_64-lxqt.iso](https://downloads.sourceforge.net/sparkylinux/sparkylinux-7.3-x86_64-lxqt.iso) | no | yes | yes | Debian |
