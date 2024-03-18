@@ -1,8 +1,0 @@
-# EuroLinux
-# https://euro-linux.com
-
-
-# Tested images:					Boot from exFAT:	Full loopback support:		Secure boot support:
-EL-8.3-x86_64-20210526-minimal.iso				no			no				no
-EL-8.3-x86_64-20210526-appstream.iso				no			no				no
-

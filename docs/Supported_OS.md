@@ -9,6 +9,10 @@
 | [Debian](https://www.debian.org) | [debian-live-12.5.0-amd64-standard.iso](https://cdimage.debian.org/debian-cd/current-live/amd64/iso-hybrid/debian-live-12.5.0-amd64-standard.iso) | no | yes | yes | Debian |
 |  | [mini.iso](https://cdimage.debian.org/debian/dists/stable/main/installer-amd64/current/images/netboot/mini.iso) | no | [no](../config/debian) | yes | Debian |
 | [Dr.Parted Live](https://dr-parted-live.sourceforge.io) | [Dr.Parted-Live24.03.1-amd64.iso](https://sourceforge.net/projects/dr-parted-live/files/Download/Dr.Parted-Live24.03.1-amd64.iso) | no | no | yes | Debian |
+| [EuroLinux](https://euro-linux.com) | [ELD-9.3-x86_64-20240223-eld-live.iso](https://dn.euro-linux.com/ELD-9.3-x86_64-20240223-eld-live.iso) | yes | [no](../config/euroLinux) | yes | RedHat |
+|  | [EL-9.3-x86_64-20231113-minimal.iso](https://dn.euro-linux.com/EL-9.3-x86_64-20231113-minimal.iso) | yes | [no](../config/euroLinux) | no | - |
+|  | [EL-9.3-x86_64-20231113-appstream.iso](https://dn.euro-linux.com/EL-9.3-x86_64-20231113-appstream.iso) | yes | [no](../config/euroLinux) | no | - |
+|  | [EL-8.9-x86_64-20231116-minimal.iso](https://dn.euro-linux.com/EL-8.9-x86_64-20231116-minimal.iso) | yes | [no](../config/euroLinux) | no | - |
 | [Fedora](https://fedoraproject.org) | [Fedora-Design_suite-Live-x86_64-39-1.5.iso](https://download.fedoraproject.org/pub/alt/releases/39/Labs/x86_64/iso/Fedora-Design_suite-Live-x86_64-39-1.5.iso) | yes | [no](../config/fedora) | yes | Fedora |
 |  | [Fedora-Workstation-Live-x86_64-39-1.5.iso](https://download.fedoraproject.org/pub/fedora/linux/releases/39/Workstation/x86_64/iso/Fedora-Workstation-Live-x86_64-39-1.5.iso) | yes | [no](../config/fedora) | yes | Fedora |
 |  | [Fedora-Xfce-Live-x86_64-39-1.5.iso](https://download.fedoraproject.org/pub/fedora/linux/releases/39/Spins/x86_64/iso/Fedora-Xfce-Live-x86_64-39-1.5.iso) | yes | [no](../config/fedora) | yes | Fedora |
