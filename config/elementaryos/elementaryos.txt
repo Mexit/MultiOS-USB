@@ -1,5 +1,0 @@
-# elementary OS
-# https://elementary.io
-
-# The ISO image requires no additional configuration:
-# https://www.gnu.org/software/grub/manual/grub/html_node/Loopback-booting.html

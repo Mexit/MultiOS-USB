@@ -1,8 +1,0 @@
-# GeckoLinux (Static, Rolling and NEXT editions)
-# https://geckolinux.github.io
-
-
-# Tested images:										Boot from exFAT:	Full loopback:		Secure boot:	SB Certificate:
-GeckoLinux_NEXT_Plasma.x86_64-153.220105.0.iso			yes					yes					yes				SLES-UEFI-CA-Certificate.cer
-GeckoLinux_ROLLING_XFCE.x86_64-999.220105.0.iso			yes					yes					yes				openSUSE-UEFI-CA-Certificate.cer
-GeckoLinux_STATIC_XFCE.x86_64-153.220104.0.iso			yes					yes					yes				SLES-UEFI-CA-Certificate.cer
