@@ -1,4 +1,8 @@
 ## List of tested ISO images (in the process of updating)
+Note: MultiOS-USB automatically reads the configuration and allows you to run your distribution from all compatible ISO images (GRUB loopback support = yes). This configuration is located in the ISO image in the /boot/grub/loopback.cfg file.  
+
+Below is just a list of tested and working systems. The actual number of supported systems is much larger. I can't test them all.
+
 | Distro | ISO | Boot from exFAT | GRUB loopback support | Secure Boot support | SB from |
 |---|---|:---:|:---:|:---:|---|
 | [Arch Linux](https://archlinux.org) | [archlinux-2024.03.01-x86_64.iso](https://archlinux.mirrors.ovh.net/archlinux/iso/latest/archlinux-2024.03.01-x86_64.iso) | yes | yes | no | - |
@@ -40,8 +44,8 @@
 | [Plop Linux](https://www.plop.at/en/ploplinux/index.html) | [ploplinux-24.2-x86_64.iso](https://download.plop.at/ploplinux/24.2/live/ploplinux-24.2-x86_64.iso) | yes | [no](../config/ploplinux) | no | - |
 | [Rocky Linux](https://rockylinux.org) | [Rocky-9.3-x86_64-boot.iso](https://download.rockylinux.org/pub/rocky/9/isos/x86_64/Rocky-9.3-x86_64-boot.iso) | yes | [no](../config/rocky) | yes | Rocky |
 |  | [Rocky-9.3-x86_64-minimal.iso](https://download.rockylinux.org/pub/rocky/9/isos/x86_64/Rocky-9.3-x86_64-minimal.iso) | yes | [no](../config/rocky) | yes | Rocky |
-| [Slax](https://www.slax.org) | [slax-64bit-debian-12.2.0.iso](https://ftp.sh.cvut.cz/slax/Slax-12.x/slax-64bit-debian-12.2.0.iso) | no | [no](../config/slax) | no |  |
-|  | [slax-64bit-slackware-15.0.4.iso](https://ftp.sh.cvut.cz/slax/Slax-15.x/slax-64bit-slackware-15.0.4.iso) | no | [no](../config/slax) | no |  |
+| [Slax](https://www.slax.org) | [slax-64bit-debian-12.2.0.iso](https://ftp.sh.cvut.cz/slax/Slax-12.x/slax-64bit-debian-12.2.0.iso) | no | [no](../config/slax) | no | - |
+|  | [slax-64bit-slackware-15.0.4.iso](https://ftp.sh.cvut.cz/slax/Slax-15.x/slax-64bit-slackware-15.0.4.iso) | no | [no](../config/slax) | no | - |
 | [SparkyLinux](https://sparkylinux.org) | [sparkylinux-7.3-x86_64-lxqt.iso](https://downloads.sourceforge.net/sparkylinux/sparkylinux-7.3-x86_64-lxqt.iso) | no | yes | yes | Debian |
 | [Tails](https://tails.net) | [tails-amd64-6.0.iso](https://download.tails.net/tails/stable/tails-amd64-6.0/tails-amd64-6.0.iso) | no | [no](../config/tails) | yes | Debian |
 | [TUXEDO OS](https://os.tuxedocomputers.com) | [TUXEDO-OS-2-202402220947.iso](https://os.tuxedocomputers.com/TUXEDO-OS-2-202402220947.iso) | yes | yes | yes | TUXEDO |
