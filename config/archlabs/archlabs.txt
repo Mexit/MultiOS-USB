@@ -1,6 +1,0 @@
-# ArchLabs Linux
-# https://archlabslinux.com
-
-
-# Tested images:					Boot from exFAT:	Full loopback support:		Secure boot support:
-archlabs-2021.05.02-x86_64.iso				yes			no				no
