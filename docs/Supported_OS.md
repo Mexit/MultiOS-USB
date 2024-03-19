@@ -8,6 +8,8 @@
 | [Damn Small Linux](https://damnsmalllinux.org) | [dsl-2024.rc1.iso](https://damnsmalllinux.org/download/dsl-2024.rc1.iso) | yes | [no](../config/damnsmalllinux) | no | - |
 | [Debian](https://www.debian.org) | [debian-live-12.5.0-amd64-standard.iso](https://cdimage.debian.org/debian-cd/current-live/amd64/iso-hybrid/debian-live-12.5.0-amd64-standard.iso) | no | yes | yes | Debian |
 |  | [mini.iso](https://cdimage.debian.org/debian/dists/stable/main/installer-amd64/current/images/netboot/mini.iso) | no | [no](../config/debian) | yes | Debian |
+| [Devuan](https://www.devuan.org) | devuan_daedalus_5.0.0_amd64_desktop-live.iso | no | [no](../config/devuan) | yes | Debian |
+|  | devuan_daedalus_5.0.0_amd64_minimal-live.iso | no | [no](../config/devuan) | yes | Debian |
 | [Dr.Parted Live](https://dr-parted-live.sourceforge.io) | [Dr.Parted-Live24.03.1-amd64.iso](https://sourceforge.net/projects/dr-parted-live/files/Download/Dr.Parted-Live24.03.1-amd64.iso) | no | no | yes | Debian |
 | [EuroLinux](https://euro-linux.com) | [ELD-9.3-x86_64-20240223-eld-live.iso](https://dn.euro-linux.com/ELD-9.3-x86_64-20240223-eld-live.iso) | yes | [no](../config/euroLinux) | yes | RedHat |
 |  | [EL-9.3-x86_64-20231113-minimal.iso](https://dn.euro-linux.com/EL-9.3-x86_64-20231113-minimal.iso) | yes | [no](../config/euroLinux) | no | - |
