@@ -48,6 +48,10 @@ Below is just a list of tested and working systems. The actual number of support
 |  | [Rocky-9.3-x86_64-minimal.iso](https://download.rockylinux.org/pub/rocky/9/isos/x86_64/Rocky-9.3-x86_64-minimal.iso) | yes | [no](../config/rocky) | yes | Rocky |
 | [Slax](https://www.slax.org) | [slax-64bit-debian-12.2.0.iso](https://ftp.sh.cvut.cz/slax/Slax-12.x/slax-64bit-debian-12.2.0.iso) | no | [no](../config/slax) | no | - |
 |  | [slax-64bit-slackware-15.0.4.iso](https://ftp.sh.cvut.cz/slax/Slax-15.x/slax-64bit-slackware-15.0.4.iso) | no | [no](../config/slax) | no | - |
+| [Solus](https://getsol.us) | [Solus-4.5-Budgie.iso](https://downloads.getsol.us/isos/4.5/Solus-4.5-Budgie.iso) | yes | [no](../config/solus) | yes | Solus |
+|  | [Solus-4.5-GNOME.iso](https://downloads.getsol.us/isos/4.5/Solus-4.5-GNOME.iso) | yes | [no](../config/solus) | yes | Solus |
+|  | [Solus-4.5-Plasma.iso](https://downloads.getsol.us/isos/4.5/Solus-4.5-Plasma.iso) | yes | [no](../config/solus) | yes | Solus |
+|  | [Solus-4.5-XFCE-Beta.iso](https://downloads.getsol.us/isos/4.5/Solus-4.5-XFCE-Beta.iso) | yes | [no](../config/solus) | yes | Solus |
 | [SparkyLinux](https://sparkylinux.org) | [sparkylinux-7.3-x86_64-lxqt.iso](https://downloads.sourceforge.net/sparkylinux/sparkylinux-7.3-x86_64-lxqt.iso) | no | yes | yes | Debian |
 | [Tails](https://tails.net) | [tails-amd64-6.0.iso](https://download.tails.net/tails/stable/tails-amd64-6.0/tails-amd64-6.0.iso) | no | [no](../config/tails) | yes | Debian |
 | [TUXEDO OS](https://os.tuxedocomputers.com) | [TUXEDO-OS-2-202402220947.iso](https://os.tuxedocomputers.com/TUXEDO-OS-2-202402220947.iso) | yes | yes | yes | TUXEDO |
