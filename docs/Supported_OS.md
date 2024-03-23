@@ -44,6 +44,7 @@ Below is just a list of tested and working systems. The actual number of support
 | [Oracle Linux](https://www.oracle.com/linux) | [OracleLinux-R9-U3-x86_64-boot.iso](https://yum.oracle.com/ISOS/OracleLinux/OL9/u3/x86_64/OracleLinux-R9-U3-x86_64-boot.iso) | yes | [no](../config/oracleLinux) | yes | Oracle |
 | [peppermintOS](https://peppermintos.com) | [PeppermintOS-Debian-64.iso](https://sourceforge.net/projects/peppermintos/files/isos/XFCE/PeppermintOS-Debian-64.iso) | no | yes | yes | Debian |
 | [Plop Linux](https://www.plop.at/en/ploplinux/index.html) | [ploplinux-24.2-x86_64.iso](https://download.plop.at/ploplinux/24.2/live/ploplinux-24.2-x86_64.iso) | yes | [no](../config/ploplinux) | no | - |
+| [Qubes OS](https://www.qubes-os.org) | [Qubes-R4.2.1-rc1-x86_64.iso](https://ftp.qubes-os.org/iso/Qubes-R4.2.1-rc1-x86_64.iso) | yes | [no](../config/qubes-os) | no | - |
 | [Rocky Linux](https://rockylinux.org) | [Rocky-9.3-x86_64-boot.iso](https://download.rockylinux.org/pub/rocky/9/isos/x86_64/Rocky-9.3-x86_64-boot.iso) | yes | [no](../config/rocky) | yes | Rocky |
 |  | [Rocky-9.3-x86_64-minimal.iso](https://download.rockylinux.org/pub/rocky/9/isos/x86_64/Rocky-9.3-x86_64-minimal.iso) | yes | [no](../config/rocky) | yes | Rocky |
 | [Slax](https://www.slax.org) | [slax-64bit-debian-12.2.0.iso](https://ftp.sh.cvut.cz/slax/Slax-12.x/slax-64bit-debian-12.2.0.iso) | no | [no](../config/slax) | no | - |
