@@ -7,6 +7,7 @@
 #
 
 set -eo pipefail
+cd "$(dirname "$(readlink -f "$0")")"
 
 log_file="install.log"
 echo -e "Arguments: $@\n" > $log_file
