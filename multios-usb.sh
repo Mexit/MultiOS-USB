@@ -7,17 +7,18 @@
 #
 
 set -eo pipefail
-cd "$(dirname "$(readlink -f "$0")")"
-
-log_file="install.log"
-echo -e "Arguments: $@\n" > $log_file
 
 # Defaults
 scriptname=$(basename "$0")
 fs_type="fat32"
 data_size=""
+efi_size="25M"
 data_label="MultiOS-USB"
 updateOnly="no"
+log_file="install.log"
+
+cd "$(dirname "$(readlink -f "$0")")"
+echo -e "Arguments: $@\n" > $log_file
 
 showUsage() {
 	cat <<- EOF
@@ -259,14 +260,14 @@ umount -f "${devp}"* &> /dev/null || true
 
 echo "Creating partitions..."
 sgdisk -Z "$dev" >> $log_file
-sgdisk -n 1::+50M -t 1:0700 -c 1:"EFI System" -A 1:set:0 -A 1:set:62 -A 1:set:63 "$dev" >> $log_file
+sgdisk -n 1::"+${efi_size}" -t 1:0700 -c 1:"EFI System" -A 1:set:0 -A 1:set:62 -A 1:set:63 "$dev" >> $log_file
 sgdisk -n 2::"${data_size}" -t 2:"$part_code" -c 2:"$part_name" "$dev" >> $log_file
 
 wipefs -afq "${devp}1"
 wipefs -afq "${devp}2"
 
 echo "Formating partitions..."
-mkfs.fat -F 32 -n "MultiOS-EFI" "${devp}1" &>> $log_file
+mkfs.fat -F 16 -n "MultiOS-EFI" "${devp}1" &>> $log_file
 
 case "$fs_type" in
 	ext2|ext3|ext4)
