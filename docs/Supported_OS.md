@@ -34,6 +34,7 @@ Below is just a list of tested and working systems. The actual number of support
 | [GParted Live](https://gparted.org/livecd.php) | [gparted-live-1.6.0-1-amd64.iso](https://downloads.sourceforge.net/gparted/gparted-live-1.6.0-1-amd64.iso) | no | [no](../config/gparted) | yes | Debian |
 | [Grml](https://www.grml.org) | [grml64-full_2024.02.iso](https://download.grml.org/grml64-full_2024.02.iso) | no | yes | yes | Debian |
 |  | [grml64-small_2024.02.iso](https://download.grml.org/grml64-small_2024.02.iso) | no | yes | yes | Debian |
+| [Kaspersky Rescue Disk](https://support.kaspersky.com/krd18) | [krd.iso](https://rescuedisk.s.kaspersky-labs.com/updatable/2018/krd.iso) | no | [no](../config/kaspersky) | no | - |
 | [KDE neon](https://neon.kde.org) | [neon-user-20240229-0716.iso](https://files.kde.org/neon/images/user/20240229-0716/neon-user-20240229-0716.iso) | no | [no](../config/KDE_neon) | yes | Canonical |
 | [Linux Lite](https://www.linuxliteos.com) | [linux-lite-6.6-64bit.iso](https://mirror.alpix.eu/linuxliteos/isos/6.6/linux-lite-6.6-64bit.iso) | no | yes | yes | Canonical |
 | [Linux Mint](https://linuxmint.com) | [linuxmint-21.3-cinnamon-64bit-edge.iso](https://mirror.rackspace.com/linuxmint/iso/stable/21.3/linuxmint-21.3-cinnamon-64bit-edge.iso) | no | yes | yes | Canonical |
