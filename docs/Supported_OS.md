@@ -57,6 +57,7 @@ Below is just a list of tested and working systems. The actual number of support
 | [SparkyLinux](https://sparkylinux.org) | [sparkylinux-7.3-x86_64-lxqt.iso](https://downloads.sourceforge.net/sparkylinux/sparkylinux-7.3-x86_64-lxqt.iso) | no | yes | yes | Debian |
 | [Tails](https://tails.net) | [tails-amd64-6.0.iso](https://download.tails.net/tails/stable/tails-amd64-6.0/tails-amd64-6.0.iso) | no | [no](../config/tails) | yes | Debian |
 | [TUXEDO OS](https://os.tuxedocomputers.com) | [TUXEDO-OS-2-202402220947.iso](https://os.tuxedocomputers.com/TUXEDO-OS-2-202402220947.iso) | yes | yes | yes | TUXEDO |
+| [Ubuntu](https://ubuntu.com) | [ubuntu-23.10.1-desktop-amd64.iso](https://releases.ubuntu.com/23.10.1/ubuntu-23.10.1-desktop-amd64.iso) | no | yes | yes | Canonical |
 | [Void Linux](https://voidlinux.org) | [void-live-x86_64-20240314-xfce.iso](https://repo-default.voidlinux.org/live/current/void-live-x86_64-20240314-xfce.iso) | yes | [no](../config/void-linux) | no | - |
 |  | [void-live-x86_64-20240314-base.iso](https://repo-default.voidlinux.org/live/current/void-live-x86_64-20240314-base.iso) | yes | [no](../config/void-linux) | no | - |
 | [VOYAGER](https://voyagerlive.org) | [Voyager-12.5-debian-amd64.iso](https://downloads.sourceforge.net/voyagerlive/Voyager-12.5-debian-amd64.iso) | no | yes | yes | Debian |
