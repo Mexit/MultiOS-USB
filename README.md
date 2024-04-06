@@ -13,7 +13,7 @@ One device with multiple ISO files. Easy to use: install once, add ISO files and
 - Boot Linux from .iso files
 - Boot Windows 10/11 installer from ISO (currently, SB must be disabled during installation)
 - Boot Linux installer from network (experimental)
-- Boot locally installed systems
+- Boot locally installed systems: Linux, Windows
 - Automatically update configuration files
 - Without background services
 - exFAT file system support
