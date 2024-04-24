@@ -30,6 +30,7 @@ Below is just a list of tested and working systems. The actual number of support
 |  | [Fedora-Kinoite-ostree-x86_64-39-1.5.iso](https://download.fedoraproject.org/pub/fedora/linux/releases/39/Kinoite/x86_64/iso/Fedora-Kinoite-ostree-x86_64-39-1.5.iso) | yes | [no](../config/fedora) | yes | Fedora |
 |  | [Fedora-Sericea-ostree-x86_64-39-1.5-respin2.iso](https://download.fedoraproject.org/pub/alt/releases/39/respins/Sericea/x86_64/Fedora-Sericea-ostree-x86_64-39-1.5-respin2.iso) | yes | [no](../config/fedora) | yes | Fedora |
 |  | [Fedora-Onyx-ostree-x86_64-39-1.5-respin.iso](https://download.fedoraproject.org/pub/alt/releases/39/respins/Onyx/x86_64/Fedora-Onyx-ostree-x86_64-39-1.5-respin.iso) | yes | [no](../config/fedora) | yes | Fedora |
+|  | [Fedora-Workstation-Live-x86_64-40-1.14.iso](https://download.fedoraproject.org/pub/fedora/linux/releases/40/Workstation/x86_64/iso/Fedora-Workstation-Live-x86_64-40-1.14.iso) | yes | [no](../config/fedora) | yes | Fedora |
 | [Finnix](https://www.finnix.org) | [finnix-125.iso](https://www.finnix.org/releases/125/finnix-125.iso) | no | yes | yes | Debian |
 | [GParted Live](https://gparted.org/livecd.php) | [gparted-live-1.6.0-1-amd64.iso](https://downloads.sourceforge.net/gparted/gparted-live-1.6.0-1-amd64.iso) | no | [no](../config/gparted) | yes | Debian |
 | [Grml](https://www.grml.org) | [grml64-full_2024.02.iso](https://download.grml.org/grml64-full_2024.02.iso) | no | yes | yes | Debian |
