@@ -13,6 +13,7 @@ Below is just a list of tested and working systems. The actual number of support
 | [Damn Small Linux](https://damnsmalllinux.org) | [dsl-2024.rc1.iso](https://damnsmalllinux.org/download/dsl-2024.rc1.iso) | yes | [no](../config/damnsmalllinux) | no | - |
 | [Debian](https://www.debian.org) | [debian-live-12.5.0-amd64-standard.iso](https://cdimage.debian.org/debian-cd/current-live/amd64/iso-hybrid/debian-live-12.5.0-amd64-standard.iso) | no | yes | yes | Debian |
 |  | [mini.iso](https://cdimage.debian.org/debian/dists/stable/main/installer-amd64/current/images/netboot/mini.iso) | no | [no](../config/debian) | yes | Debian |
+| [Debian (trixie testing)](https://cdimage.debian.org/cdimage/weekly-live-builds/amd64/iso-hybrid/) | [debian-live-testing-amd64-xfce.iso](https://cdimage.debian.org/cdimage/weekly-live-builds/amd64/iso-hybrid/debian-live-testing-amd64-xfce.iso) | yes | yes | yes | Debian |
 | [Devuan](https://www.devuan.org) | devuan_daedalus_5.0.0_amd64_desktop-live.iso | no | [no](../config/devuan) | yes | Debian |
 |  | devuan_daedalus_5.0.0_amd64_minimal-live.iso | no | [no](../config/devuan) | yes | Debian |
 | [Dr.Parted Live](https://dr-parted-live.sourceforge.io) | [Dr.Parted-Live24.03.1-amd64.iso](https://sourceforge.net/projects/dr-parted-live/files/Download/Dr.Parted-Live24.03.1-amd64.iso) | no | no | yes | Debian |
