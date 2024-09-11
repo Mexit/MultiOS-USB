@@ -40,6 +40,7 @@ Below is just a list of tested and working systems. The actual number of support
 | [Grml](https://www.grml.org) | [grml64-full_2024.02.iso](https://download.grml.org/grml64-full_2024.02.iso) | no | yes | yes | Debian |
 |  | [grml64-small_2024.02.iso](https://download.grml.org/grml64-small_2024.02.iso) | no | yes | yes | Debian |
 | [Hiren's BootCD PE](https://www.hirensbootcd.org/) | [HBCD_PE_x64.iso](https://www.hirensbootcd.org/files/HBCD_PE_x64.iso) | yes | [no](../config/hbcd) | no | Microsoft |
+| [Kali Linux](https://www.kali.org/) | [kali-linux-2024.3-live-amd64.iso](https://cdimage.kali.org/kali-2024.3/kali-linux-2024.3-live-amd64.iso) | yes | yes | no | - |
 | [Kaspersky Rescue Disk](https://support.kaspersky.com/krd18) | [krd.iso](https://rescuedisk.s.kaspersky-labs.com/updatable/2018/krd.iso) | no | [no](../config/kaspersky) | no | - |
 | [KDE neon](https://neon.kde.org) | [neon-user-20240229-0716.iso](https://files.kde.org/neon/images/user/20240229-0716/neon-user-20240229-0716.iso) | no | [no](../config/KDE_neon) | yes | Canonical |
 | [Kubuntu](https://kubuntu.org) | [kubuntu-24.04-desktop-amd64.iso](https://cdimage.ubuntu.com/kubuntu/releases/24.04/release/kubuntu-24.04-desktop-amd64.iso) | no | yes | yes | Canonical |
