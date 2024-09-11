@@ -1,9 +1,9 @@
 ## List of tested ISO images (in the process of updating)
-Note: MultiOS-USB automatically reads the configuration and allows you to run your distribution from all compatible ISO images (GRUB loopback support = yes). This configuration is located in the ISO image in the /boot/grub/loopback.cfg file.  
+Note: MultiOS-USB automatically reads the configuration and allows you to run your distribution from all compatible ISO images (loopback.cfg support = yes). This configuration is located in the ISO image in the /boot/grub/loopback.cfg file.
 
 Below is just a list of tested and working systems. The actual number of supported systems is much larger. I can't test them all.
 
-| Distro | ISO | Boot from exFAT | GRUB loopback support | Secure Boot support | SB from |
+| Distro | ISO | Boot from exFAT | loopback.cfg support | Secure Boot support | SB from |
 |---|---|:---:|:---:|:---:|---|
 | [Arch Linux](https://archlinux.org) | [archlinux-2024.03.01-x86_64.iso](https://archlinux.mirrors.ovh.net/archlinux/iso/latest/archlinux-2024.03.01-x86_64.iso) | yes | yes | no | - |
 | [ArcoLinux](https://www.arcolinux.info) | [arcolinuxl-v24.03.01-x86_64.iso](https://downloads.sourceforge.net/arcolinux/arcolinuxl-v24.03.01-x86_64.iso) | yes | yes | no | - |
@@ -79,4 +79,4 @@ Below is just a list of tested and working systems. The actual number of support
 
 Where:  
 **Boot from exFAT** - Tells whether the OS supports booting from exFAT  
-**GRUB loopback support** - Tells whether the ISO supports [GRUB Loopback](https://www.gnu.org/software/grub/manual/grub/html_node/Loopback-booting.html)  
+**loopback.cfg support** - Tells whether the ISO supports booting from a [loopback.cfg](https://www.supergrubdisk.org/wiki/Loopback.cfg) file  

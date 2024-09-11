@@ -25,7 +25,7 @@ One device with multiple ISO files. Easy to use: install once, add ISO files and
 
 ## Tested ISOs
 
-List of tested ISO images: [new](docs/Supported_OS.md), [(old)](docs/exfat_loopback_support.md)
+A list of tested ISO images can be found [here](docs/Supported_OS.md)
 
 ## Installation:
 
