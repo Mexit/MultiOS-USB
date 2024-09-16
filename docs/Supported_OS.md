@@ -48,6 +48,8 @@ Below is just a list of tested and working systems. The actual number of support
 | [Linux Mint](https://linuxmint.com) | [linuxmint-21.3-cinnamon-64bit-edge.iso](https://mirror.rackspace.com/linuxmint/iso/stable/21.3/linuxmint-21.3-cinnamon-64bit-edge.iso) | no | yes | yes | Canonical |
 | [Mabox Linux](https://maboxlinux.org) | [mabox-linux-24.03-Istredd-240313-linux66.iso](https://sourceforge.net/projects/mabox-linux/files/24.03/mabox-linux-24.03-Istredd-240313-linux66.iso) | yes | yes | no | - |
 | [Manjaro](https://manjaro.org) | [manjaro-xfce-23.1.3-240113-linux66.iso](https://download.manjaro.org/xfce/23.1.3/manjaro-xfce-23.1.3-240113-linux66.iso) | yes | yes | no | - |
+| [MX Linux](https://mxlinux.org) | [MX-23.4_x64.iso](https://downloads.sourceforge.net/mx-linux/MX-23.4_x64.iso) | yes | yes | yes | Debian |
+|  | [MX-23.4_KDE_x64.iso](https://downloads.sourceforge.net/mx-linux/MX-23.4_KDE_x64.iso) | yes | yes | yes | Debian |
 | [NixOS](https://nixos.org) | [nixos-gnome-23.11.5353.878ef7d9721b-x86_64-linux.iso](https://releases.nixos.org/nixos/23.11/nixos-23.11.5353.878ef7d9721b/nixos-gnome-23.11.5353.878ef7d9721b-x86_64-linux.iso) | no | yes | no | - |
 | [openSUSE](https://www.opensuse.org) | [openSUSE-Leap-15.5-GNOME-Live-x86_64-Build13.15-Media.iso](https://download.opensuse.org/distribution/leap/15.5/appliances/iso/openSUSE-Leap-15.5-GNOME-Live-x86_64-Build13.15-Media.iso) | yes | yes | yes | SLES |
 | [Oracle Linux](https://www.oracle.com/linux) | [OracleLinux-R9-U3-x86_64-boot.iso](https://yum.oracle.com/ISOS/OracleLinux/OL9/u3/x86_64/OracleLinux-R9-U3-x86_64-boot.iso) | yes | [no](../config/oracleLinux) | yes | Oracle |
