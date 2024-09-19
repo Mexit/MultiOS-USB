@@ -1,0 +1,21 @@
+UEFI: Secure Boot must be disabled during installation:
+https://git.savannah.gnu.org/cgit/grub.git/commit/?id=6425c12cd77ad51ad24be84c092aefacf0875089
+After the installation, enable Secure Boot.
+
+Windows ISO images are larger than 4GB, please use exFAT instead of fat32 when installing MultiOS-USB.
+
+If you want to install Windows 11 on unsupported hardware, you can manually apply the attached registry
+entries before starting the installation. On the welcome screen (language selection), press Shift+F10.
+In the command prompt, type:
+
+	regedit c:\MultiOS-USB\config\windows\windows11-bypass.reg
+
+and confirm adding the file to the registry (if necessary, change the drive letter from c: to d:, e:, etc.).
+Return to the welcome screen and continue with the installation.
+
+Instead of the regedit command, you can launch
+
+	notepad
+
+and add the reg file to the registry from the graphical interface.
+Remember to enable showing all files in Notepad!
