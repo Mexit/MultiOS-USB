@@ -1,4 +1,4 @@
-# MultiOS-USB
+# [MultiOS-USB](https://github.com/Mexit/MultiOS-USB)
 
 One device with multiple ISO files. Easy to use: install once, add ISO files and boot computers from it
 
@@ -77,7 +77,7 @@ If you want to add a certificate later, you can do it by selecting in the Main M
 ## Update MultiOS-USB:
 
 You can add support for new operating systems. No need to reinstall.  
-[Download](https://github.com/Mexit/MultiOS-USB/archive/master.zip) and unpack MultiOS-USB repository
+Download [zip](https://github.com/Mexit/MultiOS-USB/archive/refs/heads/master.zip) or [tar.gz](https://github.com/Mexit/MultiOS-USB/archive/refs/heads/master.tar.gz) archive and unpack MultiOS-USB repository
 
 ##### Automatic update
 To update configuration files, simply type the following command, replacing `/dev/sdX` with your chosen device path.
