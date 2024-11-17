@@ -140,7 +140,7 @@ if [[ $updateOnly == yes ]]; then
 				true
 				;;
 			*)
-				echo -e '\nBad answer. Exiting...'
+				echo -e '\nAnswer not "YeS". Exiting...'
 				exit 1
 				;;
 		esac
@@ -251,7 +251,7 @@ case $yN in
 		true
 		;;
 	*)
-		echo 'Bad answer. Exiting...'
+		echo 'Answer not "YeS". Exiting...'
 		exit 1
 		;;
 esac
