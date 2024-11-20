@@ -7,9 +7,11 @@ on:
 
 jobs:
   build_image:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Set version
         run: echo "ver=$(git describe --tags --exact-match)" >> "$GITHUB_ENV"
@@ -38,11 +40,15 @@ jobs:
       - name: Generate SHA256SUM
         run: sha256sum MultiOS-USB_windows_image_*.zip MultiOS-USB_linux_*.tar.gz > sha256sums.txt
 
-      - uses: "marvinpinto/action-automatic-releases@latest"
-        with:
-          repo_token: "${{ secrets.GITHUB_TOKEN }}"
-          prerelease: false
-          files: |
-            MultiOS-USB_windows_image_*.zip
-            MultiOS-USB_linux_*.tar.gz
-            sha256sums.txt
+      - name: Release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          echo -e "Changelog\n---------" > changelog.txt
+          git log --reverse --pretty=format:"%h %s" $(git describe --tags --abbrev=0 HEAD^)..HEAD >> changelog.txt
+
+          gh release create ${{ github.ref_name }} \
+            --verify-tag \
+            --latest \
+            --notes-file changelog.txt \
+            MultiOS-USB_windows_image_*.zip MultiOS-USB_linux_*.tar.gz sha256sums.txt
