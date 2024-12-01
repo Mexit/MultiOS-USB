@@ -88,3 +88,7 @@ $ ./multios-usb.sh -u /dev/sdX
 ##### Manual update
 - Remove all files and directories on your USB in `/MultiOS-USB/config/`
 - Copy the downloaded files and directories from `config` to the above directory.
+
+## Project URLs
+- https://gitlab.com/MultiOS-USB - full MultiOS-USB source code
+- https://github.com/Mexit/MultiOS-USB - MultiOS-USB releases
