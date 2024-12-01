@@ -16,7 +16,7 @@ Below is just a list of tested and working systems. The actual number of support
 | [Debian (trixie testing)](https://cdimage.debian.org/cdimage/weekly-live-builds/amd64/iso-hybrid/) | [debian-live-testing-amd64-xfce.iso](https://cdimage.debian.org/cdimage/weekly-live-builds/amd64/iso-hybrid/debian-live-testing-amd64-xfce.iso) | yes | yes | yes | Debian |
 | [Devuan](https://www.devuan.org) | devuan_daedalus_5.0.0_amd64_desktop-live.iso | no | [no](../config/devuan) | yes | Debian |
 |  | devuan_daedalus_5.0.0_amd64_minimal-live.iso | no | [no](../config/devuan) | yes | Debian |
-| [Dr.Parted Live](https://dr-parted-live.sourceforge.io) | [Dr.Parted-Live24.03.1-amd64.iso](https://sourceforge.net/projects/dr-parted-live/files/Download/Dr.Parted-Live24.03.1-amd64.iso) | no | no | yes | Debian |
+| [Dr.Parted Live](https://dr-parted-live.sourceforge.io) | [Dr.Parted-Live24.03.1-amd64.iso](https://sourceforge.net/projects/dr-parted-live/files/Download/Dr.Parted-Live24.03.1-amd64.iso) | no | [no](../config/dr-parted-live) | yes | Debian |
 | [EndeavourOS](https://endeavouros.com) | [EndeavourOS_Gemini-2024.04.20.iso](https://mirror.alpix.eu/endeavouros/iso/EndeavourOS_Gemini-2024.04.20.iso) | yes | [no](../config/endeavourOS) | no | - |
 | [EuroLinux](https://euro-linux.com) | [ELD-9.3-x86_64-20240223-eld-live.iso](https://dn.euro-linux.com/ELD-9.3-x86_64-20240223-eld-live.iso) | yes | [no](../config/euroLinux) | yes | RedHat |
 |  | [EL-9.3-x86_64-20231113-minimal.iso](https://dn.euro-linux.com/EL-9.3-x86_64-20231113-minimal.iso) | yes | [no](../config/euroLinux) | no | - |
