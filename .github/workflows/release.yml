@@ -45,7 +45,7 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           echo -e "Changelog\n---------" > changelog.txt
-          git log --reverse --pretty=format:"%h %s" $(git describe --tags --abbrev=0 HEAD^)..HEAD >> changelog.txt
+          git log --reverse --pretty=format:"- %h: %s" $(git describe --tags --abbrev=0 HEAD^)..HEAD | egrep -v 'fix:|minor:|typo:' >> changelog.txt
 
           gh release create ${{ github.ref_name }} \
             --verify-tag \
