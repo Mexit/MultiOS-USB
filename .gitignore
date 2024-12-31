@@ -1,2 +1,3 @@
 config_priv/*
 !config_priv/README.md
+!config_priv/lmde
