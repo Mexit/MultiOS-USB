@@ -1,6 +1,6 @@
 # [MultiOS-USB](https://github.com/Mexit/MultiOS-USB)
 
-One device with multiple ISO files. Easy to use: install once, add ISO files and boot computers from it
+One device with multiple ISO/WIM files. Easy to use: install once, add ISO/WIM files and boot computers from it
 
 ![Main menu](docs/main_menu.png)
 
@@ -10,7 +10,8 @@ One device with multiple ISO files. Easy to use: install once, add ISO files and
 - Secure Boot support (boot, manage uefi keys)
 - Load UEFI drivers
 - Launch .efi executables and other boot loaders
-- Boot Linux from .iso files
+- Boot Linux from .iso images
+- Boot [WinPE](https://en.wikipedia.org/wiki/Windows_Preinstallation_Environment) from bootable .wim images
 - Boot Windows 10/11 installer from ISO (currently, SB must be disabled during installation)
 - Boot Linux installer from network (experimental)
 - Boot locally installed systems: Linux, Windows
