@@ -13,11 +13,8 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Set version
-        run: echo "ver=$(git describe --tags --exact-match)" >> "$GITHUB_ENV"
-
       - name: Linux Release
-        run: git archive --prefix=MultiOS-USB_$ver/ -o MultiOS-USB_linux_$ver.tar.gz $ver
+        run: git archive --prefix=MultiOS-USB_${{ github.ref_name }}/ -o MultiOS-USB_linux_${{ github.ref_name }}.tar.gz ${{ github.ref_name }}
 
       - name: Windows Release
         run: |
@@ -35,7 +32,7 @@ jobs:
           sudo dd if=$dev of=$imageName bs=1M count=$imageSize
           sudo sgdisk -d 2 $imageName
           mv docs/README_image README.txt
-          sudo zip MultiOS-USB_windows_image_$ver.zip $imageName files.zip README.txt
+          sudo zip MultiOS-USB_windows_image_${{ github.ref_name }}.zip $imageName files.zip README.txt
 
       - name: Generate SHA256SUM
         run: sha256sum MultiOS-USB_windows_image_*.zip MultiOS-USB_linux_*.tar.gz > sha256sums.txt
@@ -44,10 +41,13 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          echo -e "Changelog\n---------" > changelog.txt
+          echo "### Main changes:" > changelog.txt
           git log --reverse --pretty=format:"- %h: %s" $(git describe --tags --abbrev=0 HEAD^)..HEAD | egrep -v 'fix:|minor:|typo:' >> changelog.txt
+          commits="$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/compare/$(git tag --sort=-v:refname | sed -n 2p)...$(git tag --sort=-v:refname | sed -n 1p)"
+          echo -e "<br>\n\n**Full Changelog**: $commits" >> changelog.txt
 
           gh release create ${{ github.ref_name }} \
+            --title ${{ github.ref_name }} \
             --verify-tag \
             --latest \
             --notes-file changelog.txt \
