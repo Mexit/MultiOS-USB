@@ -40,6 +40,7 @@ Below is just a list of tested and working systems. The actual number of support
 |  | [admincd-amd64-20241124T163746Z.iso](https://distfiles.gentoo.org/releases/amd64/autobuilds/20241124T163746Z/admincd-amd64-20241124T163746Z.iso) | yes | [no](../config/gentoo) | no | - |
 |  | [livegui-amd64-20241124T163746Z.iso](https://distfiles.gentoo.org/releases/amd64/autobuilds/20241124T163746Z/livegui-amd64-20241124T163746Z.iso) | yes | [no](../config/gentoo) | no | - |
 | [GParted Live](https://gparted.org/livecd.php) | [gparted-live-1.6.0-1-amd64.iso](https://downloads.sourceforge.net/gparted/gparted-live-1.6.0-1-amd64.iso) | no | [no](../config/gparted) | yes | Debian |
+|  | [gparted-live-1.6.0-10-amd64.iso](https://downloads.sourceforge.net/gparted/gparted-live-1.6.0-10-amd64.iso) | yes | [no](../config/gparted) | yes | Debian |
 | [Grml](https://www.grml.org) | [grml64-full_2024.02.iso](https://download.grml.org/grml64-full_2024.02.iso) | no | yes | yes | Debian |
 |  | [grml64-small_2024.02.iso](https://download.grml.org/grml64-small_2024.02.iso) | no | yes | yes | Debian |
 | [Hiren's BootCD PE](https://www.hirensbootcd.org/) | [HBCD_PE_x64.iso](https://www.hirensbootcd.org/files/HBCD_PE_x64.iso) | yes | [no](../config/hbcd) | no | Microsoft |
