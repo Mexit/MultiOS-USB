@@ -7,7 +7,7 @@ for isofile in $iso_dir/$iso_pattern; do
 	if [ -e "$isofile" ]; then
 		regexp --set=isoname "$iso_dir/(.*)" "$isofile"
 
-		submenu "$isoname ->" "$isofile" {
+		submenu "$isoname [config_priv] ->" "$isofile" {
 			iso_path="$2"
 			LOOPBACK "$iso_path"
 			isocfg="findiso=$iso_path"

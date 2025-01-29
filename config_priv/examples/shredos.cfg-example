@@ -1,0 +1,19 @@
+# shredos
+# https://github.com/PartialVolume/shredos.x86_64
+
+iso_pattern="shredos-*_x86-64_*.iso"
+
+for isofile in $iso_dir/$iso_pattern; do
+	if [ -e "$isofile" ]; then
+		regexp --set=isoname "$iso_dir/(.*)" "$isofile"
+
+		submenu "$isoname [config_priv] ->" "$isofile" {
+			LOOPBACK "$2"
+			root=(loop)
+
+			menuentry "ShredOS - custom config [edit to add more options]" {
+				linux /boot/bzImage console=tty3 loglevel=3 # add here more options - see homepage
+			}
+		}
+	fi
+done

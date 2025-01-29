@@ -7,5 +7,5 @@ The updated configuration will be detected automatically.
 Once you have created a new configuration or updated an old one, you can upload the changes to the repository and share the code here:
 https://github.com/Mexit/MultiOS-USB/issues
 
-Example configuration:  
-To use the example configuration file remove `-example` from `/MultiOS-USB/config_priv/lmde/lmde.cfg-example`
+To use the example configuration file remove `-example` from `/MultiOS-USB/config_priv/example/lmde.cfg-example`  
+You can also create new directories to organize your configuration files.
