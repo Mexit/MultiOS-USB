@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-#  MultiOS-USB © 2020-2024 MexIT
+#  MultiOS-USB © 2020-2025 MexIT
 #  https://gitlab.com/MultiOS-USB
 #  https://github.com/Mexit/MultiOS-USB
 #  Read LICENSE file for details
