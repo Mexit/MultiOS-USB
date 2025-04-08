@@ -28,11 +28,18 @@ One device with multiple ISO/WIM files. Easy to use: install once, add ISO/WIM f
 
 A list of tested ISO images can be found [here](docs/Supported_OS.md)
 
-## Installation:
+## Installation
+
+**SparkyLinux**
+
+```sh
+sudo apt update
+sudo apt install multios-usb
+```
+
+**From GitHub - Linux console**
 
 Go to [Releases](https://github.com/Mexit/MultiOS-USB/releases), download the latest version and unpack the downloaded archive.
-
-### Linux console
 
 Check and install the required packages (in most cases they should be installed by default):
 - tar, bzip2, xz
@@ -40,17 +47,20 @@ Check and install the required packages (in most cases they should be installed 
 - mkfs.fat, mkfs.exfat, ...
 
 Go to the directory where you extracted the files and run the following at the console
+
 ```sh
 $ ./multios-usb.sh -l
 ```
+
 This command will show you the USB devices available on your system.  
 To install MultiOS-USB, type the following command, replacing `/dev/sdX` with your chosen device path.
 For example:
+
 ```sh
 $ sudo ./multios-usb.sh /dev/sdX
 ```
 
-### Image based installation (experimental)
+**From GitHub - image based installation (experimental)**
 
 Recommended installation method for Windows. Go to [Releases](https://github.com/Mexit/MultiOS-USB/releases) and download the appropriate file.  
 Installation details can be found [here](docs/README_image) and in the downloaded archive.
@@ -82,6 +92,7 @@ Download [zip](https://github.com/Mexit/MultiOS-USB/archive/refs/heads/master.zi
 
 ##### Automatic update
 To update configuration files, simply type the following command, replacing `/dev/sdX` with your chosen device path.
+
 ```sh
 $ ./multios-usb.sh -u /dev/sdX
 ```
