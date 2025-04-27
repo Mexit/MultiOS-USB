@@ -14,7 +14,7 @@ MokManager utility require *.cer files.
 - debian-uefi-ca.cer: Debian & Debian-based distros public key
   https://dsa.debian.org/secure-boot-ca
 
-- fedora-uefi-ca.cer: Fedora public key extracted from a signed *.efi file
+- fedora-uefi-ca-*.cer: Fedora Secure Boot CA
 
 - MicCorKEKCA2011_2011-06-24.cer: Microsoft Corporation KEK CA 2011
 
@@ -27,7 +27,7 @@ MokManager utility require *.cer files.
 - openSUSE-UEFI-CA-Certificate.cer: openSUSE Leap 15.2 & Tumbleweed public key
   https://build.opensuse.org/package/view_file/openSUSE:Factory/shim/openSUSE-UEFI-CA-Certificate.crt
 
-- refind.cer: rEFInd - An EFI boot manager utility 
+- refind.cer: rEFInd - An EFI boot manager utility
   https://sourceforge.net/p/refind/code/ci/master/tree/keys/refind.cer?format=raw
 
 - SLES-UEFI-CA-Certificate.cer: openSUSE Leap 15.3 & SLES public key
