@@ -33,8 +33,15 @@ A list of tested ISO images can be found [here](docs/Supported_OS.md)
 **SparkyLinux**
 
 ```sh
+# Refresh the package list and install MultiOS-USB
 sudo apt update
 sudo apt install multios-usb
+
+# Display available USB devices
+multios-usb -l
+
+# Install to the selected device (replace sdX with your target device)
+sudo multios-usb /dev/sdX
 ```
 
 **From GitHub - Linux console**
@@ -49,7 +56,7 @@ Check and install the required packages (in most cases they should be installed 
 Go to the directory where you extracted the files and run the following at the console
 
 ```sh
-$ ./multios-usb.sh -l
+./multios-usb.sh -l
 ```
 
 This command will show you the USB devices available on your system.  
@@ -57,7 +64,7 @@ To install MultiOS-USB, type the following command, replacing `/dev/sdX` with yo
 For example:
 
 ```sh
-$ sudo ./multios-usb.sh /dev/sdX
+sudo ./multios-usb.sh /dev/sdX
 ```
 
 **From GitHub - image based installation (experimental)**
@@ -94,7 +101,7 @@ Download [zip](https://github.com/Mexit/MultiOS-USB/archive/refs/heads/master.zi
 To update configuration files, simply type the following command, replacing `/dev/sdX` with your chosen device path.
 
 ```sh
-$ ./multios-usb.sh -u /dev/sdX
+./multios-usb.sh -u /dev/sdX
 ```
 
 ##### Manual update
