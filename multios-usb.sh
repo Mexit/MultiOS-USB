@@ -15,10 +15,26 @@ data_size=""
 efi_size="25M"
 data_label="MultiOS-USB"
 updateOnly="no"
-log_file="install.log"
+log_file=$(mktemp)
+
+# shellcheck disable=SC2154
+trap '{
+	status=$?
+	if [ $status -ne 0 ]; then
+		echo -e "\e[1;31m"
+		echo "=================================================================="
+		echo "Installation error!"
+		echo "Below are the details that may be helpful when reporting the issue"
+		echo "=================================================================="
+		echo "Exit code: $status"
+		cat $log_file
+		rm -f $log_file
+		echo -e "==================================================================\e[0m"
+	fi
+}' EXIT
 
 cd "$(dirname "$(readlink -f "$0")")"
-echo -e "Arguments: $@\n" > $log_file
+echo "Arguments: $*" > $log_file
 
 showUsage() {
 	cat <<- EOF
@@ -41,14 +57,14 @@ showUsage() {
 listDevices() {
 	echo "Detected USB devices:"
 	echo -------------------------------------------------------------
-	lsblk -p -d -o NAME,MODEL,SIZE,TRAN | grep 'usb'  | sed 's/usb$//'
+	lsblk -p -d -o NAME,MODEL,SIZE,TRAN | grep 'usb' | sed 's/usb$//' || true
 	echo -------------------------------------------------------------
 }
 
 listAllRwDevices() {
 	echo "Detected writable devices:"
 	echo -------------------------------------------------------------
-	lsblk -p -d -o NAME,MODEL,SIZE,TRAN,RO | grep '0$' | sed 's/0$//'
+	lsblk -p -d -o NAME,MODEL,SIZE,TRAN,RO | grep '0$' | sed 's/0$//' || true
 	echo -------------------------------------------------------------
 }
 
@@ -89,6 +105,7 @@ while [ "$#" -gt 0 ]; do
 				data_size="+$1"
 			else
 				echo "Error! Incorrect partition size. Example: 500M, 5G"
+				exit 1
 			fi
 			;;
 		*)
@@ -141,7 +158,7 @@ if [[ $updateOnly == yes ]]; then
 				;;
 			*)
 				echo -e '\nAnswer not "YeS". Exiting...'
-				exit 1
+				exit 0
 				;;
 		esac
 
@@ -252,19 +269,19 @@ case $yN in
 		;;
 	*)
 		echo 'Answer not "YeS". Exiting...'
-		exit 1
+		exit 0
 		;;
 esac
 
 umount -f "${devp}"* &> /dev/null || true
 
 echo "Creating partitions..."
-sgdisk -Z "$dev" >> $log_file
-sgdisk -n 1::"+${efi_size}" -t 1:0700 -c 1:"EFI System" -A 1:set:0 -A 1:set:62 -A 1:set:63 "$dev" >> $log_file
-sgdisk -n 2::"${data_size}" -t 2:"$part_code" -c 2:"$part_name" "$dev" >> $log_file
+sgdisk -Z "$dev" &>> $log_file
+sgdisk -n 1::"+${efi_size}" -t 1:0700 -c 1:"EFI System" -A 1:set:0 -A 1:set:62 -A 1:set:63 "$dev" &>> $log_file
+sgdisk -n 2::"${data_size}" -t 2:"$part_code" -c 2:"$part_name" "$dev" &>> $log_file
 
-wipefs -afq "${devp}1"
-wipefs -afq "${devp}2"
+wipefs -af "${devp}1" &>> $log_file
+wipefs -af "${devp}2" &>> $log_file
 
 echo "Formating partitions..."
 mkfs.fat -F 16 -n "MultiOS-EFI" "${devp}1" &>> $log_file
@@ -317,6 +334,8 @@ cp -r cert/ $part_efi/EFI/
 
 dd conv=fsync status=none if="$part_efi/grub/i386-pc/boot.img" of="${dev}" bs=1 count=446
 dd conv=fsync status=none if="$part_efi/grub/i386-pc/core.img" of="${dev}" bs=512 count=2014 seek=34
+
+mv "$log_file" $part_data/MultiOS-USB/install.log
 
 sync
 umount $part_efi
