@@ -344,6 +344,7 @@ dd conv=fsync status=none if="$part_efi/grub/i386-pc/boot.img" of="${dev}" bs=1 
 dd conv=fsync status=none if="$part_efi/grub/i386-pc/core.img" of="${dev}" bs=512 count=2014 seek=34
 
 mv "$log_file" $part_data/MultiOS-USB/install.log
+chmod -R o+rw $part_data
 
 sync
 umount $part_efi
