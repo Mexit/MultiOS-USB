@@ -175,7 +175,15 @@ if [[ $updateOnly == yes ]]; then
 		part_data="${tmpdir}/part_data"
 		mkdir -p "$part_data"
 		echo -e "\nMounting partition ${devp}2..."
-		sudo mount -o umask=0000 "${devp}2" "$part_data"
+		devp2_fs=$(lsblk -no FSTYPE "${devp}2")
+		case "$devp2_fs" in
+			fat32|exfat|ntfs)
+				sudo mount -o umask=0000 "${devp}2" "$part_data"
+				;;
+			*)
+				sudo mount "${devp}2" "$part_data"
+				;;
+		esac
 	fi
 
 	if [ -f "${part_data}/MultiOS-USB/config/config.version" ]; then
