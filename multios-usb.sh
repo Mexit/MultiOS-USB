@@ -250,6 +250,7 @@ command -v tar &> /dev/null || { echo "tar is required but not installed."; miss
 command -v xz &> /dev/null || { echo "xz is required but not installed."; missing_soft="1"; }
 command -v sgdisk &> /dev/null || { echo "sgdisk (gdisk) is required but not installed."; missing_soft="1"; }
 command -v wipefs &> /dev/null || { echo "wipefs is required but not installed."; missing_soft="1"; }
+command -v mkfs.fat &> /dev/null || { echo "mkfs.fat is required but not installed."; missing_soft="1"; }
 if [ "$fs_type" = "fat32" ]; then fs_prog="mkfs.fat"; else fs_prog="mkfs.$fs_type"; fi
 command -v $fs_prog &> /dev/null || { echo "$fs_prog is required but not installed."; missing_soft="1"; }
 
