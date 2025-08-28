@@ -30,9 +30,6 @@
           packages.default = pkgs.stdenv.mkDerivation rec {
             src = ./.;
             name = "multios-usb";
-            propagatedBuildInputs = with pkgs; [
-              gptfdisk
-            ];
             buildInputs = with pkgs; [
               gnutar
               xz

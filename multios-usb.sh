@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 #
 #  MultiOS-USB © 2020-2025 MexIT
 #  https://gitlab.com/MultiOS-USB
@@ -34,6 +34,7 @@ trap '{
 }' EXIT
 
 cd "$(dirname "$(readlink -f "$0")")"
+
 echo "Arguments: $*" > $log_file
 
 showUsage() {
