@@ -4,6 +4,11 @@
   inputs = {
     flake-parts.url = "github:hercules-ci/flake-parts";
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    gitignore = {
+      url = "github:hercules-ci/gitignore.nix";
+      # Use the same nixpkgs
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -26,9 +31,12 @@
           system,
           ...
         }:
+        let
+          inherit (inputs.gitignore.lib) gitignoreSource;
+        in
         {
           packages.default = pkgs.stdenv.mkDerivation rec {
-            src = ./.;
+            src = gitignoreSource ./.;
             name = "multios-usb";
             buildInputs = with pkgs; [
               gnutar
