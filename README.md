@@ -43,6 +43,16 @@ multios-usb -l
 # Install to the selected device (replace sdX with your target device)
 sudo multios-usb /dev/sdX
 ```
+**Nix/NixOS**
+
+```nix
+# run without permanent install (flakes must be enabled)
+sudo nix run github:Mexit/MultiOS-USB -- /dev/sdX
+
+# create shell with MultiOS-USB available
+nix shell github:Mexit/MultiOS-USB
+ 
+```
 
 **From GitHub - Linux console**
 
