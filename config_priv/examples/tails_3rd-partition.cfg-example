@@ -1,0 +1,36 @@
+# Tails
+# https://tails.net
+
+#
+# Tails on 3rd partition!
+#
+
+iso_pattern="tails-amd64-*.iso"									# If ISO directory path = /ISO_dir
+
+for isofile in ($dev,3)/$iso_pattern; do						# ($dev,3)/ISO_dir/$iso_pattern
+	if [ -e "$isofile" ]; then
+		regexp --set=isoname "/(.*)" "$isofile"					# "/ISO_dir/(.*)"
+
+		submenu "$isoname ->" "$isofile" "$isoname" {
+			iso_path="$2"
+			LOOPBACK "$iso_path"
+			isocfg="findiso=$3"									# "findiso=/ISO_dir/$3"
+			bootoptions="boot=live config nopersistence noprompt timezone=Etc/UTC splash noautologin module=Tails slab_nomerge slub_debug=FZ mce=0 vsyscall=none init_on_free=1 mds=full,nosmt page_alloc.shuffle=1 randomize_kstack_offset=on"
+			linux_path="(loop)/live/vmlinuz"
+			initrd_path="(loop)/live/initrd.img"
+
+			menuentry "Tails" {
+				echo Loading kernel...
+				linux $linux_path $isocfg $bootoptions quiet
+				echo Loading initrd...
+				initrd $initrd_path
+			}
+			menuentry "Tails (Troubleshooting Mode)" {
+				echo Loading kernel...
+				linux $linux_path $isocfg $bootoptions noapic noapm nodma nomce nolapic nosmp
+				echo Loading initrd...
+				initrd $initrd_path
+			}
+		}
+	fi
+done
