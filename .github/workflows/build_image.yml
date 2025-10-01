@@ -10,7 +10,7 @@ jobs:
   build_image:
     runs-on: ubuntu-24.04
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - name: Set version
         run: echo "ver=$(git log -1 --pretty=format:"%h")" >> "$GITHUB_ENV"
