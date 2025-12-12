@@ -1,0 +1,46 @@
+# Ubuntu
+# https://ubuntu.com/download
+
+#
+# Ubuntu on any partition!
+#
+
+iso_pattern="*ubuntu-*-amd64.iso"									# If ISO directory path = /ISO_dir
+
+for isofile in ($dev,*)$iso_dir/$iso_pattern; do					
+	if [ -e "$isofile" ]; then
+		regexp --set=isoname "^\([^)]+\)$iso_dir/(.*)" "$isofile"				
+
+		submenu "$isoname [config_priv] ->" "$isofile" "$isoname" {
+			iso_path="$2"
+			LOOPBACK "$iso_path"
+			isocfg="iso-scan/filename=$iso_dir/$3"									
+			bootoptions=""
+			linux_path="(loop)/casper/vmlinuz"
+			initrd_path="(loop)/casper/initrd"
+
+			menuentry "Try or Install Ubuntu" {
+				set gfxpayload=keep
+				echo Loading kernel...
+				linux $linux_path $isocfg $bootoptions --- quiet splash
+				echo Loading initrd...
+				initrd $initrd_path
+			}
+			menuentry "Ubuntu (safe graphics)" {
+				set gfxpayload=keep
+				echo Loading kernel...
+				linux $linux_path $isocfg $bootoptions nomodeset --- quiet splash
+				echo Loading initrd...
+				initrd $initrd_path
+			}
+			menuentry "OEM Install (for manufacturers)" {
+				set gfxpayload=keep
+				echo Loading kernel...
+				linux $linux_path $isocfg $bootoptions --- quiet splash oem-config/enable=true
+				echo Loading initrd...
+				initrd $initrd_path
+			}
+		}
+	fi
+done
+
