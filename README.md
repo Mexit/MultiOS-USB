@@ -43,6 +43,7 @@ multios-usb -l
 # Install to the selected device (replace sdX with your target device)
 sudo multios-usb /dev/sdX
 ```
+
 **Nix/NixOS**
 
 ```nix
@@ -51,7 +52,20 @@ sudo nix run github:Mexit/MultiOS-USB -- /dev/sdX
 
 # create shell with MultiOS-USB available
 nix shell github:Mexit/MultiOS-USB
- 
+```
+
+**Arch Linux**
+
+```sh
+# install using AUR helper like yay or aura
+yay -S multios-usb-bin-git
+
+# or install by cloning and executing makepkg -si
+git clone https://aur.archlinux.org/multios-usb-bin-git.git
+cd multios-usb-bin-git/
+makepkg -si
+
+# for usage instructions see SparkyLinux (usage is the same)
 ```
 
 **From GitHub - Linux console**
