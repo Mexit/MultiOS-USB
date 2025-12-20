@@ -35,7 +35,7 @@ trap '{
 
 cd "$(dirname "$(readlink -f "$0")")"
 
-echo "Arguments: $*" > $log_file
+echo "Arguments: $*" > "${log_file}"
 
 showUsage() {
 	cat <<- EOF
@@ -138,15 +138,15 @@ if [[ $updateOnly == yes ]]; then
 	umount_partitions () {
 		if [ "$manMounted" = true ]; then
 			sudo umount "$part_data"
-			rm -rf ${tmpdir}
+			rm -rf "${tmpdir}"
 		fi
 	}
 
 	update_config () {
 		echo -e "\n\e[1;41m++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\e[0m"
 		echo -e "\e[1;41m++                  Are you sure you want to update config files?                         ++\e[0m"
-		echo -e "\e[1;41m++             All modified files in "config" directory will be removed!                    ++\e[0m"
-		echo -e "\e[1;41m++   If you have modified any files, please copy them NOW to the "config_priv" directory.   ++\e[0m"
+		echo -e "\e[1;41m++             All modified files in \"config\" directory will be removed!                    ++\e[0m"
+		echo -e "\e[1;41m++   If you have modified any files, please copy them NOW to the \"config_priv\" directory.   ++\e[0m"
 		echo -e "\e[1;41m++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\e[0m"
 		echo -e "\nYour config files version: $currVer"
 		echo -e "New config files version: $newVer"
@@ -164,12 +164,12 @@ if [[ $updateOnly == yes ]]; then
 		esac
 
 		echo "Updating..."
-		rm -rf ${part_data}/MultiOS-USB/config
-		cp -r config ${part_data}/MultiOS-USB
+		rm -rf "${part_data}/MultiOS-USB/config"
+		cp -r config "${part_data}/MultiOS-USB"
 	}
 
 	echo -e "\nMultiOS-USB updater"
-	part_data=$(findmnt -no TARGET ${devp}2) || true
+	part_data=$(findmnt -no TARGET "${devp}2") || true
 	if [ -z "$part_data" ]; then
 		manMounted=true
 		tmpdir=$(mktemp -d)
@@ -207,7 +207,7 @@ if [[ $updateOnly == yes ]]; then
 		echo -e "\nConfig files version: $newVer"
 	else
 		OLDIFS=$IFS
-		IFS=. v1=($newVer) v2=($currVer)
+		IFS=. v1=("$newVer") v2=("$currVer")
 		IFS=$OLDIFS
 
 		for pos in 0 1 2; do
@@ -245,20 +245,14 @@ case "$fs_type" in
 esac
 
 # Check for required software
-missing_soft="0"
-command -v dd &> /dev/null || { echo "dd is required but not installed."; missing_soft="1"; }
-command -v tar &> /dev/null || { echo "tar is required but not installed."; missing_soft="1"; }
-command -v xz &> /dev/null || { echo "xz is required but not installed."; missing_soft="1"; }
-command -v sgdisk &> /dev/null || { echo "sgdisk (gdisk) is required but not installed."; missing_soft="1"; }
-command -v wipefs &> /dev/null || { echo "wipefs is required but not installed."; missing_soft="1"; }
-command -v mkfs.fat &> /dev/null || { echo "mkfs.fat is required but not installed."; missing_soft="1"; }
-if [ "$fs_type" = "fat32" ]; then fs_prog="mkfs.fat"; else fs_prog="mkfs.$fs_type"; fi
-command -v $fs_prog &> /dev/null || { echo "$fs_prog is required but not installed."; missing_soft="1"; }
-
-if [ "$missing_soft" -ne 0 ]; then
-	echo -e "\n\e[0;41mNot all required programs are installed. Exiting...\e[0m\n"
+[ "$fs_type" = "fat32" ] && fs_prog="mkfs.fat" || fs_prog="mkfs.$fs_type"
+for cmd in dd tar xz sgdisk wipefs "$fs_prog"; do
+  # shellcheck disable=SC2086
+  if [ ! -x "$(command -v ${cmd} 2>/dev/null)" ]; then
+	echo "${cmd} is required but not installed. Exiting"
 	exit 1
-fi
+  fi
+done
 
 # Check for root
 if [ "$(id -u)" -ne 0 ]; then
@@ -286,28 +280,28 @@ esac
 umount -f "${devp}"* &> /dev/null || true
 
 echo "Creating partitions..."
-sgdisk -Z "$dev" &>> $log_file
-sgdisk -n 1::"+${efi_size}" -t 1:0700 -c 1:"EFI System" -A 1:set:0 -A 1:set:62 -A 1:set:63 "$dev" &>> $log_file
-sgdisk -n 2::"${data_size}" -t 2:"$part_code" -c 2:"$part_name" "$dev" &>> $log_file
+sgdisk -Z "$dev" |& tee -a "$log_file"
+sgdisk -n 1::"+${efi_size}" -t 1:0700 -c 1:"EFI System" -A 1:set:0 -A 1:set:62 -A 1:set:63 "$dev" |& tee -a "$log_file"
+sgdisk -n 2::"${data_size}" -t 2:"$part_code" -c 2:"$part_name" "$dev" |& tee -a "$log_file"
 
-wipefs -af "${devp}1" &>> $log_file
-wipefs -af "${devp}2" &>> $log_file
+wipefs -af "${devp}1" |& tee -a "$log_file"
+wipefs -af "${devp}2" |& tee -a "$log_file"
 
 echo "Formating partitions..."
-mkfs.fat -F 16 -n "MultiOS-EFI" "${devp}1" &>> $log_file
+mkfs.fat -F 16 -n "MultiOS-EFI" "${devp}1" |& tee -a "$log_file"
 
 case "$fs_type" in
 	ext2|ext3|ext4)
-		mkfs.${fs_type} -L "$data_label" "${devp}2" &>> $log_file
+		mkfs."${fs_type}" -L "$data_label" "${devp}2" |& tee -a "$log_file"
 		;;
 	fat32)
-		mkfs.fat -F 32 -n "$data_label" "${devp}2" &>> $log_file
+		mkfs.fat -F 32 -n "$data_label" "${devp}2" |& tee -a "$log_file"
 		;;
 	exfat)
-		mkfs.exfat -n "$data_label" "${devp}2" &>> $log_file
+		mkfs.exfat -n "$data_label" "${devp}2" |& tee -a "$log_file"
 		;;
 	ntfs)
-		mkfs.ntfs --fast -L "$data_label" "${devp}2" &>> $log_file
+		mkfs.ntfs --fast -L "$data_label" "${devp}2" |& tee -a "$log_file"
 		;;
 	*)
 		echo "Error! $fs_type is an invalid filesystem type."
@@ -320,36 +314,36 @@ part_data="${tmpdir}/part_data"
 part_efi="${tmpdir}/part_efi"
 mkdir "$part_data" "$part_efi"
 
-mount ${devp}1 $part_efi
-mount ${devp}2 $part_data
+mount "${devp}1" "$part_efi"
+mount "${devp}2" "$part_data"
 
 echo "Copying files..."
-mkdir -p $part_data/{MultiOS-USB/tools,ISOs} $part_efi/{EFI/BOOT,grub/fonts}
-cp -r config config_priv themes LICENSE README.md MultiOS-USB.version $part_data/MultiOS-USB
-cp -r binaries/{syslinux-*,mt86plus_*,efitools-*,wimboot-*,mountiso} $part_data/MultiOS-USB/tools
+mkdir -p "$part_data"/{MultiOS-USB/tools,ISOs} "$part_efi"/{EFI/BOOT,grub/fonts}
+cp -r config config_priv themes LICENSE README.md MultiOS-USB.version "$part_data/MultiOS-USB"
+cp -r binaries/{syslinux-*,mt86plus_*,efitools-*,wimboot-*,mountiso} "$part_data/MultiOS-USB/tools"
 
 echo "Installing bootloader..."
-tar -xf binaries/grub-*/i386-pc.tar.xz -C $part_efi/grub
+tar -xf binaries/grub-*/i386-pc.tar.xz -C "$part_efi/grub"
 
-cat > $part_efi/grub/grub.cfg << EOF
+cat > "$part_efi/grub/grub.cfg" << EOF
 search -f /MultiOS-USB/config/grub.config --no-floppy --set=root
 source /MultiOS-USB/config/grub.config
 EOF
 
-cp binaries/grub-*/grubenv $part_efi/grub
-cp -r binaries/grub-*/unicode.pf2 $part_efi/grub/fonts
-cp -r binaries/shim-signed_*/*.efi $part_efi/EFI/BOOT
-cp binaries/grub-*/grubx64.efi $part_efi/EFI/BOOT
-cp -r cert/ $part_efi/EFI/
+cp binaries/grub-*/grubenv         "$part_efi/grub"
+cp -r binaries/grub-*/unicode.pf2  "$part_efi/grub/fonts"
+cp -r binaries/shim-signed_*/*.efi "$part_efi/EFI/BOOT"
+cp binaries/grub-*/grubx64.efi     "$part_efi/EFI/BOOT"
+cp -r cert/ "$part_efi/EFI/"
 
 dd conv=fsync status=none if="$part_efi/grub/i386-pc/boot.img" of="${dev}" bs=1 count=446
 dd conv=fsync status=none if="$part_efi/grub/i386-pc/core.img" of="${dev}" bs=512 count=2014 seek=34
 
-mv "$log_file" $part_data/MultiOS-USB/install.log
-chmod -R o+rw $part_data
+mv "$log_file" "$part_data/MultiOS-USB/install.log"
+chmod -R o+rw "$part_data"
 
 sync
-umount $part_efi
-umount $part_data
-rm -rf ${tmpdir}
+umount "$part_efi"
+umount "$part_data"
+rm -rf "${tmpdir}"
 echo -e "\n\e[0;42mMultiOS-USB has been successfully installed.\e[0m\n"
