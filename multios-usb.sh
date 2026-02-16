@@ -143,11 +143,11 @@ if [[ $updateOnly == yes ]]; then
 	}
 
 	update_config () {
-		echo -e "\n\e[1;41m++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\e[0m"
-		echo -e "\e[1;41m++                  Are you sure you want to update config files?                         ++\e[0m"
+		echo -e "\n\e[1;41m++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\e[0m"
+		echo -e "\e[1;41m++                  Are you sure you want to update config files?                           ++\e[0m"
 		echo -e "\e[1;41m++             All modified files in \"config\" directory will be removed!                    ++\e[0m"
 		echo -e "\e[1;41m++   If you have modified any files, please copy them NOW to the \"config_priv\" directory.   ++\e[0m"
-		echo -e "\e[1;41m++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\e[0m"
+		echo -e "\e[1;41m++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\e[0m"
 		echo -e "\nYour config files version: $currVer"
 		echo -e "New config files version: $newVer"
 		echo -en "\nType 'YeS' to continue: "
@@ -207,7 +207,8 @@ if [[ $updateOnly == yes ]]; then
 		echo -e "\nConfig files version: $newVer"
 	else
 		OLDIFS=$IFS
-		IFS=. v1=("$newVer") v2=("$currVer")
+		IFS=. read -ra v1 <<< "$newVer"
+		IFS=. read -ra v2 <<< "$currVer"
 		IFS=$OLDIFS
 
 		for pos in 0 1 2; do
