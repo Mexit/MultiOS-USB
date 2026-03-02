@@ -281,28 +281,28 @@ esac
 umount -f "${devp}"* &> /dev/null || true
 
 echo "Creating partitions..."
-sgdisk -Z "$dev" |& tee -a "$log_file"
-sgdisk -n 1::"+${efi_size}" -t 1:0700 -c 1:"EFI System" -A 1:set:0 -A 1:set:62 -A 1:set:63 "$dev" |& tee -a "$log_file"
-sgdisk -n 2::"${data_size}" -t 2:"$part_code" -c 2:"$part_name" "$dev" |& tee -a "$log_file"
+sgdisk -Z "$dev" &>> "$log_file"
+sgdisk -n 1::"+${efi_size}" -t 1:0700 -c 1:"EFI System" -A 1:set:0 -A 1:set:62 -A 1:set:63 "$dev" &>> "$log_file"
+sgdisk -n 2::"${data_size}" -t 2:"$part_code" -c 2:"$part_name" "$dev" &>> "$log_file"
 
-wipefs -af "${devp}1" |& tee -a "$log_file"
-wipefs -af "${devp}2" |& tee -a "$log_file"
+wipefs -af "${devp}1" &>> "$log_file"
+wipefs -af "${devp}2" &>> "$log_file"
 
 echo "Formating partitions..."
-mkfs.fat -F 16 -n "MultiOS-EFI" "${devp}1" |& tee -a "$log_file"
+mkfs.fat -F 16 -n "MultiOS-EFI" "${devp}1" &>> "$log_file"
 
 case "$fs_type" in
 	ext2|ext3|ext4)
-		mkfs."${fs_type}" -L "$data_label" "${devp}2" |& tee -a "$log_file"
+		mkfs."${fs_type}" -L "$data_label" "${devp}2" &>> "$log_file"
 		;;
 	fat32)
-		mkfs.fat -F 32 -n "$data_label" "${devp}2" |& tee -a "$log_file"
+		mkfs.fat -F 32 -n "$data_label" "${devp}2" &>> "$log_file"
 		;;
 	exfat)
-		mkfs.exfat -n "$data_label" "${devp}2" |& tee -a "$log_file"
+		mkfs.exfat -n "$data_label" "${devp}2" &>> "$log_file"
 		;;
 	ntfs)
-		mkfs.ntfs --fast -L "$data_label" "${devp}2" |& tee -a "$log_file"
+		mkfs.ntfs --fast -L "$data_label" "${devp}2" &>> "$log_file"
 		;;
 	*)
 		echo "Error! $fs_type is an invalid filesystem type."
