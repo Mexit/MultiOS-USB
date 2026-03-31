@@ -8,6 +8,7 @@ Below is just a list of tested and working systems. The actual number of support
 | [Arch Linux](https://archlinux.org) | [archlinux-2024.03.01-x86_64.iso](https://archlinux.mirrors.ovh.net/archlinux/iso/latest/archlinux-2024.03.01-x86_64.iso) | yes | yes | no | - |
 | [ArcoLinux](https://www.arcolinux.info) | [arcolinuxl-v24.03.01-x86_64.iso](https://downloads.sourceforge.net/arcolinux/arcolinuxl-v24.03.01-x86_64.iso) | yes | yes | no | - |
 | [Athena OS](https://athenaos.org) | [athena-rolling-x86_64.iso](https://sourceforge.net/projects/athena-iso/files/v23.11/athena-rolling-x86_64.iso) | yes | [no](../config/athenaos) | no | - |
+| [Bazzite](https://bazzite.gg) | [bazzite-nvidia-open-stable-live-amd64.iso](https://download.bazzite.gg/bazzite-nvidia-open-stable-live-amd64.iso) | yes | [no](../config/bazzite) | yes | Fedora |
 | [CachyOS](https://cachyos.org) | [cachyos-kde-linux-240313.iso](https://cdn.cachyos.org/ISO/kde/240313/cachyos-kde-linux-240313.iso) | yes | yes | no | - |
 | [Clonezilla](https://clonezilla.org) | [clonezilla-live-3.1.3-11-amd64.iso](https://downloads.sourceforge.net/clonezilla/clonezilla-live-3.1.3-11-amd64.iso) | yes | [no](../config/clonezilla) | yes | Debian |
 | [Damn Small Linux](https://damnsmalllinux.org) | [dsl-2024.rc1.iso](https://damnsmalllinux.org/download/dsl-2024.rc1.iso) | yes | [no](../config/damnsmalllinux) | no | - |
