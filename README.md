@@ -58,11 +58,11 @@ nix shell github:Mexit/MultiOS-USB
 
 ```sh
 # install using AUR helper like yay or aura
-yay -S multios-usb-bin-git
+yay -S multios-usb-bin
 
 # or install by cloning and executing makepkg -si
-git clone https://aur.archlinux.org/multios-usb-bin-git.git
-cd multios-usb-bin-git/
+git clone https://aur.archlinux.org/multios-usb-bin.git
+cd multios-usb-bin/
 makepkg -si
 
 # for usage instructions see SparkyLinux (usage is the same)
