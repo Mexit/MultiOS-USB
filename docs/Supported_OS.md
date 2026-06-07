@@ -5,6 +5,7 @@ Below is just a list of tested and working systems. The actual number of support
 
 | Distro | ISO | Boot from exFAT | loopback.cfg support | Secure Boot support | SB from |
 |---|---|:---:|:---:|:---:|---|
+| [AerynOS](https://aerynos.com) | [AerynOS-2026.05.2-GNOME-live-x86_64.iso](https://cdn.aerynos.dev/isos/AerynOS-2026.05.2-GNOME-live-x86_64.iso) | yes | [no](../config/aerynOS) | no | - |
 | [Arch Linux](https://archlinux.org) | [archlinux-2024.03.01-x86_64.iso](https://archlinux.mirrors.ovh.net/archlinux/iso/latest/archlinux-2024.03.01-x86_64.iso) | yes | yes | no | - |
 | [ArcoLinux](https://www.arcolinux.info) | [arcolinuxl-v24.03.01-x86_64.iso](https://downloads.sourceforge.net/arcolinux/arcolinuxl-v24.03.01-x86_64.iso) | yes | yes | no | - |
 | [Athena OS](https://athenaos.org) | [athena-rolling-x86_64.iso](https://sourceforge.net/projects/athena-iso/files/v23.11/athena-rolling-x86_64.iso) | yes | [no](../config/athenaos) | no | - |
