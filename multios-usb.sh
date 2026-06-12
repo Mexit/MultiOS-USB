@@ -282,7 +282,7 @@ umount -f "${devp}"* &> /dev/null || true
 
 echo "Creating partitions..."
 sgdisk -Z "$dev" &>> "$log_file"
-sgdisk -n 1::"+${efi_size}" -t 1:0700 -c 1:"EFI System" -A 1:set:0 -A 1:set:62 -A 1:set:63 "$dev" &>> "$log_file"
+sgdisk -n 1::"+${efi_size}" -t 1:0700 -c 1:"EFI System" -A 1:set:0 -A 1:set:63 "$dev" &>> "$log_file"
 sgdisk -n 2::"${data_size}" -t 2:"$part_code" -c 2:"$part_name" "$dev" &>> "$log_file"
 
 wipefs -af "${devp}1" &>> "$log_file"
