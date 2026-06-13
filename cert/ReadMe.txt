@@ -33,6 +33,14 @@ MokManager utility require *.cer files.
 - SLES-UEFI-CA-Certificate.cer: openSUSE Leap 15.3 & SLES public key
   https://build.opensuse.org/package/view_file/openSUSE:Factory/shim/SLES-UEFI-CA-Certificate.crt
 
+- microsoft corporation kek 2k ca 2023.der
+  https://github.com/microsoft/secureboot_objects/tree/main/PreSignedObjects/KEK/Certificates
+
+- microsoft option rom uefi ca 2023.der
+  microsoft uefi ca 2023.der
+  windows uefi ca 2023.der
+  https://github.com/microsoft/secureboot_objects/tree/main/PreSignedObjects/DB/Certificates
+
 
 *.crt files are similar to *.cer files but in a different form.
 sbverify can be used to verify the authenticity of a *.efi signed file.
