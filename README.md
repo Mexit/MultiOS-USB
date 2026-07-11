@@ -12,7 +12,7 @@ One device with multiple ISO/WIM files. Easy to use: install once, add ISO/WIM f
 - Launch .efi executables and other boot loaders
 - Boot Linux from .iso images
 - Boot [WinPE](https://en.wikipedia.org/wiki/Windows_Preinstallation_Environment) from bootable .wim images
-- Boot Windows 10/11 installer from ISO (currently, SB must be disabled during installation)
+- Boot Windows 10/11 installer from ISO
 - Boot Linux installer from network (experimental)
 - Boot locally installed systems: Linux, Windows
 - Automatically update configuration files
