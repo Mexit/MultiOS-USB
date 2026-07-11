@@ -10,7 +10,7 @@ set -eo pipefail
 
 # Defaults
 scriptname=$(basename "$0")
-fs_type="fat32"
+fs_type="exfat"
 data_size=""
 efi_size="25M"
 data_label="MultiOS-USB"
