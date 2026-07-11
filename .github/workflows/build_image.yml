@@ -27,7 +27,7 @@ jobs:
           tmp_imageSize="$(($imageSize + 50))$(echo $efiPartSize | sed 's/\([0-9]\+\)\([A-Za-z]\)/\2/')"
           fallocate $tmp_imageName -l $tmp_imageSize
           dev=$(sudo losetup -f -P --show $tmp_imageName)
-          echo "YeS" | sudo ./multios-usb.sh $dev
+          echo "YeS" | sudo ./multios-usb.sh -f fat32 $dev
           mkdir part_data && sudo mount ${dev}p2 part_data
           (cd part_data && sudo zip -r ../files.zip *)
           sudo umount ${dev}p2
