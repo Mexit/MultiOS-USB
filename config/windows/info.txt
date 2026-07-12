@@ -15,3 +15,13 @@ Instead of the regedit command, you can launch
 
 and add the reg file to the registry from the graphical interface.
 Remember to enable showing all files in Notepad!
+
+
+Bypass the Microsoft Account
+
+If you want to skip the Microsoft account requirement during the initial Windows setup,
+disconnect the Ethernet cable (if connected), then press Shift+F10 to open Command Prompt, type:
+
+	oobe\bypassnro
+
+and press Enter. After the computer restarts, choose "I don't have Internet" to continue with a local account.
