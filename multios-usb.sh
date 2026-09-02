@@ -247,7 +247,7 @@ esac
 
 # Check for required software
 [ "$fs_type" = "fat32" ] && fs_prog="mkfs.fat" || fs_prog="mkfs.$fs_type"
-for cmd in dd tar xz sgdisk wipefs "$fs_prog"; do
+for cmd in dd tar xz sgdisk wipefs mkfs.fat "$fs_prog"; do
   # shellcheck disable=SC2086
   if [ ! -x "$(command -v ${cmd} 2>/dev/null)" ]; then
 	echo "${cmd} is required but not installed. Exiting"
