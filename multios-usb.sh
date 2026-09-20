@@ -1,12 +1,15 @@
 #!/usr/bin/env bash
 #
-#  MultiOS-USB © 2020-2025 MexIT
+#  MultiOS-USB © 2020-2026 MexIT
 #  https://gitlab.com/MultiOS-USB
 #  https://github.com/Mexit/MultiOS-USB
 #  Read LICENSE file for details
 #
 
 set -eo pipefail
+
+cd "$(dirname "$(readlink -f "$0")")" || exit 1
+source common.sh
 
 # Defaults
 scriptname=$(basename "$0")
@@ -15,25 +18,24 @@ data_size=""
 efi_size="25M"
 data_label="MultiOS-USB"
 updateOnly="no"
+uefiOnly="no"
 log_file=$(mktemp)
 
 # shellcheck disable=SC2154
 trap '{
 	status=$?
 	if [ $status -ne 0 ]; then
-		echo -e "\e[1;31m"
-		echo "=================================================================="
-		echo "Installation error!"
-		echo "Below are the details that may be helpful when reporting the issue"
-		echo "=================================================================="
+		print_banner "$C_ERROR" "" \
+			"==================================================================" \
+			"Installation error!" \
+			"Below are the details that may be helpful when reporting the issue" \
+			"=================================================================="
 		echo "Exit code: $status"
 		cat $log_file
 		rm -f $log_file
-		echo -e "==================================================================\e[0m"
+		print_banner "$C_ERROR" "=================================================================="
 	fi
 }' EXIT
-
-cd "$(dirname "$(readlink -f "$0")")"
 
 echo "Arguments: $*" > "${log_file}"
 
@@ -47,7 +49,8 @@ showUsage() {
 	    -f, --fs_type       Filesystem type for the data partition [ext2|ext3|ext4|fat32|exfat|ntfs] (default: "$fs_type")
 	    -l, --devices       List available USB devices
 	    -h, --help          Display this message
-	    -u, --update        Update existing installation
+	    -u, --update        Update an existing installation
+	    --uefi-only         Skip installing the legacy BIOS boot code (boot.img, core.img, *.mod); UEFI-only drive
 	    --allrwdevices      List all writable devices (For advanced users only!!!)
 	    device              Device to install (e.g. /dev/sdb)
 	    data_size           Data partition size (e.g. 5G, 2048M)
@@ -89,28 +92,31 @@ while [ "$#" -gt 0 ]; do
 		-u|--update)
 			updateOnly=yes
 			;;
+		--uefi-only)
+			uefiOnly=yes
+			;;
 		/dev/*)
 			if [[ -b "$1" ]]; then
 				dev="$1"
 			else
-				echo "Error! $1 is not a valid device."
+				print_error "Error! $1 is not a valid device."
 				exit 1
 			fi
 			;;
 		-f|--fs_type)
 			shift && fs_type="$1"
-			[[ -n $fs_type ]] || { echo "Error! Please specify file system"; exit 1; }
+			[[ -n $fs_type ]] || { print_error "Error! Please specify file system"; exit 1; }
 			;;
 		[0-9]*)
 			if [[ $1 =~ ^[0-9]+[MG]$ ]]; then
 				data_size="+$1"
 			else
-				echo "Error! Incorrect partition size. Example: 500M, 5G"
+				print_error "Error! Incorrect partition size. Example: 500M, 5G"
 				exit 1
 			fi
 			;;
 		*)
-			echo "Error! $1 is not a valid argument."
+			print_error "Error! $1 is not a valid argument."
 			exit 1
 			;;
 	esac
@@ -119,7 +125,7 @@ done
 
 # Check for required argument
 if [[ ! -b "$dev" ]]; then
-	echo "Error! No device was provided."
+	print_error "Error! No device was provided."
 	exit 1
 fi
 
@@ -128,104 +134,210 @@ if [[ $dev == /dev/loop* || $dev == /dev/nbd* || $dev == /dev/mmcblk* || $dev ==
 elif [[ $dev == /dev/sd* || $dev == /dev/vd* ]]; then
 	devp="${dev}"
 else
-	echo "Unsupported device!"
+	print_error "Unsupported device!"
 	exit 1
 fi
 
-if [[ $updateOnly == yes ]]; then
-	manMounted=false
+if [[ "$uefiOnly" == yes ]]; then
+	includeBios=no
+else
+	includeBios=yes
+fi
 
-	umount_partitions () {
-		if [ "$manMounted" = true ]; then
-			sudo umount "$part_data"
-			rm -rf "${tmpdir}"
-		fi
-	}
+# Auto-detect existing installation, offer update/reinstall menu
+if [[ "$updateOnly" == "no" ]]; then
+	efi_label=$(blkid -s LABEL -o value "${devp}1" 2>/dev/null || true)
+	data_label_found=$(blkid -s LABEL -o value "${devp}2" 2>/dev/null || true)
 
-	update_config () {
-		echo -e "\n\e[1;41m++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\e[0m"
-		echo -e "\e[1;41m++                  Are you sure you want to update config files?                           ++\e[0m"
-		echo -e "\e[1;41m++             All modified files in \"config\" directory will be removed!                    ++\e[0m"
-		echo -e "\e[1;41m++   If you have modified any files, please copy them NOW to the \"config_priv\" directory.   ++\e[0m"
-		echo -e "\e[1;41m++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\e[0m"
-		echo -e "\nYour config files version: $currVer"
-		echo -e "New config files version: $newVer"
-		echo -en "\nType 'YeS' to continue: "
-		read -r yN
+	if [[ "$efi_label" == "MultiOS-EFI" && "$data_label_found" == "MultiOS-USB" ]]; then
+		echo -e "\nMultiOS-USB is already installed on $(hilite "$dev")."
+		echo "-------------------------------------------------------------"
+		echo " [1] Update (syncs changed files only; config_priv/tools_priv/ISOs are never touched)"
+		echo " [2] Reinstall from scratch (formats the entire disk, deletes everything)"
+		echo " [Q] Quit"
+		echo "-------------------------------------------------------------"
+		read -r -p "Choose an option: " modeChoice
 
-		case $yN in
-			[Y][e][S])
-				true
+		case "$modeChoice" in
+			1)
+				updateOnly=yes
 				;;
-			*)
-				echo -e '\nAnswer not "YeS". Exiting...'
+			2)
+				updateOnly=no
+				;;
+			""|[Qq])
+				echo "Operation cancelled. Exiting..."
 				exit 0
 				;;
+			*)
+				print_error "Error: Invalid option."
+				exit 1
+				;;
 		esac
+	fi
+fi
 
-		echo "Updating..."
-		rm -rf "${part_data}/MultiOS-USB/config"
-		cp -r config "${part_data}/MultiOS-USB"
+if [[ $updateOnly == yes ]]; then
+	# Check for required software
+	for cmd in dd tar xz rsync blockdev; do
+		# shellcheck disable=SC2086
+		if [ ! -x "$(command -v ${cmd} 2>/dev/null)" ]; then
+			print_error "${cmd} is required but not installed. Exiting"
+			exit 1
+		fi
+	done
+
+	# Check for root
+	if [ "$(id -u)" -ne 0 ]; then
+		print_error "Please run the script with administrator privileges."
+		exit 1
+	fi
+
+	manMountedEfi=false
+	manMountedData=false
+	tmpdir=""
+
+	cleanup_update () {
+		if [ "$manMountedEfi" = true ]; then
+			umount "$part_efi" &> /dev/null || true
+		fi
+		if [ "$manMountedData" = true ]; then
+			umount "$part_data" &> /dev/null || true
+		fi
+		[ -n "$tmpdir" ] && rm -rf "$tmpdir"
 	}
+	trap cleanup_update EXIT
 
 	echo -e "\nMultiOS-USB updater"
+
+	tmpdir=$(mktemp -d)
+
+	# Mount EFI partition
+	part_efi=$(findmnt -no TARGET "${devp}1") || true
+	if [ -z "$part_efi" ]; then
+		manMountedEfi=true
+		part_efi="${tmpdir}/part_efi"
+		mkdir -p "$part_efi"
+		echo "Mounting partition ${devp}1..."
+		mount -o umask=0000 "${devp}1" "$part_efi"
+	fi
+
+	# Detect whether BIOS boot support is currently installed
+	if [ -d "$part_efi/grub/i386-pc" ]; then
+		installedHasBios=yes
+	else
+		installedHasBios=no
+	fi
+
+	if [[ "$includeBios" != "$installedHasBios" ]]; then
+		if [[ "$installedHasBios" == "yes" ]]; then
+			print_warning "this drive has legacy BIOS boot support installed - keeping it (--uefi-only is ignored during updates; reinstall from scratch to remove it)."
+		else
+			print_warning "this drive is UEFI-only - not adding legacy BIOS boot support during update (reinstall from scratch to add it)."
+		fi
+		includeBios="$installedHasBios"
+	fi
+
+	# Mount Data partition
 	part_data=$(findmnt -no TARGET "${devp}2") || true
 	if [ -z "$part_data" ]; then
-		manMounted=true
-		tmpdir=$(mktemp -d)
+		manMountedData=true
 		part_data="${tmpdir}/part_data"
 		mkdir -p "$part_data"
-		echo -e "\nMounting partition ${devp}2..."
+		echo "Mounting partition ${devp}2..."
 		devp2_fs=$(lsblk -no FSTYPE "${devp}2")
 		case "$devp2_fs" in
 			fat32|exfat|ntfs)
-				sudo mount -o umask=0000 "${devp}2" "$part_data"
+				mount -o umask=0000 "${devp}2" "$part_data"
 				;;
 			*)
-				sudo mount "${devp}2" "$part_data"
+				mount "${devp}2" "$part_data"
 				;;
 		esac
 	fi
 
-	if [ -f "${part_data}/MultiOS-USB/config/config.version" ]; then
-		currVer=$(cat "${part_data}/MultiOS-USB/config/config.version")
-	else
-		echo -e "\n\e[1;41mError: MultiOS-USB is not installed on this device!\e[0m\n"
-		umount_partitions
+	# Verify MultiOS-USB drive
+	if [ ! -f "${part_data}/MultiOS-USB/MultiOS-USB.version" ]; then
+		print_error "Error: MultiOS-USB is not installed on this device!"
 		exit 1
 	fi
+	currVer=$(cat "${part_data}/MultiOS-USB/MultiOS-USB.version")
 
-	if [ -f "config/config.version" ]; then
-		newVer=$(cat "config/config.version")
+	if [ -f "MultiOS-USB.version" ]; then
+		newVer=$(cat "MultiOS-USB.version")
 	else
-		echo -e "\nError: Unable to detect new version, file does not exist!"
-		umount_partitions
-		exit 1
+		print_warning "Could not determine the source version (MultiOS-USB.version missing) - proceeding without a version check."
 	fi
 
-	if [[ "${currVer}" == "${newVer}" ]]; then
-		echo -e "\nConfig files version: $newVer"
-	else
-		OLDIFS=$IFS
-		IFS=. read -ra v1 <<< "$newVer"
-		IFS=. read -ra v2 <<< "$currVer"
-		IFS=$OLDIFS
+	requiredWord="YeS"
 
-		for pos in 0 1 2; do
-			if [[ ${v1[pos]} -gt ${v2[pos]} ]]; then
-				update_config
-				break
-			elif [[ ${v1[pos]} -lt ${v2[pos]} ]]; then
-				echo -e "\nError: installed version ($currVer) is newer than downloaded ($newVer)"
-				echo "Please download fresh version: https://github.com/Mexit/MultiOS-USB/archive/master.zip"
-				umount_partitions
-				exit 1
-			fi
-		done
+	if [ -n "$newVer" ]; then
+		echo -e "\nInstalled version: $currVer \nSource (update) version: $newVer"
+
+		if [[ "$newVer" == "$currVer" ]]; then
+			print_success "The installed version is already up to date."
+		else
+			OLDIFS=$IFS
+			IFS=. read -ra v1 <<< "$newVer"
+			IFS=. read -ra v2 <<< "$currVer"
+			IFS=$OLDIFS
+
+			for pos in 0 1 2; do
+				if [[ ${v1[pos]} -gt ${v2[pos]} ]]; then
+					break
+				elif [[ ${v1[pos]} -lt ${v2[pos]} ]]; then
+					print_danger "" \
+						"++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++" \
+						"++   WARNING: This source is OLDER than the installed version!      ++" \
+						"++   Installed: $currVer   ->   Source: $newVer" \
+						"++   This would DOWNGRADE the drive. Files added by the newer       ++" \
+						"++   version (outside config_priv/tools_priv/ISOs) may be DELETED.  ++" \
+						"++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"
+					requiredWord="DOWNGRADE"
+					break
+				fi
+			done
+		fi
 	fi
 
-	umount_partitions
-	echo -e "\n\e[0;42mConfiguration is up to date\e[0m\n"
+	echo -en "Update this drive with the current source files? Type '${requiredWord}' to continue: "
+	read -r yN
+
+	if [[ "$yN" != "$requiredWord" ]]; then
+		echo -e "\nAnswer was not '${requiredWord}'. Exiting..."
+		exit 0
+	fi
+
+	echo "Updating EFI/boot files..."
+	efi_stage="${tmpdir}/efi_stage"
+	build_efi_stage "$efi_stage" "$includeBios"
+
+	# Fully mirror the EFI partition contents
+	rsync -rlptD --no-owner --no-group --checksum --delete "$efi_stage"/ "$part_efi"/
+
+	if [[ "$includeBios" == "no" ]]; then
+		echo "Skipping legacy BIOS boot sector code (UEFI-only)."
+	else
+		echo "Updating boot sector code (hybrid BIOS/UEFI boot)..."
+		write_boot_sectors_safe "$dev" "$part_efi" "${devp}1" || true
+	fi
+
+	echo "Updating MultiOS-USB core files (config, themes, docs, tools)..."
+	data_stage="${tmpdir}/data_stage"
+	mkdir -p "$data_stage"
+	build_data_stage "$data_stage" "no"
+
+	# Fully mirror everything EXCEPT config_priv and tools_priv
+	rsync -rlptD --no-owner --no-group --checksum --delete --exclude='config_priv' --exclude='tools_priv' "$data_stage"/ "${part_data}"/
+
+	echo "Updating config_priv (existing user files are preserved, never deleted)..."
+	if [ -d "config_priv" ]; then
+		mkdir -p "${part_data}/MultiOS-USB/config_priv"
+		rsync -rlptD --no-owner --no-group --checksum config_priv/ "${part_data}/MultiOS-USB/config_priv/"
+	fi
+
+	sync
+	print_success "MultiOS-USB has been successfully updated."
 	exit 0
 fi
 
@@ -240,32 +352,33 @@ case "$fs_type" in
 		part_name="Microsoft basic data"
 		;;
 	*)
-		echo "$scriptname: $fs_type is an invalid filesystem type."
+		print_error "$scriptname: $fs_type is an invalid filesystem type."
 		exit 1
 		;;
 esac
 
 # Check for required software
 [ "$fs_type" = "fat32" ] && fs_prog="mkfs.fat" || fs_prog="mkfs.$fs_type"
-for cmd in dd tar xz sgdisk wipefs "$fs_prog"; do
+for cmd in dd tar xz sgdisk wipefs blockdev "$fs_prog"; do
   # shellcheck disable=SC2086
   if [ ! -x "$(command -v ${cmd} 2>/dev/null)" ]; then
-	echo "${cmd} is required but not installed. Exiting"
+	print_error "${cmd} is required but not installed. Exiting"
 	exit 1
   fi
 done
 
 # Check for root
 if [ "$(id -u)" -ne 0 ]; then
-	echo "Please run the script with administrator privileges."
+	print_error "Please run the script with administrator privileges."
 	exit 1
 fi
 
-echo -e "\n\e[1;41m++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\e[0m"
-echo -e "\e[1;41m++   Are you absolutely sure you want to use the selected device?   ++\e[0m"
-echo -e "\e[1;41m++             THIS WILL DELETE ALL DATA ON THE DEVICE              ++\e[0m"
-echo -e "\e[1;41m++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\e[0m"
-echo -en "\nAre you sure? Type 'YeS' to install MultiOS-USB on \e[0;41m${dev}\e[0m: "
+print_danger \
+	"++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++" \
+	"++   Are you absolutely sure you want to use the selected device?   ++" \
+	"++             THIS WILL DELETE ALL DATA ON THE DEVICE              ++" \
+	"++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"
+echo -en "\nAre you sure? Type 'YeS' to install MultiOS-USB on $(hilite "$dev"): "
 read -r yN
 
 case $yN in
@@ -282,7 +395,7 @@ umount -f "${devp}"* &> /dev/null || true
 
 echo "Creating partitions..."
 sgdisk -Z "$dev" &>> "$log_file"
-sgdisk -n 1::"+${efi_size}" -t 1:0700 -c 1:"EFI System" -A 1:set:0 -A 1:set:63 "$dev" &>> "$log_file"
+sgdisk -n 1:2048:"+${efi_size}" -t 1:0700 -c 1:"EFI System" -A 1:set:0 -A 1:set:63 "$dev" &>> "$log_file"
 sgdisk -n 2::"${data_size}" -t 2:"$part_code" -c 2:"$part_name" "$dev" &>> "$log_file"
 
 wipefs -af "${devp}1" &>> "$log_file"
@@ -305,7 +418,7 @@ case "$fs_type" in
 		mkfs.ntfs --fast -L "$data_label" "${devp}2" &>> "$log_file"
 		;;
 	*)
-		echo "Error! $fs_type is an invalid filesystem type."
+		print_error "Error! $fs_type is an invalid filesystem type."
 		exit 1
 		;;
 esac
@@ -319,26 +432,16 @@ mount "${devp}1" "$part_efi"
 mount "${devp}2" "$part_data"
 
 echo "Copying files..."
-mkdir -p "$part_data"/{MultiOS-USB/{tools,tools_priv},ISOs} "$part_efi"/{EFI/BOOT,grub/fonts}
-cp -r config config_priv themes LICENSE README.md MultiOS-USB.version "$part_data/MultiOS-USB"
-cp -r binaries/{syslinux-*,mt86plus_*,efitools-*,wimboot-*,mountiso} "$part_data/MultiOS-USB/tools"
+build_data_stage "$part_data" "yes"
 
 echo "Installing bootloader..."
-tar -xf binaries/grub-*/i386-pc.tar.xz -C "$part_efi/grub"
+build_efi_stage "$part_efi" "$includeBios"
 
-cat > "$part_efi/grub/grub.cfg" << EOF
-search -f /MultiOS-USB/config/grub.config --no-floppy --set=root
-source /MultiOS-USB/config/grub.config
-EOF
-
-cp binaries/grub-*/grubenv         "$part_efi/grub"
-cp -r binaries/grub-*/unicode.pf2  "$part_efi/grub/fonts"
-cp -r binaries/shim-signed_*/*.efi "$part_efi/EFI/BOOT"
-cp binaries/grub-*/grubx64.efi     "$part_efi/EFI/BOOT"
-cp -r cert/ "$part_efi/EFI/"
-
-dd conv=fsync status=none if="$part_efi/grub/i386-pc/boot.img" of="${dev}" bs=1 count=446
-dd conv=fsync status=none if="$part_efi/grub/i386-pc/core.img" of="${dev}" bs=512 count=2014 seek=34
+if [[ "$includeBios" == "no" ]]; then
+	echo "Skipping legacy BIOS boot sector code (--uefi-only)."
+else
+	write_boot_sectors_safe "$dev" "$part_efi" "${devp}1"
+fi
 
 mv "$log_file" "$part_data/MultiOS-USB/install.log"
 chmod -R o+rw "$part_data"
@@ -347,4 +450,4 @@ sync
 umount "$part_efi"
 umount "$part_data"
 rm -rf "${tmpdir}"
-echo -e "\n\e[0;42mMultiOS-USB has been successfully installed.\e[0m\n"
+print_success "MultiOS-USB has been successfully installed."
