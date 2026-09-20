@@ -359,12 +359,11 @@ esac
 
 # Check for required software
 [ "$fs_type" = "fat32" ] && fs_prog="mkfs.fat" || fs_prog="mkfs.$fs_type"
-for cmd in dd tar xz sgdisk wipefs blockdev "$fs_prog"; do
-  # shellcheck disable=SC2086
-  if [ ! -x "$(command -v ${cmd} 2>/dev/null)" ]; then
-	print_error "${cmd} is required but not installed. Exiting"
-	exit 1
-  fi
+for cmd in dd tar xz sgdisk wipefs blockdev mkfs.fat "$fs_prog"; do
+	if [ ! -x "$(command -v "$cmd" 2>/dev/null)" ]; then
+		print_error "$cmd is required but not installed. Exiting"
+		exit 1
+	fi
 done
 
 # Check for root
