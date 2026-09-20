@@ -13,7 +13,7 @@ source common.sh
 
 # Defaults
 scriptname=$(basename "$0")
-fs_type="exfat"
+fs_type="$([ -x "$(command -v "mkfs.exfat" 2>/dev/null)" ] && echo "exfat" || echo "fat32")"
 data_size=""
 efi_size="25M"
 data_label="MultiOS-USB"
