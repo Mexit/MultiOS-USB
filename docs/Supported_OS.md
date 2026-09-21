@@ -52,6 +52,7 @@ Below is just a list of tested and working systems. The actual number of support
 | [Kaspersky Rescue Disk](https://support.kaspersky.com/krd18) | [krd.iso](https://rescuedisk.s.kaspersky-labs.com/updatable/2018/krd.iso) | no | [no](../config/kaspersky) | no | - |
 | [KDE neon](https://neon.kde.org) | [neon-user-20240229-0716.iso](https://files.kde.org/neon/images/user/20240229-0716/neon-user-20240229-0716.iso) | no | [no](../config/KDE_neon) | yes | Canonical |
 | [Kubuntu](https://kubuntu.org) | [kubuntu-24.04-desktop-amd64.iso](https://cdimage.ubuntu.com/kubuntu/releases/24.04/release/kubuntu-24.04-desktop-amd64.iso) | no | yes | yes | Canonical |
+| [LinuxConsole](https://www.linuxconsole.org) | [linuxconsole.2026-09-07-x86_64.iso](https://jukebox.linuxconsole.org/testing/LinuxConsole2026/linuxconsole.2026-09-07-x86_64.iso) | yes | yes | no | - |
 | [Linux Lite](https://www.linuxliteos.com) | [linux-lite-6.6-64bit.iso](https://mirror.alpix.eu/linuxliteos/isos/6.6/linux-lite-6.6-64bit.iso) | no | yes | yes | Canonical |
 | [Linux Mint](https://linuxmint.com) | [linuxmint-21.3-cinnamon-64bit-edge.iso](https://mirror.rackspace.com/linuxmint/iso/stable/21.3/linuxmint-21.3-cinnamon-64bit-edge.iso) | no | yes | yes | Canonical |
 | [Mabox Linux](https://maboxlinux.org) | [mabox-linux-24.03-Istredd-240313-linux66.iso](https://sourceforge.net/projects/mabox-linux/files/24.03/mabox-linux-24.03-Istredd-240313-linux66.iso) | yes | yes | no | - |
