@@ -79,6 +79,7 @@ Below is just a list of tested and working systems. The actual number of support
 |  | [sparkylinux-8.0-x86_64-xfce.iso](https://downloads.sourceforge.net/sparkylinux/sparkylinux-8.0-x86_64-xfce.iso) | yes | yes | yes | Debian |
 | [SystemRescue](https://www.system-rescue.org) | [systemrescue-11.00-amd64.iso](https://downloads.sourceforge.net/systemrescuecd/systemrescue-11.00-amd64.iso) | yes | yes | no | - |
 | [Tails](https://tails.net) | [tails-amd64-6.0.iso](https://download.tails.net/tails/stable/tails-amd64-6.0/tails-amd64-6.0.iso) | no | [no](../config/tails) | yes | Debian |
+| [Tiny11](https://sourceforge.net/projects/tiny-11-releases) | [Tiny11-25H2-26200.8037-English-Pro-2026-08-23.iso](https://sourceforge.net/projects/tiny-11-releases/files/Tiny11-Pro-25H2/Tiny11-25H2-26200.8037-English-Pro-2026-08-23.iso) | yes | [no](../config/windows) | yes | Microsoft |
 | [TUXEDO OS](https://os.tuxedocomputers.com) | [TUXEDO-OS-2-202402220947.iso](https://os.tuxedocomputers.com/TUXEDO-OS-2-202402220947.iso) | yes | yes | yes | TUXEDO |
 | [Ubuntu](https://ubuntu.com) | [ubuntu-23.10.1-desktop-amd64.iso](https://releases.ubuntu.com/23.10.1/ubuntu-23.10.1-desktop-amd64.iso) | no | yes | yes | Canonical |
 |  | [ubuntu-24.04-desktop-amd64.iso](https://releases.ubuntu.com/24.04/ubuntu-24.04-desktop-amd64.iso) | no | yes | yes | Canonical |
