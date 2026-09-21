@@ -82,6 +82,7 @@ Below is just a list of tested and working systems. The actual number of support
 | [TUXEDO OS](https://os.tuxedocomputers.com) | [TUXEDO-OS-2-202402220947.iso](https://os.tuxedocomputers.com/TUXEDO-OS-2-202402220947.iso) | yes | yes | yes | TUXEDO |
 | [Ubuntu](https://ubuntu.com) | [ubuntu-23.10.1-desktop-amd64.iso](https://releases.ubuntu.com/23.10.1/ubuntu-23.10.1-desktop-amd64.iso) | no | yes | yes | Canonical |
 |  | [ubuntu-24.04-desktop-amd64.iso](https://releases.ubuntu.com/24.04/ubuntu-24.04-desktop-amd64.iso) | no | yes | yes | Canonical |
+| [Ultramarine Linux](https://ultramarine-linux.org) | [ultramarine-plasma-44-live-anaconda-x86_64.iso](https://images.fyralabs.com/isos/ultramarine/44/ultramarine-plasma-44-live-anaconda-x86_64.iso) | yes | [no](../config/ultramarine) | yes | Fedora |
 | [Void Linux](https://voidlinux.org) | [void-live-x86_64-20240314-xfce.iso](https://repo-default.voidlinux.org/live/current/void-live-x86_64-20240314-xfce.iso) | yes | [no](../config/void-linux) | no | - |
 |  | [void-live-x86_64-20240314-base.iso](https://repo-default.voidlinux.org/live/current/void-live-x86_64-20240314-base.iso) | yes | [no](../config/void-linux) | no | - |
 | [VOYAGER](https://voyagerlive.org) | [Voyager-12.5-debian-amd64.iso](https://downloads.sourceforge.net/voyagerlive/Voyager-12.5-debian-amd64.iso) | no | yes | yes | Debian |
