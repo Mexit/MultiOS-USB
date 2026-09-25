@@ -1,5 +1,4 @@
-desktop-color: "#000000"
-desktop-image: "background.png"
+desktop-color: "#0d202f"
 
 title-text: "MultiOS-USB"
 title-color: "#fff"
@@ -16,7 +15,7 @@ terminal-font: "Gnu Unifont Mono Regular 16"
   left = 15%
   width = 70%
   top = 25%
-  height = 60%	
+  height = 60%
 
   item_font = "DejaVu Sans Regular 12"
   item_color = "#fff"
