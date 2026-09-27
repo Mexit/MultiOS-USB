@@ -126,7 +126,7 @@ build_efi_stage() {
 	cp --preserve=mode,timestamps binaries/grub-*/grubenv			"$target/grub"
 	cp --preserve=mode,timestamps binaries/grub-*/grubx64.efi		"$target/EFI/BOOT"
 	cp -r --preserve=mode,timestamps binaries/grub-*/unicode.pf2	"$target/grub/fonts"
-	cp -r --preserve=mode,timestamps binaries/shim-signed_*/*.efi	"$target/EFI/BOOT"
+	cp -r --preserve=mode,timestamps binaries/shim-*/*.efi			"$target/EFI/BOOT"
 	cp -r --preserve=mode,timestamps cert/ 							"$target/EFI/"
 
 	# grub.cfg is generated in-place above (not copied from a source file), so it has no
