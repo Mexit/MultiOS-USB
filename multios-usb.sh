@@ -327,8 +327,10 @@ if [[ $updateOnly == yes ]]; then
 	mkdir -p "$data_stage"
 	build_data_stage "$data_stage" "no"
 
-	# Fully mirror everything EXCEPT config_priv and tools_priv
-	rsync -rlptD --no-owner --no-group --checksum --delete --exclude='config_priv' --exclude='tools_priv' "$data_stage"/ "${part_data}"/
+	# Fully mirror the MultiOS-USB directory EXCEPT config_priv and tools_priv. Only that
+	# directory is synced - ISOs and any other user files on the data partition are left alone
+	mkdir -p "${part_data}/ISOs"
+	rsync -rlptD --no-owner --no-group --checksum --delete --exclude='/config_priv' --exclude='/tools_priv' "$data_stage/MultiOS-USB"/ "${part_data}/MultiOS-USB"/
 
 	echo "Updating config_priv (existing user files are preserved, never deleted)..."
 	if [ -d "config_priv" ]; then
