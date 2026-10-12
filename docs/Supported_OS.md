@@ -63,6 +63,7 @@ Below is just a list of tested and working systems. The actual number of support
 | [openSUSE](https://www.opensuse.org) | [openSUSE-Leap-15.5-GNOME-Live-x86_64-Build13.15-Media.iso](https://download.opensuse.org/distribution/leap/15.5/appliances/iso/openSUSE-Leap-15.5-GNOME-Live-x86_64-Build13.15-Media.iso) | yes | yes | yes | SLES |
 |  | [Leap-16.0-online-installer-x86_64.install.iso](https://download.opensuse.org/distribution/leap/16.0/offline/Leap-16.0-online-installer-x86_64.install.iso) | yes | yes | yes | SLES |
 | [Oracle Linux](https://www.oracle.com/linux) | [OracleLinux-R9-U3-x86_64-boot.iso](https://yum.oracle.com/ISOS/OracleLinux/OL9/u3/x86_64/OracleLinux-R9-U3-x86_64-boot.iso) | yes | [no](../config/oracleLinux) | yes | Oracle |
+| [Parrot-Sec](https://www.parrotsec.org) | [Parrot-home-7.4_amd64.iso](https://deb.parrot.sh/parrot/iso/7.4/Parrot-home-7.4_amd64.iso) | yes | [no](../config/parrotsec) | no | - |
 | [peppermintOS](https://peppermintos.com) | [PeppermintOS-Debian-64.iso](https://sourceforge.net/projects/peppermintos/files/isos/XFCE/PeppermintOS-Debian-64.iso) | no | yes | yes | Debian |
 | [Plop Linux](https://www.plop.at/en/ploplinux/index.html) | [ploplinux-24.2-x86_64.iso](https://download.plop.at/ploplinux/24.2/live/ploplinux-24.2-x86_64.iso) | yes | [no](../config/ploplinux) | no | - |
 | [Qubes OS](https://www.qubes-os.org) | [Qubes-R4.2.1-rc1-x86_64.iso](https://ftp.qubes-os.org/iso/Qubes-R4.2.1-rc1-x86_64.iso) | yes | [no](../config/qubes-os) | no | - |
