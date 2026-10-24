@@ -1,0 +1,17 @@
+# shredos
+# https://github.com/PartialVolume/shredos.x86_64
+
+for file_path in $file_list; do
+	regexp --set=1:file_path_rel --set=2:file_name '\([^)]+\)(/.*/([^/]+))$' "$file_path"
+
+	if regexp '^shredos-.*_x86-64_.*\.iso$' "$file_name"; then
+
+		submenu "$file_name [config_priv] ->" "$file_path" {
+			LOOPBACK "$2"
+
+			menuentry "ShredOS" {
+				linux (loop)/boot/bzImage console=tty3 loglevel=3
+			}
+		}
+	fi
+done

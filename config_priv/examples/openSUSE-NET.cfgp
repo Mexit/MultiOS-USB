@@ -1,0 +1,49 @@
+# openSUSE Tumbleweed NET
+# https://www.opensuse.org
+
+for file_path in $file_list; do
+	regexp --set=1:file_path_rel --set=2:file_name '\([^)]+\)(/.*/([^/]+))$' "$file_path"
+
+	if regexp '^openSUSE-Tumbleweed-NET-x86_64-.*\.iso$' "$file_name"; then
+
+		submenu "$file_name [config_priv] ->" "$file_path" "$file_path_rel" {
+			LOOPBACK "$2"
+			iso_path="$3"
+			isocfg=""
+			bootoptions="splash=silent"
+			linux_path="(loop)/boot/x86_64/loader/linux"
+			initrd_path="(loop)/boot/x86_64/loader/initrd"
+
+			menuentry "Installation - openSUSE" {
+				echo Loading kernel...
+				linux $linux_path $isocfg $bootoptions
+				echo Loading initrd...
+				initrd $initrd_path
+			}
+			menuentry "Upgrade - openSUSE" {
+				echo Loading kernel...
+				linux $linux_path $isocfg $bootoptions upgrade=1
+				echo Loading initrd...
+				initrd $initrd_path
+			}
+			menuentry "Rescue System - openSUSE" {
+				echo Loading kernel...
+				linux $linux_path $isocfg $bootoptions rescue=1
+				echo Loading initrd...
+				initrd $initrd_path
+			}
+			menuentry "Boot Linux System - openSUSE" {
+				echo Loading kernel...
+				linux $linux_path $isocfg $bootoptions systemboot=1
+				echo Loading initrd...
+				initrd $initrd_path
+			}
+			menuentry "Check Installation Media - openSUSE" {
+				echo Loading kernel...
+				linux $linux_path $isocfg $bootoptions mediacheck=1
+				echo Loading initrd...
+				initrd $initrd_path
+			}
+		}
+	fi
+done
