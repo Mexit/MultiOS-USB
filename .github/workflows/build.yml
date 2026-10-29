@@ -23,6 +23,7 @@ jobs:
           else
             echo "ver=$(git log -1 --pretty=format:'%h')" >> "$GITHUB_ENV"
           fi
+          sed -i "s/VERSION/$ver/" themes/MultiOS-USB/theme.txt
 
       - name: Linux Release
         run: |

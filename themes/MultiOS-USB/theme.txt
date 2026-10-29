@@ -59,3 +59,12 @@ terminal-font: "Gnu Unifont Mono Regular 16"
 		+ label {text = "C: Command Line     E: Edit Entry     ESC: back" font = "DejaVu Sans Bold 14" color = "#ffffff" align = "left"}
 }
 
++ label {
+  left = 100%-220
+  width = 200
+  top = 100%-35
+  text = "VERSION"
+  font = "DejaVu Sans Bold 14"
+  color = "#ffffff"
+  align = "right"
+}
