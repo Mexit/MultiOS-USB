@@ -61,6 +61,7 @@ Below is just a list of tested and working systems. The actual number of support
 | [MX Linux](https://mxlinux.org) | [MX-23.4_x64.iso](https://downloads.sourceforge.net/mx-linux/MX-23.4_x64.iso) | yes | yes | yes | Debian |
 |  | [MX-23.4_KDE_x64.iso](https://downloads.sourceforge.net/mx-linux/MX-23.4_KDE_x64.iso) | yes | yes | yes | Debian |
 | [NixOS](https://nixos.org) | [nixos-gnome-23.11.5353.878ef7d9721b-x86_64-linux.iso](https://releases.nixos.org/nixos/23.11/nixos-23.11.5353.878ef7d9721b/nixos-gnome-23.11.5353.878ef7d9721b-x86_64-linux.iso) | no | yes | no | - |
+| [Nobara Linux](https://nobaraproject.org) | [Nobara-44-Official-2026-10-13.iso](https://nobara-images.nobaraproject.org/Nobara-44-Official-2026-10-13.iso) | yes | [no](../config/nobara) | no | - |
 | [openSUSE](https://www.opensuse.org) | [openSUSE-Leap-15.5-GNOME-Live-x86_64-Build13.15-Media.iso](https://download.opensuse.org/distribution/leap/15.5/appliances/iso/openSUSE-Leap-15.5-GNOME-Live-x86_64-Build13.15-Media.iso) | yes | yes | yes | SLES |
 |  | [Leap-16.0-online-installer-x86_64.install.iso](https://download.opensuse.org/distribution/leap/16.0/offline/Leap-16.0-online-installer-x86_64.install.iso) | yes | yes | yes | SLES |
 | [Oracle Linux](https://www.oracle.com/linux) | [OracleLinux-R9-U3-x86_64-boot.iso](https://yum.oracle.com/ISOS/OracleLinux/OL9/u3/x86_64/OracleLinux-R9-U3-x86_64-boot.iso) | yes | [no](../config/oracleLinux) | yes | Oracle |
