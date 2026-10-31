@@ -19,16 +19,18 @@ jobs:
       - name: Set version
         run: |
           if [[ "${{ github.ref_type }}" == "tag" ]]; then
-            echo "ver=${{ github.ref_name }}" >> "$GITHUB_ENV"
+            ver="${{ github.ref_name }}"
           else
-            echo "ver=$(git log -1 --pretty=format:'%h')" >> "$GITHUB_ENV"
+            ver="$(git log -1 --pretty=format:'%h')"
           fi
+          echo "ver=$ver" >> "$GITHUB_ENV"
           sed -i "s/VERSION/$ver/" themes/MultiOS-USB/theme.txt
 
       - name: Linux Release
         run: |
           git archive --prefix=MultiOS-USB_$ver/ -o MultiOS-USB_linux_$ver.tar $ver
-          tar --delete --wildcards -f MultiOS-USB_linux_$ver.tar '*/docs/README_image' '*/docs/README_uefi' '*/install.bat' '*/install.ps1'
+          tar --delete --wildcards -f MultiOS-USB_linux_$ver.tar '*/docs/README_image' '*/docs/README_uefi' '*/install.bat' '*/install.ps1' '*/themes/MultiOS-USB/theme.txt'
+          tar --append -f MultiOS-USB_linux_$ver.tar --transform "s|^|MultiOS-USB_$ver/|" themes/MultiOS-USB/theme.txt
           gzip MultiOS-USB_linux_$ver.tar
 
       - name: Windows Release
