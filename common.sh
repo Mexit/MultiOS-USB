@@ -119,6 +119,7 @@ build_efi_stage() {
 	fi
 
 	cat > "$target/grub/grub.cfg" <<- 'GRUBCFG_EOF'
+	insmod iso9660
 	search -f /MultiOS-USB/config/grub.config --no-floppy --set=root
 	source /MultiOS-USB/config/grub.config
 	GRUBCFG_EOF
