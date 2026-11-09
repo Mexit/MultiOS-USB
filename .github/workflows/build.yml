@@ -79,7 +79,7 @@ jobs:
           echo "![Downloads](https://img.shields.io/github/downloads/${{ github.repository }}/${{ github.ref_name }}/total)" > notes.txt
           echo -e "\n### Windows users - please use the UEFI version unless BIOS support is required\n" >> notes.txt
           echo "### Main changes:" >> notes.txt
-          git log --reverse --pretty=format:"- %h: %s" $(git describe --tags --abbrev=0 HEAD^)..HEAD | egrep -v 'minor:|typo:' >> notes.txt
+          git log --reverse --pretty=format:"- %h: %s" $(git describe --tags --abbrev=0 HEAD^)..HEAD | egrep -v 'minor:|typo:|Release:|Workflows:' >> notes.txt
           commits="$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/compare/$(git tag --sort=-v:refname | sed -n 2p)...$(git tag --sort=-v:refname | sed -n 1p)"
           echo -e "<br>\n\n**Full Changelog**: $commits" >> notes.txt
 
